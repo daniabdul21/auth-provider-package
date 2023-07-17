@@ -1,11 +1,10 @@
 {
-  "name": "auth-provider-package",
-  "version": "1.0.0",
+  "name": "@ordentco/addons-auth-provider",
+  "version": "0.9.0",
   "description": "-",
-  "main": "pakcages/auth-provider/src/index.tsx",
+  "main": "packages/auth-provider/src/index.tsx",
   "repository": "-",
-  "author": "daniabdul21 <dani.abud21@gmail.com>",
+  "author": "ordent <hello@ordent.co>",
   "license": "MIT",
-  "private": true,
   "workspaces": ["packages/*", "apps/*"]
 }
