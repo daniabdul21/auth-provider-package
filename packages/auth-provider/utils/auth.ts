@@ -26,10 +26,10 @@ import {ProductTypeEnum} from "../types/product"
   const createProductAuthorities = () => {
     const productAuthorities: any = {};
     const authorities: any = { allAuthority: false, anyAuthority: false };
-    Object.entries(AuthorityLevelEnum).forEach(([key, value]) => {
+    Object.entries(AuthorityLevelEnum).forEach(([key, _value]) => {
       authorities[key] = false;
     });
-    Object.entries(ProductTypeEnum).forEach(([key, value]) => {
+    Object.entries(ProductTypeEnum).forEach(([key, _value]) => {
       productAuthorities[key] = authorities;
     });
     return productAuthorities as ProductAuthoritiesType;

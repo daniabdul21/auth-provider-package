@@ -102,10 +102,10 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
     throw new Error("Function not implemented.");
   },
   menuData: [],
-  verifyUserQuestion: function (payload: VerifyUserQuestion): Promise<void> {
+  verifyUserQuestion: function (_payloa: VerifyUserQuestion): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  verifyChangePasswordToken: function (token: string): Promise<void> {
+  verifyChangePasswordToken: function (_token: string): Promise<void> {
     throw new Error("Function not implemented.");
   },
   ssoQlolaLogin: function (_: string): Promise<void> {
@@ -114,7 +114,7 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   login: function (_: string, __: string, ___: string): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  forgotPassword: function (payload: ForgotPasswordType): Promise<void> {
+  forgotPassword: function (_payload: ForgotPasswordType): Promise<void> {
     throw new Error("Function not implemented.");
   },
   checkToChangePassword: function (_: string, __: string, ___: string, ____: string): Promise<void> {
@@ -123,7 +123,7 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   passwordLoginWithCheck: function (_: string, __: string, ___: string, ____: string): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  requestChangePassword: function (payload: ChangePasswordType): Promise<void> {
+  requestChangePassword: function (_payload: ChangePasswordType): Promise<void> {
     throw new Error("Function not implemented.");
   },
 };
@@ -140,7 +140,7 @@ export interface AuthProviderProps {
   cookieName?: string;
 }
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl, cookieName }) => {
+const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) => {
   const router = useRouter();
   const [token, setToken] = useState<string | null>(() => {
     if (typeof window !== "undefined") {
@@ -160,7 +160,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl, cookieNam
   const [roleIDs, setRoleIDs] = useState<string[]>([]);
   const [holdingID, setHoldingID] = useState<string | null>(null);
   const [alertMenuError, setAlertMenuError] = useState<boolean>(false);
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [_openModal, setOpenModal] = useState<boolean>(false);
   const [menus, setMenus] = useState<string[]>([]);
   const [isMinutes, setIsMinutes] = useState<number>(FIFTEEN_MINUTES);
   const [isLoading, setIsLoading] = useState<boolean>(false);

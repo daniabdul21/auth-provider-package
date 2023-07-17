@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import axios from "axios";
+//@ts-ignore
 import crypto from "crypto-js";
 
 export const customAxios = axios.create({
