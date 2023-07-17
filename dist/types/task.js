@@ -17,4 +17,14 @@ export var TaskStep;
     TaskStep["Signer"] = "Signer";
     TaskStep["Releaser"] = "Releaser";
 })(TaskStep || (TaskStep = {}));
+export var TaskAction;
+(function (TaskAction) {
+    TaskAction["Approve"] = "approve";
+    TaskAction["Reject"] = "reject";
+    TaskAction["Rework"] = "rework";
+    TaskAction["Cancel"] = "cancel";
+    TaskAction["Delete"] = "delete";
+    TaskAction["Submit"] = "submit";
+    TaskAction["All"] = "All";
+})(TaskAction || (TaskAction = {}));
 //# sourceMappingURL=task.js.map

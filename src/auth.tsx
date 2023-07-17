@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
 import { useRouter } from "next/router";
-import AuthService from "../services/auth";
+import {AuthService} from "../services";
 import { message } from "antd";
 import { IdleTimerProvider } from "react-idle-timer";
 import { createProductAuthorities } from "../utils/auth";
@@ -14,10 +14,10 @@ import {
   ProductAuthoritiesType,
   ProductAuthorityType,
   VerifyUserQuestion,
-} from "../types/auth";
+  ProductTypeEnum,
+  TransactionWorkflow
+} from "../types";
 import { ArgsProps } from "antd/lib/message";
-import {TransactionWorkflow} from "../types/workflow"
-import {ProductTypeEnum} from "../types/product"
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 

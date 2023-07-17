@@ -1,5 +1,5 @@
-import customAxios from "./custom.axios";
-import { ChangePasswordType, ForgotPasswordType, VerifyUserQuestion } from "../types/auth";
+import customAxios from "./custom-axios";
+import { ChangePasswordType, ForgotPasswordType, VerifyUserQuestion } from "../types";
 
 const AuthService = () => {
   const crypto = require("crypto-js");

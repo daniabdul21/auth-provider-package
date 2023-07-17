@@ -69,12 +69,11 @@ import { jsx as _jsx } from "react/jsx-runtime";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import AuthService from "../services/auth";
+import { AuthService } from "../services";
 import { message } from "antd";
 import { IdleTimerProvider } from "react-idle-timer";
 import { createProductAuthorities } from "../utils/auth";
-import { AuthorityLevelEnum, } from "../types/auth";
-import { ProductTypeEnum } from "../types/product";
+import { AuthorityLevelEnum, ProductTypeEnum } from "../types";
 var FIFTEEN_MINUTES = 15 * 60 * 1000;
 export var UserType;
 (function (UserType) {

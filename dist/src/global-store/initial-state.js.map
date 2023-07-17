@@ -1,0 +1,1 @@
+{"version":3,"file":"initial-state.js","sourceRoot":"","sources":["../../../src/global-store/initial-state.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,IAAM,0BAA0B,GAAgB;IACrD,QAAQ,EAAE,EAAE;IACZ,WAAW,EAAE,EAAE;IACf,YAAY,EAAE,EAAE;IAChB,MAAM,EAAE,EAAE;IACV,SAAS,EAAE;QACT,QAAQ,EAAE,KAAK;QACf,WAAW,EAAE,KAAK;QAClB,YAAY,EAAE,KAAK;KACpB;CACF,CAAC"}

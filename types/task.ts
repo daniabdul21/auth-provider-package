@@ -32,3 +32,13 @@ export interface TaskData {
     createdAt?: string;
     updatedAt?: string;
   }
+
+  export enum TaskAction {
+    Approve = "approve",
+    Reject = "reject",
+    Rework = "rework",
+    Cancel = "cancel",
+    Delete = "delete",
+    Submit = "submit",
+    All = "All",
+  }

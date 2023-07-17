@@ -1,6 +1,5 @@
 /// <reference types="react" />
-import { ChangePasswordType, ForgotPasswordType, ProductAuthoritiesType, VerifyUserQuestion } from "../types/auth";
-import { TransactionWorkflow } from "../types/workflow";
+import { ChangePasswordType, ForgotPasswordType, ProductAuthoritiesType, VerifyUserQuestion, TransactionWorkflow } from "../types";
 export declare enum UserType {
     BankAdmin = "bank-admin",
     CustomerAdmin = "customer-admin",

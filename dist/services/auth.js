@@ -56,7 +56,7 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import customAxios from "./custom.axios";
+import customAxios from "./custom-axios";
 var AuthService = function () {
     var crypto = require("crypto-js");
     var headersWithSignature = function (signature) {

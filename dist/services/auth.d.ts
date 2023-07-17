@@ -1,4 +1,4 @@
-import { ChangePasswordType, ForgotPasswordType, VerifyUserQuestion } from "../types/auth";
+import { ChangePasswordType, ForgotPasswordType, VerifyUserQuestion } from "../types";
 declare const AuthService: () => {
     validateToken: () => Promise<import("axios").AxiosResponse<any, any>>;
     validateMenu: (token: string) => Promise<import("axios").AxiosResponse<any, any>>;
