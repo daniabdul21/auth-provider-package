@@ -6,6 +6,5 @@
   "repository": "-",
   "author": "ordent <hello@ordent.co>",
   "license": "MIT",
-  "private": false,
   "workspaces": ["packages/*", "apps/*"]
 }
