@@ -52,8 +52,8 @@ import crypto from "crypto-js";
 export var customAxios = axios.create({
     baseURL: process.env["NEXT_PUBLIC_API_URL"],
     headers: {
-        "Content-Type": "application/json"
-    }
+        "Content-Type": "application/json",
+    },
 });
 customAxios.interceptors.request.use(function (config) { return __awaiter(void 0, void 0, void 0, function () {
     var accessToken, header;
@@ -105,7 +105,8 @@ customAxios.interceptors.response.use(function (response) {
                 .then(function (token) {
                 originalRequest.headers["Authorization"] = "Bearer " + token;
                 return customAxios(originalRequest);
-            })["catch"](function (err) {
+            })
+                .catch(function (err) {
                 return Promise.reject(err);
             });
         }
@@ -152,7 +153,8 @@ customAxios.interceptors.response.use(function (response) {
                 }
                 processQueue(null, token);
                 resolve(customAxios(originalRequest));
-            })["catch"](function (err) {
+            })
+                .catch(function (err) {
                 var _a, _b, _c, _d;
                 if (((_b = (_a = err === null || err === void 0 ? void 0 : err.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.code) === 404 && ((_d = (_c = err === null || err === void 0 ? void 0 : err.response) === null || _c === void 0 ? void 0 : _c.data) === null || _d === void 0 ? void 0 : _d.message) === "Not Found") {
                     localStorage.removeItem("access-token");
@@ -162,7 +164,8 @@ customAxios.interceptors.response.use(function (response) {
                 }
                 processQueue(err, null);
                 reject(err);
-            })["finally"](function () {
+            })
+                .finally(function () {
                 isRefreshing = false;
             });
         });

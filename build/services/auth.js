@@ -61,7 +61,7 @@ var AuthService = function () {
     var crypto = require("crypto-js");
     var headersWithSignature = function (signature) {
         return {
-            "x-signature": signature
+            "x-signature": signature,
         };
     };
     var CreateSignature = function (params) {
@@ -86,7 +86,8 @@ var AuthService = function () {
                 throw new Error("Error");
             }
             return response;
-        })["catch"](function (error) {
+        })
+            .catch(function (error) {
             return Promise.reject(error);
         });
     };
@@ -99,7 +100,7 @@ var AuthService = function () {
                     return [4 /*yield*/, customAxios.post("/auth/v2/login", {
                             username: username,
                             password: password,
-                            branchCode: branchCode
+                            branchCode: branchCode,
                         })];
                 case 1:
                     response = _a.sent();
@@ -132,7 +133,7 @@ var AuthService = function () {
                         confirmPassword: payload.confirmPassword,
                         answerQuestion1: payload.answerQuestion1,
                         answerQuestion2: payload.answerQuestion2,
-                        token: payload.tokenFCM
+                        token: payload.tokenFCM,
                     };
                     return [4 /*yield*/, customAxios.post("/auth/change-password", prepareData)];
                 case 1:
@@ -217,7 +218,7 @@ var AuthService = function () {
                     return [4 /*yield*/, customAxios.post("/auth/login/password", {
                             username: username,
                             password: password,
-                            tokenFCM: tokenFCM
+                            tokenFCM: tokenFCM,
                         })];
                 case 1:
                     response = _a.sent();
@@ -243,8 +244,8 @@ var AuthService = function () {
                             params: {
                                 USERID: encodeURIComponent(userId),
                                 SESSIONID: encodeURIComponent(sessionId),
-                                DTTIME: encodeURIComponent(dtTime)
-                            }
+                                DTTIME: encodeURIComponent(dtTime),
+                            },
                         })];
                 case 1: return [2 /*return*/, _a.sent()];
             }
@@ -259,9 +260,10 @@ var AuthService = function () {
                     if (response.status !== 200)
                         throw new Error(((_a = response.data) === null || _a === void 0 ? void 0 : _a.message) || "Server Error");
                     return {
-                        data: response.data
+                        data: response.data,
                     };
-                })["catch"](function (error) {
+                })
+                    .catch(function (error) {
                     return Promise.reject(error);
                 })];
         });
@@ -276,7 +278,8 @@ var AuthService = function () {
                             return;
                         }
                         return response;
-                    })["catch"](function (err) {
+                    })
+                        .catch(function (err) {
                         return Promise.reject(err);
                     })];
                 case 1: return [2 /*return*/, _a.sent()];
@@ -292,11 +295,12 @@ var AuthService = function () {
                     hash = CreateSignature(data);
                     return [4 /*yield*/, customAxios
                             .post("auth/v2/login", data, {
-                            headers: headersWithSignature(hash)
+                            headers: headersWithSignature(hash),
                         })
                             .then(function (response) {
                             return response;
-                        })["catch"](function (err) {
+                        })
+                            .catch(function (err) {
                             return Promise.reject(err);
                         })];
                 case 1: return [2 /*return*/, _a.sent()];
@@ -325,7 +329,7 @@ var AuthService = function () {
         login: login,
         forgotPassword: forgotPassword,
         verifyUserQuestion: verifyUserQuestion,
-        verifyChangePasswordToken: verifyChangePasswordToken
+        verifyChangePasswordToken: verifyChangePasswordToken,
     };
 };
 export default AuthService;

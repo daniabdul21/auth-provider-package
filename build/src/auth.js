@@ -139,7 +139,7 @@ var AUTH_INITIAL_VALUES = {
     },
     requestChangePassword: function (_payload) {
         throw new Error("Function not implemented.");
-    }
+    },
 };
 // export const getStaticProps:GetStaticProps<{}> = async () => {
 //
@@ -785,7 +785,7 @@ var AuthProvider = function (_a) {
                         duration: 5,
                         style: {
                             marginLeft: '70%',
-                            fontSize: 18
+                            fontSize: 18,
                         }
                     };
                     message.open(config);
@@ -797,7 +797,7 @@ var AuthProvider = function (_a) {
             }
         });
     }); };
-    return (_jsx(IdleTimerProvider, __assign({}, { onPrompt: onPrompt, onIdle: onIdle, onActive: onActive, onAction: onAction, timeout: isMinutes }, { children: _jsx(AuthContext.Provider, __assign({ value: {
+    return (_jsx(IdleTimerProvider, { onPrompt: onPrompt, onIdle: onIdle, onActive: onActive, onAction: onAction, timeout: isMinutes, children: _jsx(AuthContext.Provider, { value: {
                 token: token,
                 alertMenuError: alertMenuError,
                 authorities: authorities,
@@ -828,10 +828,8 @@ var AuthProvider = function (_a) {
                 checkToChangePassword: checkToChangePassword,
                 passwordLoginWithCheck: passwordLoginWithCheck,
                 requestChangePassword: requestChangePassword
-            } }, { children: children })) })));
+            }, children: children }) }));
 };
-var useAuth = function () { return useContext(AuthContext); };
-export { AuthProvider, useAuth };
-module.exports = AuthProvider;
-export default useAuth;
+export var useAuth = function () { return useContext(AuthContext); };
+export default AuthProvider;
 //# sourceMappingURL=auth.js.map

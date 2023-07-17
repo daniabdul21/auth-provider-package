@@ -140,7 +140,7 @@ export interface AuthProviderProps {
   cookieName?: string;
 }
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) => {
   const router = useRouter();
   const [token, setToken] = useState<string | null>(() => {
     if (typeof window !== "undefined") {
@@ -759,6 +759,4 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) => {
   );
 };
 
-const useAuth = () => useContext(AuthContext);
-
-export { AuthProvider, useAuth };
+export const useAuth = () => useContext(AuthContext);

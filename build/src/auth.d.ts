@@ -44,6 +44,5 @@ export interface AuthProviderProps {
     cookieName?: string;
 }
 declare const AuthProvider: React.FC<AuthProviderProps>;
-declare const useAuth: () => AuthContextProps;
-export { AuthProvider, useAuth };
-export default useAuth;
+export declare const useAuth: () => AuthContextProps;
+export default AuthProvider;
