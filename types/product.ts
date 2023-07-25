@@ -57,6 +57,9 @@ export enum ProductTypeEnum {
     ACCOUNT_SUMMARY = "Account Summary",
     MPN = "MPN",
     PACKAGE = "Menu:Package",
+    MASS_TRANSFER_CREATE = "Mass Transfer Create",
+    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
   }
   
   // Product Id by Product Type
@@ -119,6 +122,9 @@ export enum ProductTypeEnum {
     MPN = "233",
     ACCOUNT_STATEMENT = "236",
     ACCOUNT_SUMMARY = "238",
+    MASS_TRANSFER_CREATE = "250",
+    MASS_TRANSFER_TRANSACTION_ACTION = "252",
+    MASS_TRANSFER_TRANSFER_HISTORY = "251"
   }
   
   //sementara
@@ -188,5 +194,8 @@ export enum ProductTypeEnum {
     RTGS = "RTGS",
     MPN = "MPN",
     PACKAGE = "Package Management",
+    MASS_TRANSFER_CREATE = "Mass Transfer Create",
+    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
   }
   

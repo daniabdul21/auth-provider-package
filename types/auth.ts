@@ -39,6 +39,7 @@ export enum AuthorityLevelEnum {
     viewOnlineActivity = "view_online_activity",
     dummyauthoritylevel = "dummyauthoritylevel",
     dataEntry = "data_entry",
+    transferOverview = "transfer_overview",
   }
 
   export type ProductAuthorityType = Record<
