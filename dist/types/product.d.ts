@@ -56,7 +56,10 @@ export declare enum ProductTypeEnum {
     ACCOUNT_STATEMENT = "Account Statement",
     ACCOUNT_SUMMARY = "Account Summary",
     MPN = "MPN",
-    PACKAGE = "Menu:Package"
+    PACKAGE = "Menu:Package",
+    MASS_TRANSFER_CREATE = "Mass Transfer Create",
+    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -114,7 +117,10 @@ export declare enum ProductIdByTypeEnum {
     PACKAGE = "222",
     MPN = "233",
     ACCOUNT_STATEMENT = "236",
-    ACCOUNT_SUMMARY = "238"
+    ACCOUNT_SUMMARY = "238",
+    MASS_TRANSFER_CREATE = "250",
+    MASS_TRANSFER_TRANSACTION_ACTION = "252",
+    MASS_TRANSFER_TRANSFER_HISTORY = "251"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -180,5 +186,8 @@ export declare enum ProductTypeNameEnum {
     KLIRING = "Kliring",
     RTGS = "RTGS",
     MPN = "MPN",
-    PACKAGE = "Package Management"
+    PACKAGE = "Package Management",
+    MASS_TRANSFER_CREATE = "Mass Transfer Create",
+    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action"
 }

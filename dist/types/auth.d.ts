@@ -33,7 +33,8 @@ export declare enum AuthorityLevelEnum {
     downloadReport = "download_report",
     viewOnlineActivity = "view_online_activity",
     dummyauthoritylevel = "dummyauthoritylevel",
-    dataEntry = "data_entry"
+    dataEntry = "data_entry",
+    transferOverview = "transfer_overview"
 }
 export type ProductAuthorityType = Record<keyof typeof AuthorityLevelEnum | "anyAuthority" | "allAuthority", boolean>;
 export type ProductAuthoritiesType = Record<keyof typeof ProductTypeEnum, ProductAuthorityType>;

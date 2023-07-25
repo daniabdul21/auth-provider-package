@@ -58,6 +58,9 @@ export var ProductTypeEnum;
     ProductTypeEnum["ACCOUNT_SUMMARY"] = "Account Summary";
     ProductTypeEnum["MPN"] = "MPN";
     ProductTypeEnum["PACKAGE"] = "Menu:Package";
+    ProductTypeEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
+    ProductTypeEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "Mass Transfer Transfer History";
+    ProductTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
 })(ProductTypeEnum || (ProductTypeEnum = {}));
 // Product Id by Product Type
 export var ProductIdByTypeEnum;
@@ -120,6 +123,9 @@ export var ProductIdByTypeEnum;
     ProductIdByTypeEnum["MPN"] = "233";
     ProductIdByTypeEnum["ACCOUNT_STATEMENT"] = "236";
     ProductIdByTypeEnum["ACCOUNT_SUMMARY"] = "238";
+    ProductIdByTypeEnum["MASS_TRANSFER_CREATE"] = "250";
+    ProductIdByTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "252";
+    ProductIdByTypeEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "251";
 })(ProductIdByTypeEnum || (ProductIdByTypeEnum = {}));
 //sementara
 export var ProductTypeEnumUpperCase;
@@ -189,5 +195,8 @@ export var ProductTypeNameEnum;
     ProductTypeNameEnum["RTGS"] = "RTGS";
     ProductTypeNameEnum["MPN"] = "MPN";
     ProductTypeNameEnum["PACKAGE"] = "Package Management";
+    ProductTypeNameEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
+    ProductTypeNameEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "Mass Transfer Transfer History";
+    ProductTypeNameEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
 })(ProductTypeNameEnum || (ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
