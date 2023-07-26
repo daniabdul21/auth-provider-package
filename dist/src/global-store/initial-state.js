@@ -1,4 +1,7 @@
-export var SYSTEM_STORE_INITIAL_STATE = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SYSTEM_STORE_INITIAL_STATE = void 0;
+exports.SYSTEM_STORE_INITIAL_STATE = {
     products: [],
     bricamsUser: {},
     systemConfig: [],

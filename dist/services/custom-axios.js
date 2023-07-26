@@ -1,3 +1,4 @@
+"use strict";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
@@ -46,16 +47,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import axios from "axios";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.customAxios = void 0;
+var axios_1 = __importDefault(require("axios"));
 //@ts-ignore
-import crypto from "crypto-js";
-export var customAxios = axios.create({
+var crypto_js_1 = __importDefault(require("crypto-js"));
+exports.customAxios = axios_1.default.create({
     baseURL: process.env["NEXT_PUBLIC_API_URL"],
     headers: {
         "Content-Type": "application/json",
     },
 });
-customAxios.interceptors.request.use(function (config) { return __awaiter(void 0, void 0, void 0, function () {
+exports.customAxios.interceptors.request.use(function (config) { return __awaiter(void 0, void 0, void 0, function () {
     var accessToken, header;
     return __generator(this, function (_a) {
         accessToken = localStorage.getItem("access-token");
@@ -80,7 +86,7 @@ var processQueue = function (error, token) {
     });
     failedQueue = [];
 };
-customAxios.interceptors.response.use(function (response) {
+exports.customAxios.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
     var _a, _b, _c;
@@ -104,7 +110,7 @@ customAxios.interceptors.response.use(function (response) {
             })
                 .then(function (token) {
                 originalRequest.headers["Authorization"] = "Bearer " + token;
-                return customAxios(originalRequest);
+                return (0, exports.customAxios)(originalRequest);
             })
                 .catch(function (err) {
                 return Promise.reject(err);
@@ -117,7 +123,7 @@ customAxios.interceptors.response.use(function (response) {
             window.location.href = "/login?logout=true";
         }
         return new Promise(function (resolve, reject) {
-            customAxios
+            exports.customAxios
                 .post("/auth/refresh", { refreshToken: refreshToken_1 })
                 .then(function (_a) {
                 var _b, _c, _d, _e;
@@ -135,7 +141,7 @@ customAxios.interceptors.response.use(function (response) {
                 var userID = (_e = data === null || data === void 0 ? void 0 : data.data) === null || _e === void 0 ? void 0 : _e.userID;
                 localStorage.setItem("access-token", token);
                 localStorage.setItem("refresh-token", refreshToken);
-                customAxios.defaults.headers.common["Authorization"] = "Bearer " + token;
+                exports.customAxios.defaults.headers.common["Authorization"] = "Bearer " + token;
                 originalRequest.headers["Authorization"] = "Bearer " + token;
                 if (originalRequest.data !== undefined && originalRequest.data !== null) {
                     if (originalRequest.headers["Content-Type"].toString().includes("json")) {
@@ -152,7 +158,7 @@ customAxios.interceptors.response.use(function (response) {
                     }
                 }
                 processQueue(null, token);
-                resolve(customAxios(originalRequest));
+                resolve((0, exports.customAxios)(originalRequest));
             })
                 .catch(function (err) {
                 var _a, _b, _c, _d;
@@ -177,8 +183,8 @@ customAxios.interceptors.response.use(function (response) {
 });
 var CreateSignature = function (params, companyID, userID, key, token) {
     var data = "bodydata:" + JSON.stringify(params) + "&bearer:".concat(token, "&companyid:") + companyID + "&userid:" + userID;
-    var hash = crypto.HmacSHA256(data, key);
-    return hash.toString(crypto.enc.Hex);
+    var hash = crypto_js_1.default.HmacSHA256(data, key);
+    return hash.toString(crypto_js_1.default.enc.Hex);
 };
-export default customAxios;
+exports.default = exports.customAxios;
 //# sourceMappingURL=custom-axios.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -7,37 +8,40 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import { TaskStep } from '../types/task';
-import { AuthorityLevelEnum, } from "../types/auth";
-import { ProductTypeEnum } from "../types/product";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.canIApprove = exports.createProductAuthorities = exports.protectByAuthority = exports.checkAuthority = void 0;
+var task_1 = require("../types/task");
+var auth_1 = require("../types/auth");
+var product_1 = require("../types/product");
 var mappingStep = function (step) {
     if (step === "maker") {
-        return TaskStep.Maker;
+        return task_1.TaskStep.Maker;
     }
     if (step === "checker") {
-        return TaskStep.Checker;
+        return task_1.TaskStep.Checker;
     }
     if (step === "signer") {
-        return TaskStep.Signer;
+        return task_1.TaskStep.Signer;
     }
     if (step === "releaser") {
-        return TaskStep.Releaser;
+        return task_1.TaskStep.Releaser;
     }
-    return TaskStep.All;
+    return task_1.TaskStep.All;
 };
 var createProductAuthorities = function () {
     var productAuthorities = {};
     var authorities = { allAuthority: false, anyAuthority: false };
-    Object.entries(AuthorityLevelEnum).forEach(function (_a) {
+    Object.entries(auth_1.AuthorityLevelEnum).forEach(function (_a) {
         var key = _a[0], _value = _a[1];
         authorities[key] = false;
     });
-    Object.entries(ProductTypeEnum).forEach(function (_a) {
+    Object.entries(product_1.ProductTypeEnum).forEach(function (_a) {
         var key = _a[0], _value = _a[1];
         productAuthorities[key] = authorities;
     });
     return productAuthorities;
 };
+exports.createProductAuthorities = createProductAuthorities;
 var canIApprove = function (authority, workflow, roleID) {
     var _a, _b, _c, _d, _e, _f;
     if (!(workflow === null || workflow === void 0 ? void 0 : workflow.workflow))
@@ -65,6 +69,7 @@ var canIApprove = function (authority, workflow, roleID) {
             roleAllowed &&
             !alreadyApprove));
 };
+exports.canIApprove = canIApprove;
 var checkAuthority = function (authorities, module, step) {
     var _a;
     if (authorities.size < 1) {
@@ -76,10 +81,11 @@ var checkAuthority = function (authorities, module, step) {
         .filter(function (a) { return a !== "-"; })[0]) === step;
     return hasAccessToModule && hasRightAuthorities;
 };
+exports.checkAuthority = checkAuthority;
 var protectByAuthority = function (authorities, module, step, onRejected) {
     if (!checkAuthority(authorities, module, step)) {
         onRejected();
     }
 };
-export { checkAuthority, protectByAuthority, createProductAuthorities, canIApprove, };
+exports.protectByAuthority = protectByAuthority;
 //# sourceMappingURL=auth.js.map

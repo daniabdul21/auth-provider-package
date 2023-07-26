@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -56,7 +57,11 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import customAxios from "./custom-axios";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var custom_axios_1 = __importDefault(require("./custom-axios"));
 var AuthService = function () {
     var crypto = require("crypto-js");
     var headersWithSignature = function (signature) {
@@ -73,13 +78,13 @@ var AuthService = function () {
     var validateToken = function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, customAxios.get("/auth/me")];
+                case 0: return [4 /*yield*/, custom_axios_1.default.get("/auth/me")];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); };
     var validateMenu = function (token) {
-        return customAxios
+        return custom_axios_1.default
             .post("/menu/me", { token: token })
             .then(function (response) {
             if (response.status !== 200) {
@@ -97,7 +102,7 @@ var AuthService = function () {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, customAxios.post("/auth/v2/login", {
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/v2/login", {
                             username: username,
                             password: password,
                             branchCode: branchCode,
@@ -135,7 +140,7 @@ var AuthService = function () {
                         answerQuestion2: payload.answerQuestion2,
                         token: payload.tokenFCM,
                     };
-                    return [4 /*yield*/, customAxios.post("/auth/change-password", prepareData)];
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/change-password", prepareData)];
                 case 1:
                     response = _b.sent();
                     if (response.status !== 200) {
@@ -157,7 +162,7 @@ var AuthService = function () {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
                     prepareData = __assign({}, payload);
-                    return [4 /*yield*/, customAxios.post("/auth/forgot-password", prepareData)];
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/forgot-password", prepareData)];
                 case 1:
                     response = _b.sent();
                     if (response.status !== 200) {
@@ -179,7 +184,7 @@ var AuthService = function () {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
                     prepareData = __assign({}, payload);
-                    return [4 /*yield*/, customAxios.post("/auth/verify-question", prepareData)];
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/verify-question", prepareData)];
                 case 1:
                     response = _b.sent();
                     return [2 /*return*/, response];
@@ -198,7 +203,7 @@ var AuthService = function () {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
                     prepareData = __assign({}, payload);
-                    return [4 /*yield*/, customAxios.post("/auth/verify-change-password-token", prepareData)];
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/verify-change-password-token", prepareData)];
                 case 1:
                     response = _b.sent();
                     return [2 /*return*/, response];
@@ -215,7 +220,7 @@ var AuthService = function () {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, customAxios.post("/auth/login/password", {
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/login/password", {
                             username: username,
                             password: password,
                             tokenFCM: tokenFCM,
@@ -240,7 +245,7 @@ var AuthService = function () {
                     if (!userId || !sessionId || !dtTime) {
                         throw new Error("User ID, Session ID and Datetime are required");
                     }
-                    return [4 /*yield*/, customAxios.get("/auth/login", {
+                    return [4 /*yield*/, custom_axios_1.default.get("/auth/login", {
                             params: {
                                 USERID: encodeURIComponent(userId),
                                 SESSIONID: encodeURIComponent(sessionId),
@@ -253,7 +258,7 @@ var AuthService = function () {
     }); };
     var ssoLoginQlola = function (request) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/, customAxios
+            return [2 /*return*/, custom_axios_1.default
                     .post("/auth/login/init-token", { request: request })
                     .then(function (response) {
                     var _a;
@@ -271,7 +276,7 @@ var AuthService = function () {
     var logoutSSO = function (clientName) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, customAxios
+                case 0: return [4 /*yield*/, custom_axios_1.default
                         .get("sso/signout/".concat(clientName))
                         .then(function (response) {
                         if (response.status !== 200) {
@@ -293,7 +298,7 @@ var AuthService = function () {
                 case 0:
                     data = { username: username, password: password, branchCode: branchCode };
                     hash = CreateSignature(data);
-                    return [4 /*yield*/, customAxios
+                    return [4 /*yield*/, custom_axios_1.default
                             .post("auth/v2/login", data, {
                             headers: headersWithSignature(hash),
                         })
@@ -310,7 +315,7 @@ var AuthService = function () {
     var logout = function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, customAxios.get("/auth/logout")];
+                case 0: return [4 /*yield*/, custom_axios_1.default.get("/auth/logout")];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });
@@ -332,5 +337,5 @@ var AuthService = function () {
         verifyChangePasswordToken: verifyChangePasswordToken,
     };
 };
-export default AuthService;
+exports.default = AuthService;
 //# sourceMappingURL=auth.js.map

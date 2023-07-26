@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,13 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import customAxios from "./custom-axios";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var custom_axios_1 = __importDefault(require("./custom-axios"));
 var UserService = function (_baseURL, _token) {
     //**********************
     // User
     //**********************
     var getUsers = function () {
-        return customAxios
+        return custom_axios_1.default
             .get("user")
             .then(function (response) {
             var _a;
@@ -56,7 +61,7 @@ var UserService = function (_baseURL, _token) {
     };
     var getUsersData = function (idType, dir) {
         if (dir === void 0) { dir = "DESC"; }
-        return customAxios
+        return custom_axios_1.default
             .get("user/data?user.idType=".concat(idType, "&dir=").concat(dir))
             .then(function (response) {
             var _a;
@@ -79,7 +84,7 @@ var UserService = function (_baseURL, _token) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, customAxios.get("/task?task.type=User&task.featureID=".concat(TaskID))];
+                    return [4 /*yield*/, custom_axios_1.default.get("/task?task.type=User&task.featureID=".concat(TaskID))];
                 case 2:
                     response = _a.sent();
                     return [3 /*break*/, 4];
@@ -91,7 +96,7 @@ var UserService = function (_baseURL, _token) {
         });
     }); };
     var getUserTasks = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("user/task", { params: params })
             .then(function (response) {
             var _a;
@@ -109,7 +114,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var getUserTask = function (taskID) {
-        return customAxios
+        return custom_axios_1.default
             .get("user/task/".concat(taskID))
             .then(function (response) {
             var _a;
@@ -124,7 +129,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var getUserTaskMeCreatedBy = function () {
-        return customAxios
+        return custom_axios_1.default
             .get("user/task/me/created-by")
             .then(function (response) {
             var _a;
@@ -139,7 +144,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var getUserTaskMeApprovedBy = function () {
-        return customAxios
+        return custom_axios_1.default
             .get("user/task/me/approved-by")
             .then(function (response) {
             var _a;
@@ -154,7 +159,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var getUserRole = function () {
-        return customAxios
+        return custom_axios_1.default
             .get("user-role")
             .then(function (response) {
             var _a;
@@ -169,7 +174,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var postUserTask = function (params, isDraft) {
-        return customAxios
+        return custom_axios_1.default
             .post("user/task", { isDraft: isDraft, data: params })
             .then(function (response) {
             var _a, _b;
@@ -189,7 +194,7 @@ var UserService = function (_baseURL, _token) {
     var putTaskUser = function (taskId, action, reasons, comment) {
         if (reasons === void 0) { reasons = null; }
         if (comment === void 0) { comment = null; }
-        return customAxios
+        return custom_axios_1.default
             .post("/task/".concat(taskId), {
             action: action,
             reasons: reasons,
@@ -208,7 +213,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var putUserTask = function (taskID, params, isDraft) {
-        return customAxios
+        return custom_axios_1.default
             .post("user/task/".concat(taskID), { isDraft: isDraft, data: params })
             .then(function (response) {
             var _a, _b;
@@ -226,7 +231,7 @@ var UserService = function (_baseURL, _token) {
         });
     };
     var deleteUserTask = function (taskID) {
-        return customAxios
+        return custom_axios_1.default
             .post("user/task/delete/".concat(taskID), {
             TaskID: taskID,
         })
@@ -249,7 +254,7 @@ var UserService = function (_baseURL, _token) {
     // User BRICA
     //**********************
     var getUsersBricamsDetail = function (username) {
-        return (customAxios
+        return (custom_axios_1.default
             // .get(`user/bricams-svc/detail/${username}`)
             .post("user/bricams-svc/detail", { username: username })
             .then(function (response) {
@@ -267,7 +272,7 @@ var UserService = function (_baseURL, _token) {
         }));
     };
     var getUsersBricamsDetailv2 = function (username) {
-        return customAxios
+        return custom_axios_1.default
             .post("user/bricams-svc/detailv2", { username: username })
             .then(function (response) {
             if (response.status !== 200) {
@@ -288,7 +293,7 @@ var UserService = function (_baseURL, _token) {
     //**********************
     var getRoleData = function (userTypeID, idCompany) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/, customAxios
+            return [2 /*return*/, custom_axios_1.default
                     .get("role/data?role.userTypeID=".concat(userTypeID, "&role.companyID=").concat(idCompany, "&dir=DESC&page=1&limit=100"))
                     .then(function (response) {
                     if (response.status !== 200) {
@@ -301,7 +306,7 @@ var UserService = function (_baseURL, _token) {
     var getRoleUserType = function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, customAxios
+                case 0: return [4 /*yield*/, custom_axios_1.default
                         .get("role/user-type")
                         .then(function (response) {
                         var _a;
@@ -325,7 +330,7 @@ var UserService = function (_baseURL, _token) {
                 case 0:
                     page = params.page, limit = params.limit, search = params.search, filter = params.filter;
                     split = filter.split(",");
-                    return [4 /*yield*/, customAxios
+                    return [4 /*yield*/, custom_axios_1.default
                             .post("/task/activity-logs/User", {
                             page: page,
                             limit: limit,
@@ -363,5 +368,5 @@ var UserService = function (_baseURL, _token) {
         getTaskFromUser: getTaskFromUser
     };
 };
-export default UserService;
+exports.default = UserService;
 //# sourceMappingURL=user.js.map

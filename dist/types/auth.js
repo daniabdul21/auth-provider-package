@@ -1,4 +1,7 @@
-export var AuthorityLevelEnum;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AuthorityLevelEnum = void 0;
+var AuthorityLevelEnum;
 (function (AuthorityLevelEnum) {
     AuthorityLevelEnum["batch"] = "batch";
     AuthorityLevelEnum["uploadFile"] = "upload_file";
@@ -13,5 +16,5 @@ export var AuthorityLevelEnum;
     AuthorityLevelEnum["dummyauthoritylevel"] = "dummyauthoritylevel";
     AuthorityLevelEnum["dataEntry"] = "data_entry";
     AuthorityLevelEnum["transferOverview"] = "transfer_overview";
-})(AuthorityLevelEnum || (AuthorityLevelEnum = {}));
+})(AuthorityLevelEnum || (exports.AuthorityLevelEnum = AuthorityLevelEnum = {}));
 //# sourceMappingURL=auth.js.map

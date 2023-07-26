@@ -1,4 +1,7 @@
-export var TaskStatus;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TaskAction = exports.TaskStep = exports.TaskStatus = void 0;
+var TaskStatus;
 (function (TaskStatus) {
     TaskStatus["All"] = "All";
     TaskStatus["Approved"] = "Approved";
@@ -8,16 +11,16 @@ export var TaskStatus;
     TaskStatus["Pending"] = "Pending";
     TaskStatus["Rejected"] = "Rejected";
     TaskStatus["Returned"] = "Returned";
-})(TaskStatus || (TaskStatus = {}));
-export var TaskStep;
+})(TaskStatus || (exports.TaskStatus = TaskStatus = {}));
+var TaskStep;
 (function (TaskStep) {
     TaskStep["All"] = "All";
     TaskStep["Maker"] = "Maker";
     TaskStep["Checker"] = "Checker";
     TaskStep["Signer"] = "Signer";
     TaskStep["Releaser"] = "Releaser";
-})(TaskStep || (TaskStep = {}));
-export var TaskAction;
+})(TaskStep || (exports.TaskStep = TaskStep = {}));
+var TaskAction;
 (function (TaskAction) {
     TaskAction["Approve"] = "approve";
     TaskAction["Reject"] = "reject";
@@ -26,5 +29,5 @@ export var TaskAction;
     TaskAction["Delete"] = "delete";
     TaskAction["Submit"] = "submit";
     TaskAction["All"] = "All";
-})(TaskAction || (TaskAction = {}));
+})(TaskAction || (exports.TaskAction = TaskAction = {}));
 //# sourceMappingURL=task.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -45,24 +46,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { jsx as _jsx } from "react/jsx-runtime";
-import { createContext, useContext, useEffect, useReducer } from "react";
-import { useAuth } from "../auth";
-import { SYSTEM_STORE_INITIAL_STATE } from "./initial-state";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useGlobalStore = exports.GlobalStoreProvider = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
+var react_1 = require("react");
+var auth_1 = require("../auth");
+var initial_state_1 = require("./initial-state");
 // import {  } from "./loaders";
-import { ProductService, SystemService, UserService, } from "../../services";
-import { globalStoreReducer } from "./reducer";
-import { GlobalStoreActionTypeEnum, } from "../../types";
-var SET_PRODUCTS = GlobalStoreActionTypeEnum.SET_PRODUCTS, SET_BRICAMS_USER = GlobalStoreActionTypeEnum.SET_BRICAMS_USER, SET_SYSTEM_CONFIG = GlobalStoreActionTypeEnum.SET_SYSTEM_CONFIG, SET_ERROR = GlobalStoreActionTypeEnum.SET_ERROR, SET_LOADING = GlobalStoreActionTypeEnum.SET_LOADING;
-var GlobalStoreContext = createContext(__assign(__assign({}, SYSTEM_STORE_INITIAL_STATE), { dispatch: function (_state) { } }));
-export var GlobalStoreProvider = function (_a) {
+var services_1 = require("../../services");
+var reducer_1 = require("./reducer");
+var types_1 = require("../../types");
+var SET_PRODUCTS = types_1.GlobalStoreActionTypeEnum.SET_PRODUCTS, SET_BRICAMS_USER = types_1.GlobalStoreActionTypeEnum.SET_BRICAMS_USER, SET_SYSTEM_CONFIG = types_1.GlobalStoreActionTypeEnum.SET_SYSTEM_CONFIG, SET_ERROR = types_1.GlobalStoreActionTypeEnum.SET_ERROR, SET_LOADING = types_1.GlobalStoreActionTypeEnum.SET_LOADING;
+var GlobalStoreContext = (0, react_1.createContext)(__assign(__assign({}, initial_state_1.SYSTEM_STORE_INITIAL_STATE), { dispatch: function (_state) { } }));
+var GlobalStoreProvider = function (_a) {
     var children = _a.children;
-    var _b = useReducer(globalStoreReducer, SYSTEM_STORE_INITIAL_STATE), store = _b[0], dispatch = _b[1];
+    var _b = (0, react_1.useReducer)(reducer_1.globalStoreReducer, initial_state_1.SYSTEM_STORE_INITIAL_STATE), store = _b[0], dispatch = _b[1];
     var baseUrl = "".concat(process.env["NEXT_PUBLIC_API_URL"]);
-    var _c = useAuth(), token = _c.token, username = _c.username;
-    var getDataSystemAll = SystemService(baseUrl, token).getDataSystemAll;
-    var getProducts = ProductService(baseUrl, token).getProducts;
-    var getUsersBricamsDetail = UserService(baseUrl, token).getUsersBricamsDetail;
+    var _c = (0, auth_1.useAuth)(), token = _c.token, username = _c.username;
+    var getDataSystemAll = (0, services_1.SystemService)(baseUrl, token).getDataSystemAll;
+    var getProducts = (0, services_1.ProductService)(baseUrl, token).getProducts;
+    var getUsersBricamsDetail = (0, services_1.UserService)(baseUrl, token).getUsersBricamsDetail;
     var loadSystemConfig = function () { return __awaiter(void 0, void 0, void 0, function () {
         var res, err_1;
         return __generator(this, function (_a) {
@@ -156,18 +159,20 @@ export var GlobalStoreProvider = function (_a) {
             }
         });
     }); };
-    useEffect(function () {
+    (0, react_1.useEffect)(function () {
         if (token) {
             loadSystemConfig();
             loadProducts();
         }
     }, [!!token]);
-    useEffect(function () {
+    (0, react_1.useEffect)(function () {
         if (!!token && username !== "Guest" && !!username) {
             loadBricamsUser();
         }
     }, [!!token, username]);
-    return (_jsx(GlobalStoreContext.Provider, { value: __assign(__assign({}, store), { dispatch: dispatch }), children: children }));
+    return ((0, jsx_runtime_1.jsx)(GlobalStoreContext.Provider, { value: __assign(__assign({}, store), { dispatch: dispatch }), children: children }));
 };
-export var useGlobalStore = function () { return useContext(GlobalStoreContext); };
+exports.GlobalStoreProvider = GlobalStoreProvider;
+var useGlobalStore = function () { return (0, react_1.useContext)(GlobalStoreContext); };
+exports.useGlobalStore = useGlobalStore;
 //# sourceMappingURL=index.js.map

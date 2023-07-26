@@ -1,4 +1,7 @@
-export var ProductTypeEnum;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProductTypeNameEnum = exports.ProductTypeEnumUpperCase = exports.ProductIdByTypeEnum = exports.ProductTypeEnum = void 0;
+var ProductTypeEnum;
 (function (ProductTypeEnum) {
     ProductTypeEnum["ALL"] = "All";
     ProductTypeEnum["ACCOUNT"] = "Account";
@@ -61,9 +64,9 @@ export var ProductTypeEnum;
     ProductTypeEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
     ProductTypeEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "Mass Transfer Transfer History";
     ProductTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
-})(ProductTypeEnum || (ProductTypeEnum = {}));
+})(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
-export var ProductIdByTypeEnum;
+var ProductIdByTypeEnum;
 (function (ProductIdByTypeEnum) {
     ProductIdByTypeEnum["ACCOUNT"] = "4";
     ProductIdByTypeEnum["AMEND_CANCEL_LC"] = "190";
@@ -126,9 +129,9 @@ export var ProductIdByTypeEnum;
     ProductIdByTypeEnum["MASS_TRANSFER_CREATE"] = "250";
     ProductIdByTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "252";
     ProductIdByTypeEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "251";
-})(ProductIdByTypeEnum || (ProductIdByTypeEnum = {}));
+})(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
-export var ProductTypeEnumUpperCase;
+var ProductTypeEnumUpperCase;
 (function (ProductTypeEnumUpperCase) {
     ProductTypeEnumUpperCase["ALL"] = "ALL";
     ProductTypeEnumUpperCase["SWIFT"] = "SWIFT";
@@ -139,8 +142,8 @@ export var ProductTypeEnumUpperCase;
     ProductTypeEnumUpperCase["MULTIPAYMENT_HISTORY"] = "MULTIPAYMENT_HISTORY";
     ProductTypeEnumUpperCase["BULK_TRANSFER"] = "BULK_TRANSFER";
     ProductTypeEnumUpperCase["RTGS"] = "RTGS";
-})(ProductTypeEnumUpperCase || (ProductTypeEnumUpperCase = {}));
-export var ProductTypeNameEnum;
+})(ProductTypeEnumUpperCase || (exports.ProductTypeEnumUpperCase = ProductTypeEnumUpperCase = {}));
+var ProductTypeNameEnum;
 (function (ProductTypeNameEnum) {
     ProductTypeNameEnum["ALL"] = "All";
     ProductTypeNameEnum["ACCOUNT"] = "Account Management";
@@ -198,5 +201,5 @@ export var ProductTypeNameEnum;
     ProductTypeNameEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
     ProductTypeNameEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "Mass Transfer Transfer History";
     ProductTypeNameEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
-})(ProductTypeNameEnum || (ProductTypeNameEnum = {}));
+})(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

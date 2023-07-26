@@ -3,6 +3,7 @@
   "version": "0.9.8",
   "description": "-",
   "main": "dist/src/index.js",
+  "types": "",
   "repository": "-",
   "author": "ordent <hello@ordent.co>",
   "license": "MIT",

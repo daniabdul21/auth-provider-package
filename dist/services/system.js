@@ -1,11 +1,16 @@
-import customAxios from "./custom-axios";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var custom_axios_1 = __importDefault(require("./custom-axios"));
 var SystemService = function (_baseURL, _token) {
     //**********************
     // User
     //**********************
     if (_token === void 0) { _token = null; }
     var putTask = function (taskId, action, reasons, comment) {
-        return customAxios
+        return custom_axios_1.default
             .post("/task/".concat(taskId), {
             action: action,
             reasons: reasons,
@@ -23,7 +28,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataSystems = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("system/task/me", {
             params: params,
         })
@@ -42,7 +47,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataSystem = function (id) {
-        return customAxios
+        return custom_axios_1.default
             .get("system/task/".concat(id))
             .then(function (response) {
             var _a;
@@ -57,7 +62,7 @@ var SystemService = function (_baseURL, _token) {
     };
     var getSystemTasks = function (params) {
         var page = params.page, limit = params.limit, search = params.search, filter = params.filter, sort = params.sort, dir = params.dir;
-        return customAxios
+        return custom_axios_1.default
             .get("system/task?".concat(filter), {
             params: {
                 page: page,
@@ -84,7 +89,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataSystemKey = function (key) {
-        return customAxios
+        return custom_axios_1.default
             .get("system/key/".concat(key))
             .then(function (response) {
             var _a;
@@ -98,7 +103,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataSystemEmailKey = function (key) {
-        return customAxios
+        return custom_axios_1.default
             .get("notification/key/".concat(key))
             .then(function (response) {
             var _a;
@@ -112,7 +117,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var putSystemTask = function (taskID, params, isDraft) {
-        return (customAxios
+        return (custom_axios_1.default
             // .put(`system/task/${taskID}`, {
             .post("system/task/edit/".concat(taskID), {
             isDraft: isDraft,
@@ -135,7 +140,7 @@ var SystemService = function (_baseURL, _token) {
     };
     //master data
     var getDataMdBiccc = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdBiccc", {
             params: params,
         })
@@ -154,7 +159,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdBenefType = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdBenefType", {
             params: params,
         })
@@ -173,7 +178,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdCountry = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdCountry", {
             params: params,
         })
@@ -192,7 +197,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdEmploymentIndustry = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdEmploymentIndustry", {
             params: params,
         })
@@ -211,7 +216,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdEmploymentPosition = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdEmploymentPosition", {
             params: params,
         })
@@ -230,7 +235,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdEmploymentStatus = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdEmploymentStatus", {
             params: params,
         })
@@ -249,7 +254,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdGender = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdGender", {
             params: params,
         })
@@ -268,7 +273,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdIdType = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdIdType", {
             params: params,
         })
@@ -287,7 +292,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdCity = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdKota", {
             params: params,
         })
@@ -306,7 +311,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdProvince = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdProvince", {
             params: params,
         })
@@ -325,7 +330,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdPurpose = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdPurpose", {
             params: params,
         })
@@ -344,7 +349,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdPurposeIntended = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdPurposeIntended", {
             params: params,
         })
@@ -363,7 +368,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdRelationToSender = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdRelationToSender", {
             params: params,
         })
@@ -382,7 +387,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataMdBranch = function (params) {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/master-data/MdBranch", {
             params: params,
         })
@@ -401,7 +406,7 @@ var SystemService = function (_baseURL, _token) {
         });
     };
     var getDataSystemAll = function () {
-        return customAxios
+        return custom_axios_1.default
             .get("/system/data")
             .then(function (response) {
             var _a;
@@ -439,5 +444,5 @@ var SystemService = function (_baseURL, _token) {
         getDataSystemEmailKey: getDataSystemEmailKey,
     };
 };
-export default SystemService;
+exports.default = SystemService;
 //# sourceMappingURL=system.js.map

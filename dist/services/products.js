@@ -1,9 +1,14 @@
-import customAxios from "./custom-axios";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var custom_axios_1 = __importDefault(require("./custom-axios"));
 var ProductService = function (_baseURL, _token) {
     var getProducts = function (infinite, userType) {
         if (infinite === void 0) { infinite = false; }
         if (infinite) {
-            return customAxios
+            return custom_axios_1.default
                 .get("/product", {
                 params: {
                     page: 1,
@@ -23,7 +28,7 @@ var ProductService = function (_baseURL, _token) {
                 };
             });
         }
-        return customAxios.get("/product").then(function (response) {
+        return custom_axios_1.default.get("/product").then(function (response) {
             if (response.status !== 200) {
                 throw new Error("Error");
             }
@@ -37,5 +42,5 @@ var ProductService = function (_baseURL, _token) {
         getProducts: getProducts,
     };
 };
-export default ProductService;
+exports.default = ProductService;
 //# sourceMappingURL=products.js.map

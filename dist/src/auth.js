@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -65,23 +66,25 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import { jsx as _jsx } from "react/jsx-runtime";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useAuth = exports.AuthProvider = exports.UserType = void 0;
+var jsx_runtime_1 = require("react/jsx-runtime");
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import { AuthService } from "../services";
-import { message } from "antd";
-import { IdleTimerProvider } from "react-idle-timer";
-import { createProductAuthorities } from "../utils/auth";
-import { AuthorityLevelEnum, ProductTypeEnum } from "../types";
+var react_1 = require("react");
+var router_1 = require("next/router");
+var services_1 = require("../services");
+var antd_1 = require("antd");
+var react_idle_timer_1 = require("react-idle-timer");
+var auth_1 = require("../utils/auth");
+var types_1 = require("../types");
 var FIFTEEN_MINUTES = 15 * 60 * 1000;
-export var UserType;
+var UserType;
 (function (UserType) {
     UserType["BankAdmin"] = "bank-admin";
     UserType["CustomerAdmin"] = "customer-admin";
     UserType["CustomerUser"] = "customer-user";
-})(UserType || (UserType = {}));
-var initialProductAuthorities = createProductAuthorities();
+})(UserType || (exports.UserType = UserType = {}));
+var initialProductAuthorities = (0, auth_1.createProductAuthorities)();
 var AUTH_INITIAL_VALUES = {
     token: null,
     authorities: new Map(),
@@ -143,37 +146,37 @@ var AUTH_INITIAL_VALUES = {
 // export const getStaticProps:GetStaticProps<{}> = async () => {
 //
 // }
-var AuthContext = createContext(AUTH_INITIAL_VALUES);
-export var AuthProvider = function (_a) {
+var AuthContext = (0, react_1.createContext)(AUTH_INITIAL_VALUES);
+var AuthProvider = function (_a) {
     var children = _a.children, apiUrl = _a.apiUrl;
-    var router = useRouter();
-    var _b = useState(function () {
+    var router = (0, router_1.useRouter)();
+    var _b = (0, react_1.useState)(function () {
         if (typeof window !== "undefined") {
             var t = localStorage.getItem("access-token");
             return t;
         }
         return null;
     }), token = _b[0], setToken = _b[1];
-    var authService = useMemo(function () { return AuthService(); }, [apiUrl, token]);
-    var _c = useState(new Map()), authorities = _c[0], setAuthorities = _c[1];
-    var _d = useState("Guest"), username = _d[0], setUsername = _d[1];
-    var _e = useState(null), userType = _e[0], setUserType = _e[1];
-    var _f = useState(null), companyID = _f[0], setCompanyID = _f[1];
-    var _g = useState(""), companyName = _g[0], setCompanyName = _g[1];
-    var _h = useState(null), userID = _h[0], setUserID = _h[1];
-    var _j = useState(null), roleID = _j[0], setRoleID = _j[1];
-    var _k = useState([]), roleIDs = _k[0], setRoleIDs = _k[1];
-    var _l = useState(null), holdingID = _l[0], setHoldingID = _l[1];
-    var _m = useState(false), alertMenuError = _m[0], setAlertMenuError = _m[1];
-    var _o = useState(false), _openModal = _o[0], setOpenModal = _o[1];
-    var _p = useState([]), menus = _p[0], setMenus = _p[1];
-    var _q = useState(FIFTEEN_MINUTES), isMinutes = _q[0], setIsMinutes = _q[1];
-    var _r = useState(false), isLoading = _r[0], setIsLoading = _r[1];
-    var _s = useState(initialProductAuthorities), productAuthorities = _s[0], setProductAuthorities = _s[1];
-    var _t = useState(false), isAuthoritiesReady = _t[0], setIsAuthoritiesReady = _t[1];
-    var _u = useState([]), menuData = _u[0], setMenuData = _u[1];
-    var loggedIn = useMemo(function () { return !!token; }, [token]);
-    var guard = useCallback(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var authService = (0, react_1.useMemo)(function () { return (0, services_1.AuthService)(); }, [apiUrl, token]);
+    var _c = (0, react_1.useState)(new Map()), authorities = _c[0], setAuthorities = _c[1];
+    var _d = (0, react_1.useState)("Guest"), username = _d[0], setUsername = _d[1];
+    var _e = (0, react_1.useState)(null), userType = _e[0], setUserType = _e[1];
+    var _f = (0, react_1.useState)(null), companyID = _f[0], setCompanyID = _f[1];
+    var _g = (0, react_1.useState)(""), companyName = _g[0], setCompanyName = _g[1];
+    var _h = (0, react_1.useState)(null), userID = _h[0], setUserID = _h[1];
+    var _j = (0, react_1.useState)(null), roleID = _j[0], setRoleID = _j[1];
+    var _k = (0, react_1.useState)([]), roleIDs = _k[0], setRoleIDs = _k[1];
+    var _l = (0, react_1.useState)(null), holdingID = _l[0], setHoldingID = _l[1];
+    var _m = (0, react_1.useState)(false), alertMenuError = _m[0], setAlertMenuError = _m[1];
+    var _o = (0, react_1.useState)(false), _openModal = _o[0], setOpenModal = _o[1];
+    var _p = (0, react_1.useState)([]), menus = _p[0], setMenus = _p[1];
+    var _q = (0, react_1.useState)(FIFTEEN_MINUTES), isMinutes = _q[0], setIsMinutes = _q[1];
+    var _r = (0, react_1.useState)(false), isLoading = _r[0], setIsLoading = _r[1];
+    var _s = (0, react_1.useState)(initialProductAuthorities), productAuthorities = _s[0], setProductAuthorities = _s[1];
+    var _t = (0, react_1.useState)(false), isAuthoritiesReady = _t[0], setIsAuthoritiesReady = _t[1];
+    var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
+    var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
+    var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
         var response_1, menu, a_1, productRoles, privilegesRecords_1;
         var _a, _b, _c, _d;
         return __generator(this, function (_e) {
@@ -213,17 +216,17 @@ export var AuthProvider = function (_a) {
                     });
                     setAuthorities(function () { return a_1; });
                     privilegesRecords_1 = __assign({}, productAuthorities);
-                    Object.entries(ProductTypeEnum).forEach(function (_a) {
+                    Object.entries(types_1.ProductTypeEnum).forEach(function (_a) {
                         var productKey = _a[0], productValue = _a[1];
                         var productRole = a_1.get(productValue) || [];
                         productRole = productRole.map(function (e) { return e.split(":")[0]; });
                         var productAuthority = {};
-                        Object.entries(AuthorityLevelEnum).forEach(function (_a) {
+                        Object.entries(types_1.AuthorityLevelEnum).forEach(function (_a) {
                             var key = _a[0], value = _a[1];
                             productAuthority[key] = productRole.includes(value);
                         });
                         productAuthority["anyAuthority"] = productRole.length > 0;
-                        productAuthority["allAuthority"] = productRole.length >= Object.entries(AuthorityLevelEnum).length;
+                        productAuthority["allAuthority"] = productRole.length >= Object.entries(types_1.AuthorityLevelEnum).length;
                         privilegesRecords_1[productKey] = productAuthority;
                     });
                     setProductAuthorities(privilegesRecords_1);
@@ -243,7 +246,7 @@ export var AuthProvider = function (_a) {
         var product = header === null || header === void 0 ? void 0 : header.productName;
         if (!product)
             return false;
-        var productKey = Object.keys(ProductTypeEnum).find(function (e) { return ProductTypeEnum[e] === product; });
+        var productKey = Object.keys(types_1.ProductTypeEnum).find(function (e) { return types_1.ProductTypeEnum[e] === product; });
         if (!productKey)
             return false;
         var authority = productAuthorities[productKey];
@@ -272,7 +275,7 @@ export var AuthProvider = function (_a) {
                 !alreadyApprove) ||
             (authority.release && currentStep === "releaser" && roleAllowed && !alreadyApprove));
     };
-    var passwordLogin = useCallback(function (username, password, tokenFCM) { return __awaiter(void 0, void 0, void 0, function () {
+    var passwordLogin = (0, react_1.useCallback)(function (username, password, tokenFCM) { return __awaiter(void 0, void 0, void 0, function () {
         var response_2, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -292,7 +295,7 @@ export var AuthProvider = function (_a) {
                 case 3:
                     error_1 = _a.sent();
                     if (error_1 instanceof Error)
-                        message.error(error_1.message);
+                        antd_1.message.error(error_1.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setIsLoading(false);
@@ -316,7 +319,7 @@ export var AuthProvider = function (_a) {
     var onAction = function () {
         return setIsMinutes(FIFTEEN_MINUTES);
     };
-    var ssoLogin = useCallback(function (userId, sessionId, dtTime, onError) { return __awaiter(void 0, void 0, void 0, function () {
+    var ssoLogin = (0, react_1.useCallback)(function (userId, sessionId, dtTime, onError) { return __awaiter(void 0, void 0, void 0, function () {
         var response_3, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -345,7 +348,7 @@ export var AuthProvider = function (_a) {
             }
         });
     }); }, [authService, router]);
-    var logout = useCallback(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var logout = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
         var error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -422,7 +425,7 @@ export var AuthProvider = function (_a) {
                 case 3:
                     error_4 = _b.sent();
                     if (error_4 instanceof Error)
-                        message.error(error_4.message);
+                        antd_1.message.error(error_4.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setTimeout(function () {
@@ -462,13 +465,13 @@ export var AuthProvider = function (_a) {
                     return [4 /*yield*/, authService.requestChangePassword(payload)];
                 case 2:
                     response = _b.sent();
-                    message.success(response.data.message);
+                    antd_1.message.success(response.data.message);
                     router.replace("/landing-page");
                     return [3 /*break*/, 5];
                 case 3:
                     error_5 = _b.sent();
                     if (error_5 instanceof Error)
-                        message.error(error_5.message);
+                        antd_1.message.error(error_5.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setIsLoading(false);
@@ -508,13 +511,13 @@ export var AuthProvider = function (_a) {
                     return [4 /*yield*/, authService.forgotPassword(payload)];
                 case 2:
                     response = _b.sent();
-                    message.success(response.data.message);
+                    antd_1.message.success(response.data.message);
                     router.replace("/landing-page");
                     return [3 /*break*/, 5];
                 case 3:
                     error_6 = _b.sent();
                     if (error_6 instanceof Error) {
-                        message.error('The information you have provided is incorrect, please try again.');
+                        antd_1.message.error('The information you have provided is incorrect, please try again.');
                     }
                     ;
                     return [3 /*break*/, 5];
@@ -560,9 +563,9 @@ export var AuthProvider = function (_a) {
                 case 3:
                     err_1 = _b.sent();
                     if (err_1.response.data.code === 404) {
-                        return [2 /*return*/, message.error("Data not found")];
+                        return [2 /*return*/, antd_1.message.error("Data not found")];
                     }
-                    message.error(err_1.response.data.message);
+                    antd_1.message.error(err_1.response.data.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setIsLoading(false);
@@ -682,7 +685,7 @@ export var AuthProvider = function (_a) {
                 case 4:
                     error_8 = _b.sent();
                     if (error_8 instanceof Error)
-                        message.error(error_8.message);
+                        antd_1.message.error(error_8.message);
                     return [3 /*break*/, 6];
                 case 5:
                     setIsLoading(false);
@@ -787,7 +790,7 @@ export var AuthProvider = function (_a) {
                             fontSize: 18,
                         }
                     };
-                    message.open(config);
+                    antd_1.message.open(config);
                     return [3 /*break*/, 5];
                 case 4:
                     setIsLoading(false);
@@ -796,7 +799,7 @@ export var AuthProvider = function (_a) {
             }
         });
     }); };
-    return (_jsx(IdleTimerProvider, { onPrompt: onPrompt, onIdle: onIdle, onActive: onActive, onAction: onAction, timeout: isMinutes, children: _jsx(AuthContext.Provider, { value: {
+    return ((0, jsx_runtime_1.jsx)(react_idle_timer_1.IdleTimerProvider, { onPrompt: onPrompt, onIdle: onIdle, onActive: onActive, onAction: onAction, timeout: isMinutes, children: (0, jsx_runtime_1.jsx)(AuthContext.Provider, { value: {
                 token: token,
                 alertMenuError: alertMenuError,
                 authorities: authorities,
@@ -829,5 +832,7 @@ export var AuthProvider = function (_a) {
                 requestChangePassword: requestChangePassword
             }, children: children }) }));
 };
-export var useAuth = function () { return useContext(AuthContext); };
+exports.AuthProvider = AuthProvider;
+var useAuth = function () { return (0, react_1.useContext)(AuthContext); };
+exports.useAuth = useAuth;
 //# sourceMappingURL=auth.js.map
