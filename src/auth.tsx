@@ -15,9 +15,11 @@ import {
   ProductAuthorityType,
   VerifyUserQuestion,
   ProductTypeEnum,
-  TransactionWorkflow
+  TransactionWorkflow,
+  multipaymentProducts
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
+import { map, snakeCase, mergeWith, toUpper } from "lodash";
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
@@ -228,6 +230,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         privilegesRecords[productKey] = productAuthority as ProductAuthorityType;
       });
+
+      // Combine Authority All Product Multipayment
+      map(multipaymentProducts, item => {
+        privilegesRecords['MULTIPAYMENT'] = mergeWith(
+          privilegesRecords['MULTIPAYMENT'],
+          privilegesRecords[toUpper(snakeCase(item))]
+        )
+      })
 
       setProductAuthorities(privilegesRecords);
       setIsAuthoritiesReady(true);

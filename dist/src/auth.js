@@ -77,6 +77,7 @@ var antd_1 = require("antd");
 var react_idle_timer_1 = require("react-idle-timer");
 var auth_1 = require("../utils/auth");
 var types_1 = require("../types");
+var lodash_1 = require("lodash");
 var FIFTEEN_MINUTES = 15 * 60 * 1000;
 var UserType;
 (function (UserType) {
@@ -228,6 +229,10 @@ var AuthProvider = function (_a) {
                         productAuthority["anyAuthority"] = productRole.length > 0;
                         productAuthority["allAuthority"] = productRole.length >= Object.entries(types_1.AuthorityLevelEnum).length;
                         privilegesRecords_1[productKey] = productAuthority;
+                    });
+                    // Combine Authority All Product Multipayment
+                    (0, lodash_1.map)(types_1.multipaymentProducts, function (item) {
+                        privilegesRecords_1['MULTIPAYMENT'] = (0, lodash_1.mergeWith)(privilegesRecords_1['MULTIPAYMENT'], privilegesRecords_1[(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item))]);
                     });
                     setProductAuthorities(privilegesRecords_1);
                     setIsAuthoritiesReady(true);
