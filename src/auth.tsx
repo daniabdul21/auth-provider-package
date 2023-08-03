@@ -376,17 +376,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const logout = useCallback(async () => {
     try {
       await authService.logoutSSO("CBM");
-      await authService.logout();
-
-      localStorage.removeItem("access-token");
-      localStorage.removeItem("refresh-token");
-
-      // setToken(() => null);
-      setMenus(() => []);
-      setMenuData(() => []);
-
-      router.push("/login?logout=true");
     } catch (error) {
+      // Handle errors from logoutSSO if needed
+    }
+
+    try {
+      await authService.logout();
+    } catch (error) {
+      // Handle errors from logout if needed
+    } finally {
       localStorage.removeItem("access-token");
       localStorage.removeItem("refresh-token");
 
@@ -396,7 +394,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
       router.push("/login?logout=true");
     }
-  }, [authService, router]);
+  }, [authService, router]);
+
 
   // const checkToChangePassword = useCallback(
   //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {

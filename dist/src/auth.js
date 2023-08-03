@@ -354,34 +354,36 @@ var AuthProvider = function (_a) {
         });
     }); }, [authService, router]);
     var logout = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var error_3;
+        var error_3, error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, authService.logoutSSO("CBM")];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, authService.logout()];
+                    return [3 /*break*/, 3];
                 case 2:
-                    _a.sent();
-                    localStorage.removeItem("access-token");
-                    localStorage.removeItem("refresh-token");
-                    // setToken(() => null);
-                    setMenus(function () { return []; });
-                    setMenuData(function () { return []; });
-                    router.push("/login?logout=true");
-                    return [3 /*break*/, 4];
-                case 3:
                     error_3 = _a.sent();
+                    return [3 /*break*/, 3];
+                case 3:
+                    _a.trys.push([3, 5, 6, 7]);
+                    return [4 /*yield*/, authService.logout()];
+                case 4:
+                    _a.sent();
+                    return [3 /*break*/, 7];
+                case 5:
+                    error_4 = _a.sent();
+                    return [3 /*break*/, 7];
+                case 6:
                     localStorage.removeItem("access-token");
                     localStorage.removeItem("refresh-token");
                     // setToken(() => null);
                     setMenus(function () { return []; });
                     setMenuData(function () { return []; });
                     router.push("/login?logout=true");
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [7 /*endfinally*/];
+                case 7: return [2 /*return*/];
             }
         });
     }); }, [authService, router]);
@@ -407,7 +409,7 @@ var AuthProvider = function (_a) {
     //   [authService]
     // );
     var checkToChangePassword = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var checks, result, error_4;
+        var checks, result, error_5;
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -428,9 +430,9 @@ var AuthProvider = function (_a) {
                     }
                     return [3 /*break*/, 5];
                 case 3:
-                    error_4 = _b.sent();
-                    if (error_4 instanceof Error)
-                        antd_1.message.error(error_4.message);
+                    error_5 = _b.sent();
+                    if (error_5 instanceof Error)
+                        antd_1.message.error(error_5.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setTimeout(function () {
@@ -458,7 +460,7 @@ var AuthProvider = function (_a) {
     //   [authService, router]
     // );
     var requestChangePassword = (0, react_1.useCallback)(function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, error_5;
+        var response, error_6;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -474,10 +476,10 @@ var AuthProvider = function (_a) {
                     router.replace("/landing-page");
                     return [2 /*return*/, response];
                 case 3:
-                    error_5 = _b.sent();
-                    if (error_5 instanceof Error)
-                        antd_1.message.error(error_5.message);
-                    return [2 /*return*/, Promise.reject(error_5)];
+                    error_6 = _b.sent();
+                    if (error_6 instanceof Error)
+                        antd_1.message.error(error_6.message);
+                    return [2 /*return*/, Promise.reject(error_6)];
                 case 4:
                     setIsLoading(false);
                     return [7 /*endfinally*/];
@@ -504,7 +506,7 @@ var AuthProvider = function (_a) {
     //   [authService, router]
     // );
     var forgotPassword = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, error_6;
+        var response, error_7;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -520,8 +522,8 @@ var AuthProvider = function (_a) {
                     router.replace("/landing-page");
                     return [3 /*break*/, 5];
                 case 3:
-                    error_6 = _b.sent();
-                    if (error_6 instanceof Error) {
+                    error_7 = _b.sent();
+                    if (error_7 instanceof Error) {
                         antd_1.message.error('The information you have provided is incorrect, please try again.');
                     }
                     ;
@@ -602,7 +604,7 @@ var AuthProvider = function (_a) {
     //   [authService, router]
     // );
     var verifyChangePasswordToken = function (token) { return __awaiter(void 0, void 0, void 0, function () {
-        var payload, response, isValid, error_7;
+        var payload, response, isValid, error_8;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -621,8 +623,8 @@ var AuthProvider = function (_a) {
                     }
                     return [2 /*return*/, response];
                 case 3:
-                    error_7 = _a.sent();
-                    console.error(error_7);
+                    error_8 = _a.sent();
+                    console.error(error_8);
                     router.push('/landing-page');
                     return [3 /*break*/, 5];
                 case 4:
@@ -660,7 +662,7 @@ var AuthProvider = function (_a) {
     //   [authService, router]
     // );
     var passwordLoginWithCheck = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var response_4, checksChangePassword, resultChangePassword, error_8;
+        var response_4, checksChangePassword, resultChangePassword, error_9;
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -688,9 +690,9 @@ var AuthProvider = function (_a) {
                     }
                     return [3 /*break*/, 6];
                 case 4:
-                    error_8 = _b.sent();
-                    if (error_8 instanceof Error)
-                        antd_1.message.error(error_8.message);
+                    error_9 = _b.sent();
+                    if (error_9 instanceof Error)
+                        antd_1.message.error(error_9.message);
                     return [3 /*break*/, 6];
                 case 5:
                     setIsLoading(false);
@@ -761,7 +763,7 @@ var AuthProvider = function (_a) {
     //   [authService, router]
     // );
     var login = function (username, password, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var response_6, data, token_1, error_9, config;
+        var response_6, data, token_1, error_10, config;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -785,10 +787,10 @@ var AuthProvider = function (_a) {
                     window.location.href = '/';
                     return [3 /*break*/, 5];
                 case 3:
-                    error_9 = _a.sent();
+                    error_10 = _a.sent();
                     config = {
                         type: 'error',
-                        content: error_9.response.data.message,
+                        content: error_10.response.data.message,
                         duration: 5,
                         style: {
                             marginLeft: '70%',
