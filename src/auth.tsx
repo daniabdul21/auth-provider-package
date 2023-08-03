@@ -456,19 +456,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   //   [authService, router]
   // );
 
-  const requestChangePassword = async ({ ...payload }: ChangePasswordType): Promise<void> => {
-    setIsLoading(true);
-    try {
-      const response = await authService.requestChangePassword(payload);
-      message.success(response.data.message)
+  const requestChangePassword = useCallback(
+    async ({ ...payload }: ChangePasswordType): Promise<any> => {
+      setIsLoading(true);
+      try {
+        const response = await authService.requestChangePassword(payload);
+        message.success(response.data.message)
+        router.replace(`/landing-page`)
+        return response;
+      } catch (error) {
+        if (error instanceof Error) message.error(error.message);
+        return Promise.reject(error)
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [authService, router]
+  );
 
-      router.replace(`/landing-page`)
-    } catch (error) {
-      if (error instanceof Error) message.error(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   // const forgotPassword = useCallback(
   //   async ({ ...payload }: ForgotPasswordType): Promise<void> => {

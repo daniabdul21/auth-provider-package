@@ -457,7 +457,7 @@ var AuthProvider = function (_a) {
     //   },
     //   [authService, router]
     // );
-    var requestChangePassword = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
+    var requestChangePassword = (0, react_1.useCallback)(function (_a) { return __awaiter(void 0, void 0, void 0, function () {
         var response, error_5;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
@@ -472,19 +472,19 @@ var AuthProvider = function (_a) {
                     response = _b.sent();
                     antd_1.message.success(response.data.message);
                     router.replace("/landing-page");
-                    return [3 /*break*/, 5];
+                    return [2 /*return*/, response];
                 case 3:
                     error_5 = _b.sent();
                     if (error_5 instanceof Error)
                         antd_1.message.error(error_5.message);
-                    return [3 /*break*/, 5];
+                    return [2 /*return*/, Promise.reject(error_5)];
                 case 4:
                     setIsLoading(false);
                     return [7 /*endfinally*/];
                 case 5: return [2 /*return*/];
             }
         });
-    }); };
+    }); }, [authService, router]);
     // const forgotPassword = useCallback(
     //   async ({ ...payload }: ForgotPasswordType): Promise<void> => {
     //     setIsLoading(true);
