@@ -57,9 +57,11 @@ export enum ProductTypeEnum {
     ACCOUNT_SUMMARY = "Account Summary",
     MPN = "MPN",
     PACKAGE = "Menu:Package",
+    MASS_TRANSFER = "Mass Transfer",
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
-    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
+    USER_MANAGEMENT = "User",
   }
   
   // Product Id by Product Type
@@ -111,6 +113,7 @@ export enum ProductTypeEnum {
     UPLOAD_TRANSFER = "122",
     UPLOAD_TRANSFER_HISTORY = "123",
     USER = "7",
+    USER_MANAGEMENT = "7",
     // WITHDRAW_DEPOSIT = "Withdraw Deposit",
     WORKFLOW = "9",
     BI_FAST = "227",
@@ -124,7 +127,7 @@ export enum ProductTypeEnum {
     ACCOUNT_SUMMARY = "238",
     MASS_TRANSFER_CREATE = "250",
     MASS_TRANSFER_TRANSACTION_ACTION = "252",
-    MASS_TRANSFER_TRANSFER_HISTORY = "251"
+    MASS_TRANSFER_HISTORY = "251"
   }
   
   //sementara
@@ -185,6 +188,7 @@ export enum ProductTypeEnum {
     UPLOAD_TRANSFER = "Upload Transfer",
     UPLOAD_TRANSFER_HISTORY = "Upload Transfer History",
     USER = "User Management",
+    USER_MANAGEMENT = "User Management V2",
     WITHDRAW_DEPOSIT = "Withdraw Deposit",
     WORKFLOW = "Workflow Management",
     BI_FAST = "BI-Fast Transfer",
@@ -194,8 +198,9 @@ export enum ProductTypeEnum {
     RTGS = "RTGS",
     MPN = "MPN",
     PACKAGE = "Package Management",
+    MASS_TRANSFER = "Mass Transfer",
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
-    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
   }
   

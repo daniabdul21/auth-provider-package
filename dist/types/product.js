@@ -61,9 +61,11 @@ var ProductTypeEnum;
     ProductTypeEnum["ACCOUNT_SUMMARY"] = "Account Summary";
     ProductTypeEnum["MPN"] = "MPN";
     ProductTypeEnum["PACKAGE"] = "Menu:Package";
+    ProductTypeEnum["MASS_TRANSFER"] = "Mass Transfer";
     ProductTypeEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
-    ProductTypeEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "Mass Transfer Transfer History";
+    ProductTypeEnum["MASS_TRANSFER_HISTORY"] = "Mass Transfer History";
     ProductTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
+    ProductTypeEnum["USER_MANAGEMENT"] = "User";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -115,6 +117,7 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["UPLOAD_TRANSFER"] = "122";
     ProductIdByTypeEnum["UPLOAD_TRANSFER_HISTORY"] = "123";
     ProductIdByTypeEnum["USER"] = "7";
+    ProductIdByTypeEnum["USER_MANAGEMENT"] = "7";
     // WITHDRAW_DEPOSIT = "Withdraw Deposit",
     ProductIdByTypeEnum["WORKFLOW"] = "9";
     ProductIdByTypeEnum["BI_FAST"] = "227";
@@ -128,7 +131,7 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["ACCOUNT_SUMMARY"] = "238";
     ProductIdByTypeEnum["MASS_TRANSFER_CREATE"] = "250";
     ProductIdByTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "252";
-    ProductIdByTypeEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "251";
+    ProductIdByTypeEnum["MASS_TRANSFER_HISTORY"] = "251";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -189,6 +192,7 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["UPLOAD_TRANSFER"] = "Upload Transfer";
     ProductTypeNameEnum["UPLOAD_TRANSFER_HISTORY"] = "Upload Transfer History";
     ProductTypeNameEnum["USER"] = "User Management";
+    ProductTypeNameEnum["USER_MANAGEMENT"] = "User Management V2";
     ProductTypeNameEnum["WITHDRAW_DEPOSIT"] = "Withdraw Deposit";
     ProductTypeNameEnum["WORKFLOW"] = "Workflow Management";
     ProductTypeNameEnum["BI_FAST"] = "BI-Fast Transfer";
@@ -198,8 +202,9 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["RTGS"] = "RTGS";
     ProductTypeNameEnum["MPN"] = "MPN";
     ProductTypeNameEnum["PACKAGE"] = "Package Management";
+    ProductTypeNameEnum["MASS_TRANSFER"] = "Mass Transfer";
     ProductTypeNameEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
-    ProductTypeNameEnum["MASS_TRANSFER_TRANSFER_HISTORY"] = "Mass Transfer Transfer History";
+    ProductTypeNameEnum["MASS_TRANSFER_HISTORY"] = "Mass Transfer History";
     ProductTypeNameEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

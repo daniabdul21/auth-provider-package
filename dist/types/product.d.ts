@@ -57,9 +57,11 @@ export declare enum ProductTypeEnum {
     ACCOUNT_SUMMARY = "Account Summary",
     MPN = "MPN",
     PACKAGE = "Menu:Package",
+    MASS_TRANSFER = "Mass Transfer",
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
-    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
-    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action"
+    MASS_TRANSFER_HISTORY = "Mass Transfer History",
+    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
+    USER_MANAGEMENT = "User"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -108,6 +110,7 @@ export declare enum ProductIdByTypeEnum {
     UPLOAD_TRANSFER = "122",
     UPLOAD_TRANSFER_HISTORY = "123",
     USER = "7",
+    USER_MANAGEMENT = "7",
     WORKFLOW = "9",
     BI_FAST = "227",
     BULK_TRANSFER = "229",
@@ -120,7 +123,7 @@ export declare enum ProductIdByTypeEnum {
     ACCOUNT_SUMMARY = "238",
     MASS_TRANSFER_CREATE = "250",
     MASS_TRANSFER_TRANSACTION_ACTION = "252",
-    MASS_TRANSFER_TRANSFER_HISTORY = "251"
+    MASS_TRANSFER_HISTORY = "251"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -178,6 +181,7 @@ export declare enum ProductTypeNameEnum {
     UPLOAD_TRANSFER = "Upload Transfer",
     UPLOAD_TRANSFER_HISTORY = "Upload Transfer History",
     USER = "User Management",
+    USER_MANAGEMENT = "User Management V2",
     WITHDRAW_DEPOSIT = "Withdraw Deposit",
     WORKFLOW = "Workflow Management",
     BI_FAST = "BI-Fast Transfer",
@@ -187,7 +191,8 @@ export declare enum ProductTypeNameEnum {
     RTGS = "RTGS",
     MPN = "MPN",
     PACKAGE = "Package Management",
+    MASS_TRANSFER = "Mass Transfer",
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
-    MASS_TRANSFER_TRANSFER_HISTORY = "Mass Transfer Transfer History",
+    MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action"
 }
