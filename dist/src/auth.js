@@ -199,7 +199,7 @@ var AuthProvider = function (_a) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
                         setToken(function () { return null; });
-                        router.push("/login?logout=true");
+                        router.push("/landing-page?logout=true");
                         return [2 /*return*/];
                     }
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
@@ -238,7 +238,7 @@ var AuthProvider = function (_a) {
                     setIsAuthoritiesReady(true);
                     return [2 /*return*/];
                 case 3:
-                    router.push("/login");
+                    router.push("/landing-page");
                     return [2 /*return*/];
             }
         });
@@ -381,7 +381,7 @@ var AuthProvider = function (_a) {
                     // setToken(() => null);
                     setMenus(function () { return []; });
                     setMenuData(function () { return []; });
-                    router.push("/login?logout=true");
+                    router.push("/landing-page?logout=true");
                     return [7 /*endfinally*/];
                 case 7: return [2 /*return*/];
             }

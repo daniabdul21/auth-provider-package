@@ -190,7 +190,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         setToken(() => null);
 
-        router.push("/login?logout=true");
+        router.push("/landing-page?logout=true");
 
         return;
       }
@@ -245,7 +245,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       return;
     }
 
-    router.push("/login");
+    router.push("/landing-page");
   }, [token, authService]);
 
   const canIApprove = (workflow: TransactionWorkflow.Root) => {
@@ -392,7 +392,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setMenus(() => []);
       setMenuData(() => []);
 
-      router.push("/login?logout=true");
+      router.push("/landing-page?logout=true");
     }
   }, [authService, router]);
 
