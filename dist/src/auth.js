@@ -199,7 +199,7 @@ var AuthProvider = function (_a) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
                         setToken(function () { return null; });
-                        router.push("/landing-page?logout=true");
+                        router.push("/login?logout=true");
                         return [2 /*return*/];
                     }
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
@@ -238,7 +238,7 @@ var AuthProvider = function (_a) {
                     setIsAuthoritiesReady(true);
                     return [2 /*return*/];
                 case 3:
-                    router.push("/landing-page");
+                    router.push("/login");
                     return [2 /*return*/];
             }
         });
@@ -381,7 +381,7 @@ var AuthProvider = function (_a) {
                     // setToken(() => null);
                     setMenus(function () { return []; });
                     setMenuData(function () { return []; });
-                    router.push("/landing-page?logout=true");
+                    router.push("/login?logout=true");
                     return [7 /*endfinally*/];
                 case 7: return [2 /*return*/];
             }
@@ -603,7 +603,7 @@ var AuthProvider = function (_a) {
     //   },
     //   [authService, router]
     // );
-    var verifyChangePasswordToken = function (token) { return __awaiter(void 0, void 0, void 0, function () {
+    var verifyChangePasswordToken = (0, react_1.useCallback)(function (token) { return __awaiter(void 0, void 0, void 0, function () {
         var payload, response, isValid, error_8;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -624,7 +624,7 @@ var AuthProvider = function (_a) {
                     return [2 /*return*/, response];
                 case 3:
                     error_8 = _a.sent();
-                    console.error(error_8);
+                    antd_1.message.error(error_8.response.data.message);
                     router.push('/landing-page');
                     return [3 /*break*/, 5];
                 case 4:
@@ -633,7 +633,7 @@ var AuthProvider = function (_a) {
                 case 5: return [2 /*return*/];
             }
         });
-    }); };
+    }); }, [authService, router]);
     // const passwordLoginWithCheck = useCallback(
     //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
     //     setIsLoading(true);

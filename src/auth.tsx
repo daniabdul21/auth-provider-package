@@ -190,7 +190,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         setToken(() => null);
 
-        router.push("/landing-page?logout=true");
+        router.push("/login?logout=true");
 
         return;
       }
@@ -245,7 +245,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       return;
     }
 
-    router.push("/landing-page");
+    router.push("/login");
   }, [token, authService]);
 
   const canIApprove = (workflow: TransactionWorkflow.Root) => {
@@ -392,7 +392,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setMenus(() => []);
       setMenuData(() => []);
 
-      router.push("/landing-page?logout=true");
+      router.push("/login?logout=true");
     }
   }, [authService, router]);
 
@@ -566,25 +566,27 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   //   [authService, router]
   // );
 
-  const verifyChangePasswordToken = async (token: string): Promise<any> => {
-    setIsLoading(true);
-    try {
-      const payload = { changePasswordToken: token };
-      const response = await authService.verifyChangePasswordToken(payload);
-      const { isValid } = response.data;
-      if (!isValid) {
+  const verifyChangePasswordToken = useCallback(
+    async (token: string): Promise<any> => {
+      setIsLoading(true);
+      try {
+        const payload = { changePasswordToken: token };
+        const response = await authService.verifyChangePasswordToken(payload);
+        const { isValid } = response.data;
+        if (!isValid) {
+          router.push('/landing-page');
+          return
+        }
+        return response;
+      } catch (error: any) {
+        message.error(error.response.data.message);
         router.push('/landing-page');
-        return
+      } finally {
+        setIsLoading(false);
       }
-      return response;
-    } catch (error: any) {
-      console.error(error)
-      router.push('/landing-page');
-
-    } finally {
-      setIsLoading(false);
-    }
-  }
+    },
+    [authService, router]
+  )
 
   // const passwordLoginWithCheck = useCallback(
   //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
