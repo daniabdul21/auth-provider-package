@@ -16,10 +16,10 @@ import {
   VerifyUserQuestion,
   ProductTypeEnum,
   TransactionWorkflow,
-  multipaymentProducts
+  MultipaymentAuthorityEnum
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
-import { map, snakeCase, mergeWith, toUpper } from "lodash";
+import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find } from "lodash";
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
@@ -180,9 +180,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
       if (menu.data.code !== 200 || !menu) setAlertMenuError(true);
 
-      setMenus(menu.data?.data?.filter((item: any) => item.productName !== "").map((item: any) => item.productName));
+      const newMenuData = get(menu, 'data.data', [])
+      const newMenus = newMenuData.filter((item: any) => item.productName !== "").map((item: any) => item.productName)
+      setMenus(newMenus);
 
-      setMenuData(menu.data?.data);
+      setMenuData(newMenuData);
 
       if (response.status !== 200) {
         localStorage.removeItem("access-token");
@@ -216,7 +218,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       // Generate product authority
       const privilegesRecords = { ...productAuthorities } as any;
 
-      Object.entries(ProductTypeEnum).forEach(([productKey, productValue]) => {
+      // use dynamic product roles! do not use hardcode!
+      const productTypeEnumValuesFromProductRoles = Array.from(a.keys())
+      const productTypeEnumValuesFromHardcode = Array.from(Object.values(ProductTypeEnum))
+      const remainingProductTypeEnum = difference(productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode)
+
+      const productTypeEnumKeyFromHardcode = Object.entries(ProductTypeEnum) // from hardcode
+      const productTypeEnumKeyFromProductRoles = map(remainingProductTypeEnum, (item) => [toUpper(snakeCase(item)), item]) // from product roles that not define by hardcode
+      const allProductTypeEnum = concat(productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles)
+
+      allProductTypeEnum.forEach(([productKey, productValue]) => {
         let productRole = a.get(productValue) || [];
         productRole = productRole.map((e) => e.split(":")[0]);
 
@@ -231,7 +242,31 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         privilegesRecords[productKey] = productAuthority as ProductAuthorityType;
       });
 
+      // Object.entries(ProductTypeEnum).forEach(([productKey, productValue]) => {
+      //   let productRole = a.get(productValue) || [];
+      //   productRole = productRole.map((e) => e.split(":")[0]);
+
+      //   const productAuthority: any = {};
+      //   Object.entries(AuthorityLevelEnum).forEach(([key, value]) => {
+      //     productAuthority[key] = productRole.includes(value);
+      //   });
+
+      //   productAuthority["anyAuthority"] = productRole.length > 0;
+      //   productAuthority["allAuthority"] = productRole.length >= Object.entries(AuthorityLevelEnum).length;
+
+      //   privilegesRecords[productKey] = productAuthority as ProductAuthorityType;
+      // });
+
       // Combine Authority All Product Multipayment
+      const menuDataMultipaymentCreate = find(
+        newMenuData,
+        (item:any) => item.productName === MultipaymentAuthorityEnum['create']
+      )
+      const menuDataMultipayment = filter(
+        newMenuData,
+        (item:any) => item.parentID === menuDataMultipaymentCreate.menuID
+      )
+      const multipaymentProducts = map(menuDataMultipayment, 'name')
       map(multipaymentProducts, item => {
         privilegesRecords['MULTIPAYMENT'] = mergeWith(
           privilegesRecords['MULTIPAYMENT'],

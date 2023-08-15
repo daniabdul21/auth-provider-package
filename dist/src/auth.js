@@ -178,23 +178,25 @@ var AuthProvider = function (_a) {
     var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response_1, menu, a_1, productRoles, privilegesRecords_1;
-        var _a, _b, _c, _d;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var response_1, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     if (!token) return [3 /*break*/, 3];
                     setIsAuthoritiesReady(false);
                     return [4 /*yield*/, authService.validateToken()];
                 case 1:
-                    response_1 = _e.sent();
+                    response_1 = _b.sent();
                     return [4 /*yield*/, authService.validateMenu(token)];
                 case 2:
-                    menu = _e.sent();
+                    menu = _b.sent();
                     if (menu.data.code !== 200 || !menu)
                         setAlertMenuError(true);
-                    setMenus((_b = (_a = menu.data) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.filter(function (item) { return item.productName !== ""; }).map(function (item) { return item.productName; }));
-                    setMenuData((_c = menu.data) === null || _c === void 0 ? void 0 : _c.data);
+                    newMenuData = (0, lodash_1.get)(menu, 'data.data', []);
+                    newMenus = newMenuData.filter(function (item) { return item.productName !== ""; }).map(function (item) { return item.productName; });
+                    setMenus(newMenus);
+                    setMenuData(newMenuData);
                     if (response_1.status !== 200) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
@@ -211,13 +213,21 @@ var AuthProvider = function (_a) {
                     setUsername(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.username) || "Guest"; });
                     setUserType(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.userType) || null; });
                     a_1 = new Map();
-                    productRoles = ((_d = response_1.data) === null || _d === void 0 ? void 0 : _d.productRoles) || [];
+                    productRoles = ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.productRoles) || [];
                     productRoles.forEach(function (r) {
                         a_1.set(r.productName, r.authorities);
                     });
                     setAuthorities(function () { return a_1; });
                     privilegesRecords_1 = __assign({}, productAuthorities);
-                    Object.entries(types_1.ProductTypeEnum).forEach(function (_a) {
+                    productTypeEnumValuesFromProductRoles = Array.from(a_1.keys());
+                    productTypeEnumValuesFromHardcode = Array.from(Object.values(types_1.ProductTypeEnum));
+                    remainingProductTypeEnum = (0, lodash_1.difference)(productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode);
+                    productTypeEnumKeyFromHardcode = Object.entries(types_1.ProductTypeEnum) // from hardcode
+                    ;
+                    productTypeEnumKeyFromProductRoles = (0, lodash_1.map)(remainingProductTypeEnum, function (item) { return [(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item)), item]; }) // from product roles that not define by hardcode
+                    ;
+                    allProductTypeEnum = (0, lodash_1.concat)(productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles);
+                    allProductTypeEnum.forEach(function (_a) {
                         var productKey = _a[0], productValue = _a[1];
                         var productRole = a_1.get(productValue) || [];
                         productRole = productRole.map(function (e) { return e.split(":")[0]; });
@@ -230,8 +240,10 @@ var AuthProvider = function (_a) {
                         productAuthority["allAuthority"] = productRole.length >= Object.entries(types_1.AuthorityLevelEnum).length;
                         privilegesRecords_1[productKey] = productAuthority;
                     });
-                    // Combine Authority All Product Multipayment
-                    (0, lodash_1.map)(types_1.multipaymentProducts, function (item) {
+                    menuDataMultipaymentCreate_1 = (0, lodash_1.find)(newMenuData, function (item) { return item.productName === types_1.MultipaymentAuthorityEnum['create']; });
+                    menuDataMultipayment = (0, lodash_1.filter)(newMenuData, function (item) { return item.parentID === menuDataMultipaymentCreate_1.menuID; });
+                    multipaymentProducts = (0, lodash_1.map)(menuDataMultipayment, 'name');
+                    (0, lodash_1.map)(multipaymentProducts, function (item) {
                         privilegesRecords_1['MULTIPAYMENT'] = (0, lodash_1.mergeWith)(privilegesRecords_1['MULTIPAYMENT'], privilegesRecords_1[(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item))]);
                     });
                     setProductAuthorities(privilegesRecords_1);

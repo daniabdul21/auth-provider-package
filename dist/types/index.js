@@ -21,4 +21,5 @@ __exportStar(require("./workflow"), exports);
 __exportStar(require("./user"), exports);
 __exportStar(require("./global-store"), exports);
 __exportStar(require("./multi-payment/constants"), exports);
+__exportStar(require("./multi-payment/enum"), exports);
 //# sourceMappingURL=index.js.map
