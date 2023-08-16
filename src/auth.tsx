@@ -260,7 +260,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       // Combine Authority All Product Multipayment
       const menuDataMultipaymentCreate = find(
         newMenuData,
-        (item:any) => item.productName === MultipaymentAuthorityEnum['create']
+        (item:any) => item.productName === MultipaymentAuthorityEnum.create
       )
       const menuDataMultipayment = filter(
         newMenuData,
