@@ -240,7 +240,7 @@ var AuthProvider = function (_a) {
                         productAuthority["allAuthority"] = productRole.length >= Object.entries(types_1.AuthorityLevelEnum).length;
                         privilegesRecords_1[productKey] = productAuthority;
                     });
-                    menuDataMultipaymentCreate_1 = (0, lodash_1.find)(newMenuData, function (item) { return item.productName === types_1.MultipaymentAuthorityEnum['create']; });
+                    menuDataMultipaymentCreate_1 = (0, lodash_1.find)(newMenuData, function (item) { return item.productName === types_1.MultipaymentAuthorityEnum.create; });
                     menuDataMultipayment = (0, lodash_1.filter)(newMenuData, function (item) { return item.parentID === menuDataMultipaymentCreate_1.menuID; });
                     multipaymentProducts = (0, lodash_1.map)(menuDataMultipayment, 'name');
                     (0, lodash_1.map)(multipaymentProducts, function (item) {
