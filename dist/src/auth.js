@@ -201,7 +201,7 @@ var AuthProvider = function (_a) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
                         setToken(function () { return null; });
-                        router.push("/login?logout=true");
+                        router.push("/landing-page?logout=true");
                         return [2 /*return*/];
                     }
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
@@ -227,6 +227,7 @@ var AuthProvider = function (_a) {
                     productTypeEnumKeyFromProductRoles = (0, lodash_1.map)(remainingProductTypeEnum, function (item) { return [(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item)), item]; }) // from product roles that not define by hardcode
                     ;
                     allProductTypeEnum = (0, lodash_1.concat)(productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles);
+                    // FIXME: delete this logic beacuse expose all product, need to get from variable productRoles / a!
                     allProductTypeEnum.forEach(function (_a) {
                         var productKey = _a[0], productValue = _a[1];
                         var productRole = a_1.get(productValue) || [];
@@ -240,17 +241,20 @@ var AuthProvider = function (_a) {
                         productAuthority["allAuthority"] = productRole.length >= Object.entries(types_1.AuthorityLevelEnum).length;
                         privilegesRecords_1[productKey] = productAuthority;
                     });
-                    menuDataMultipaymentCreate_1 = (0, lodash_1.find)(newMenuData, function (item) { return item.productName === types_1.MultipaymentAuthorityEnum.create; });
-                    menuDataMultipayment = (0, lodash_1.filter)(newMenuData, function (item) { return item.parentID === menuDataMultipaymentCreate_1.menuID; });
-                    multipaymentProducts = (0, lodash_1.map)(menuDataMultipayment, 'name');
-                    (0, lodash_1.map)(multipaymentProducts, function (item) {
-                        privilegesRecords_1['MULTIPAYMENT'] = (0, lodash_1.mergeWith)(privilegesRecords_1['MULTIPAYMENT'], privilegesRecords_1[(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item))]);
-                    });
+                    // Combine Authority All Product Multipayment
+                    if (!(0, lodash_1.isEmpty)(newMenuData.find(function (item) { return item.productName === types_1.MultipaymentAuthorityEnum['create']; }))) {
+                        menuDataMultipaymentCreate_1 = (0, lodash_1.find)(newMenuData, function (item) { return item.productName === types_1.MultipaymentAuthorityEnum['create']; });
+                        menuDataMultipayment = (0, lodash_1.filter)(newMenuData, function (item) { return item.parentID === menuDataMultipaymentCreate_1.menuID; });
+                        multipaymentProducts = (0, lodash_1.map)(menuDataMultipayment, 'name');
+                        (0, lodash_1.map)(multipaymentProducts, function (item) {
+                            privilegesRecords_1['MULTIPAYMENT'] = (0, lodash_1.mergeWith)(privilegesRecords_1['MULTIPAYMENT'], privilegesRecords_1[(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item))]);
+                        });
+                    }
                     setProductAuthorities(privilegesRecords_1);
                     setIsAuthoritiesReady(true);
                     return [2 /*return*/];
                 case 3:
-                    router.push("/login");
+                    router.push("/landing-page");
                     return [2 /*return*/];
             }
         });

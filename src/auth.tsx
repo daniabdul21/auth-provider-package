@@ -19,7 +19,7 @@ import {
   MultipaymentAuthorityEnum
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
-import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find } from "lodash";
+import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find, isEmpty } from "lodash";
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
@@ -183,7 +183,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const newMenuData = get(menu, 'data.data', [])
       const newMenus = newMenuData.filter((item: any) => item.productName !== "").map((item: any) => item.productName)
       setMenus(newMenus);
-
       setMenuData(newMenuData);
 
       if (response.status !== 200) {
@@ -192,7 +191,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         setToken(() => null);
 
-        router.push("/login?logout=true");
+        router.push("/landing-page?logout=true");
 
         return;
       }
@@ -227,6 +226,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const productTypeEnumKeyFromProductRoles = map(remainingProductTypeEnum, (item) => [toUpper(snakeCase(item)), item]) // from product roles that not define by hardcode
       const allProductTypeEnum = concat(productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles)
 
+      // FIXME: delete this logic beacuse expose all product, need to get from variable productRoles / a!
       allProductTypeEnum.forEach(([productKey, productValue]) => {
         let productRole = a.get(productValue) || [];
         productRole = productRole.map((e) => e.split(":")[0]);
@@ -241,38 +241,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         privilegesRecords[productKey] = productAuthority as ProductAuthorityType;
       });
-
-      // Object.entries(ProductTypeEnum).forEach(([productKey, productValue]) => {
-      //   let productRole = a.get(productValue) || [];
-      //   productRole = productRole.map((e) => e.split(":")[0]);
-
-      //   const productAuthority: any = {};
-      //   Object.entries(AuthorityLevelEnum).forEach(([key, value]) => {
-      //     productAuthority[key] = productRole.includes(value);
-      //   });
-
-      //   productAuthority["anyAuthority"] = productRole.length > 0;
-      //   productAuthority["allAuthority"] = productRole.length >= Object.entries(AuthorityLevelEnum).length;
-
-      //   privilegesRecords[productKey] = productAuthority as ProductAuthorityType;
-      // });
-
       // Combine Authority All Product Multipayment
-      const menuDataMultipaymentCreate = find(
-        newMenuData,
-        (item:any) => item.productName === MultipaymentAuthorityEnum.create
-      )
-      const menuDataMultipayment = filter(
-        newMenuData,
-        (item:any) => item.parentID === menuDataMultipaymentCreate.menuID
-      )
-      const multipaymentProducts = map(menuDataMultipayment, 'name')
-      map(multipaymentProducts, item => {
-        privilegesRecords['MULTIPAYMENT'] = mergeWith(
-          privilegesRecords['MULTIPAYMENT'],
-          privilegesRecords[toUpper(snakeCase(item))]
+      if(!isEmpty(newMenuData.find((item:any)=> item.productName === MultipaymentAuthorityEnum['create']))){
+        const menuDataMultipaymentCreate = find(
+          newMenuData,
+          (item:any) => item.productName === MultipaymentAuthorityEnum['create']
         )
-      })
+        const menuDataMultipayment = filter(
+          newMenuData,
+          (item:any) => item.parentID === menuDataMultipaymentCreate.menuID
+        )
+        const multipaymentProducts = map(menuDataMultipayment, 'name')
+        map(multipaymentProducts, item => {
+          privilegesRecords['MULTIPAYMENT'] = mergeWith(
+            privilegesRecords['MULTIPAYMENT'],
+            privilegesRecords[toUpper(snakeCase(item))]
+          )
+        })
+      }
 
       setProductAuthorities(privilegesRecords);
       setIsAuthoritiesReady(true);
@@ -280,7 +266,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       return;
     }
 
-    router.push("/login");
+    router.push("/landing-page");
   }, [token, authService]);
 
   const canIApprove = (workflow: TransactionWorkflow.Root) => {
