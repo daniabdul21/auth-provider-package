@@ -61,7 +61,8 @@ export declare enum ProductTypeEnum {
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
     MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
-    USER_MANAGEMENT = "User"
+    USER_MANAGEMENT = "User",
+    BPDP_SAWIT = "BPDP Sawit"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -194,5 +195,6 @@ export declare enum ProductTypeNameEnum {
     MASS_TRANSFER = "Mass Transfer",
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
     MASS_TRANSFER_HISTORY = "Mass Transfer History",
-    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action"
+    MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
+    BPDP_SAWIT = "BPDP Sawit"
 }

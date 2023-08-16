@@ -62,6 +62,7 @@ export enum ProductTypeEnum {
     MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
     USER_MANAGEMENT = "User",
+    BPDP_SAWIT = "BPDP Sawit"
   }
   
   // Product Id by Product Type
@@ -202,5 +203,6 @@ export enum ProductTypeEnum {
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
     MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
+    BPDP_SAWIT = "BPDP Sawit"
   }
   

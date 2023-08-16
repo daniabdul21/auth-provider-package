@@ -66,6 +66,7 @@ var ProductTypeEnum;
     ProductTypeEnum["MASS_TRANSFER_HISTORY"] = "Mass Transfer History";
     ProductTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
     ProductTypeEnum["USER_MANAGEMENT"] = "User";
+    ProductTypeEnum["BPDP_SAWIT"] = "BPDP Sawit";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -206,5 +207,6 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["MASS_TRANSFER_CREATE"] = "Mass Transfer Create";
     ProductTypeNameEnum["MASS_TRANSFER_HISTORY"] = "Mass Transfer History";
     ProductTypeNameEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
+    ProductTypeNameEnum["BPDP_SAWIT"] = "BPDP Sawit";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
