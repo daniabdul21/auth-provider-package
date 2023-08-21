@@ -397,33 +397,12 @@ var AuthProvider = function (_a) {
                     // setToken(() => null);
                     setMenus(function () { return []; });
                     setMenuData(function () { return []; });
-                    router.push("/login?logout=true");
+                    router.push("/landing-page?logout=true");
                     return [7 /*endfinally*/];
                 case 7: return [2 /*return*/];
             }
         });
     }); }, [authService, router]);
-    // const checkToChangePassword = useCallback(
-    //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const checks = await authService.checkToChangePasswordLogin(username, password, branchCode);
-    //       const result = checks?.data;
-    //       if (result?.data?.IsRedirectToChangePassword) {
-    //         router.replace(`/landing-page/change-password?branch=${branchCode}`);
-    //       } else {
-    //         passwordLogin(username, password, tokenFCM);
-    //       }
-    //     } catch (error) {
-    //       if (error instanceof Error) message.error(error.message);
-    //     } finally {
-    //       setTimeout(() => {
-    //         setIsLoading(false);
-    //       }, 1000);
-    //     }
-    //   },
-    //   [authService]
-    // );
     var checkToChangePassword = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
         var checks, result, error_5;
         var _a;
@@ -459,22 +438,6 @@ var AuthProvider = function (_a) {
             }
         });
     }); };
-    // const requestChangePassword = useCallback(
-    //   async ({ ...payload }: ChangePasswordType): Promise<void> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const response = await authService.requestChangePassword(payload);
-    //       message.success(response.data.message)
-    //
-    //       router.replace(`/landing-page`)
-    //     } catch (error) {
-    //       if (error instanceof Error) message.error(error.message);
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //   },
-    //   [authService, router]
-    // );
     var requestChangePassword = (0, react_1.useCallback)(function (_a) { return __awaiter(void 0, void 0, void 0, function () {
         var response, error_6;
         var payload = __rest(_a, []);
@@ -503,24 +466,6 @@ var AuthProvider = function (_a) {
             }
         });
     }); }, [authService, router]);
-    // const forgotPassword = useCallback(
-    //   async ({ ...payload }: ForgotPasswordType): Promise<void> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const response = await authService.forgotPassword(payload);
-    //       message.success(response.data.message)
-    //
-    //       router.replace(`/landing-page`);
-    //     } catch (error) {
-    //       if (error instanceof Error) {
-    //         message.error('The information you have provided is incorrect, please try again.')
-    //       };
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //   },
-    //   [authService, router]
-    // );
     var forgotPassword = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
         var response, error_7;
         var payload = __rest(_a, []);
@@ -551,24 +496,6 @@ var AuthProvider = function (_a) {
             }
         });
     }); };
-    // const verifyUserQuestion = useCallback(
-    //   async ({ ...payload }: VerifyUserQuestion): Promise<any> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const response = await authService.verifyUserQuestion(payload);
-    //       return response;
-    //     } catch (error: any) {
-    //       if (error.response.data.code === 404) {
-    //         message.error('Data not found')
-    //         return
-    //       }
-    //       message.error(error.response.data.message)
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //   },
-    //   [authService, router]
-    // );
     var verifyUserQuestion = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
         var response, err_1;
         var payload = __rest(_a, []);
@@ -597,28 +524,6 @@ var AuthProvider = function (_a) {
             }
         });
     }); };
-    // const verifyChangePasswordToken = useCallback(
-    //   async (token: string): Promise<any> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const payload = { changePasswordToken: token };
-    //       const response = await authService.verifyChangePasswordToken(payload);
-    //       const { isValid } = response.data;
-    //       if (!isValid) {
-    //         router.push('/landing-page');
-    //         return
-    //       }
-    //       return response;
-    //     } catch (error: any) {
-    //       console.error(error)
-    //       router.push('/landing-page');
-    //
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //   },
-    //   [authService, router]
-    // );
     var verifyChangePasswordToken = (0, react_1.useCallback)(function (token) { return __awaiter(void 0, void 0, void 0, function () {
         var payload, response, isValid, error_8;
         return __generator(this, function (_a) {
@@ -650,33 +555,6 @@ var AuthProvider = function (_a) {
             }
         });
     }); }, [authService, router]);
-    // const passwordLoginWithCheck = useCallback(
-    //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const response = await authService.passwordLogin(username, password, tokenFCM);
-    //       const checksChangePassword = await authService.checkToChangePasswordLogin(username, password, branchCode);
-    //       const resultChangePassword = checksChangePassword?.data;
-    //
-    //       if (resultChangePassword?.data?.IsRedirectToChangePassword) {
-    //         router.replace(`/landing-page/change-password?branch=${branchCode}`);
-    //       } else {
-    //         setToken(() => response.data.data.accessToken);
-    //
-    //         localStorage.setItem("access-token", response.data.data.accessToken);
-    //         localStorage.setItem("refresh-token", response.data.data.refreshToken);
-    //         localStorage.setItem("locale", "id");
-    //
-    //         router.push("/");
-    //       }
-    //     } catch (error) {
-    //       if (error instanceof Error) message.error(error.message);
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //   },
-    //   [authService, router]
-    // );
     var passwordLoginWithCheck = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
         var response_4, checksChangePassword, resultChangePassword, error_9;
         var _a;
@@ -739,45 +617,6 @@ var AuthProvider = function (_a) {
             }
         });
     }); };
-    // const login = useCallback(
-    //   async (username: string, password: string, branchCode: string): Promise<void> => {
-    //     setIsLoading(true);
-    //     try {
-    //       const response = await authService.login(username, password, branchCode);
-    //       setToken(() => response.data.data.accessToken);
-    //
-    //       const data = response.data.data;
-    //       localStorage.setItem("access-token", response.data.data.accessToken);
-    //       localStorage.setItem("refresh-token", response.data.data.refreshToken);
-    //       localStorage.setItem("locale", "id");
-    //
-    //       if (data.isRedirectToChangePassword) {
-    //         const token = data.changePasswordToken;
-    //         router.push(`/landing-page/change-password?token=${token}`);
-    //         return
-    //       }
-    //
-    //       window.location.href = '/';
-    //     } catch (error: any) {
-    //
-    //       const config: ArgsProps = {
-    //         type: 'error',
-    //         content: error.response.data.message,
-    //         duration: 5,
-    //         style: {
-    //           marginLeft: '70%',
-    //           fontSize: 18,
-    //
-    //         }
-    //       };
-    //       message.open(config)
-    //       // message.error(error.response.data.message, 5)
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //   },
-    //   [authService, router]
-    // );
     var login = function (username, password, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
         var response_6, data, token_1, error_10, config;
         return __generator(this, function (_a) {

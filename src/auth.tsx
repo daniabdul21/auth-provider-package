@@ -413,32 +413,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setMenus(() => []);
       setMenuData(() => []);
 
-      router.push("/login?logout=true");
+      router.push("/landing-page?logout=true");
     }
   }, [authService, router]);
-
-
-  // const checkToChangePassword = useCallback(
-  //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const checks = await authService.checkToChangePasswordLogin(username, password, branchCode);
-  //       const result = checks?.data;
-  //       if (result?.data?.IsRedirectToChangePassword) {
-  //         router.replace(`/landing-page/change-password?branch=${branchCode}`);
-  //       } else {
-  //         passwordLogin(username, password, tokenFCM);
-  //       }
-  //     } catch (error) {
-  //       if (error instanceof Error) message.error(error.message);
-  //     } finally {
-  //       setTimeout(() => {
-  //         setIsLoading(false);
-  //       }, 1000);
-  //     }
-  //   },
-  //   [authService]
-  // );
 
   const checkToChangePassword = async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
     setIsLoading(true);
@@ -459,23 +436,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     }
   }
 
-  // const requestChangePassword = useCallback(
-  //   async ({ ...payload }: ChangePasswordType): Promise<void> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await authService.requestChangePassword(payload);
-  //       message.success(response.data.message)
-  //
-  //       router.replace(`/landing-page`)
-  //     } catch (error) {
-  //       if (error instanceof Error) message.error(error.message);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   },
-  //   [authService, router]
-  // );
-
   const requestChangePassword = useCallback(
     async ({ ...payload }: ChangePasswordType): Promise<any> => {
       setIsLoading(true);
@@ -494,26 +454,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     [authService, router]
   );
 
-
-  // const forgotPassword = useCallback(
-  //   async ({ ...payload }: ForgotPasswordType): Promise<void> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await authService.forgotPassword(payload);
-  //       message.success(response.data.message)
-  //
-  //       router.replace(`/landing-page`);
-  //     } catch (error) {
-  //       if (error instanceof Error) {
-  //         message.error('The information you have provided is incorrect, please try again.')
-  //       };
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   },
-  //   [authService, router]
-  // );
-
   const forgotPassword = async ({ ...payload }: ForgotPasswordType): Promise<any> => {
     setIsLoading(true);
     try {
@@ -530,25 +470,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     }
   }
 
-  // const verifyUserQuestion = useCallback(
-  //   async ({ ...payload }: VerifyUserQuestion): Promise<any> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await authService.verifyUserQuestion(payload);
-  //       return response;
-  //     } catch (error: any) {
-  //       if (error.response.data.code === 404) {
-  //         message.error('Data not found')
-  //         return
-  //       }
-  //       message.error(error.response.data.message)
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   },
-  //   [authService, router]
-  // );
-
   const verifyUserQuestion = async ({ ...payload }: VerifyUserQuestion): Promise<any> => {
     setIsLoading(true);
     try {
@@ -563,29 +484,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setIsLoading(false);
     }
   }
-
-  // const verifyChangePasswordToken = useCallback(
-  //   async (token: string): Promise<any> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const payload = { changePasswordToken: token };
-  //       const response = await authService.verifyChangePasswordToken(payload);
-  //       const { isValid } = response.data;
-  //       if (!isValid) {
-  //         router.push('/landing-page');
-  //         return
-  //       }
-  //       return response;
-  //     } catch (error: any) {
-  //       console.error(error)
-  //       router.push('/landing-page');
-  //
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   },
-  //   [authService, router]
-  // );
 
   const verifyChangePasswordToken = useCallback(
     async (token: string): Promise<any> => {
@@ -608,34 +506,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     },
     [authService, router]
   )
-
-  // const passwordLoginWithCheck = useCallback(
-  //   async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<void> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await authService.passwordLogin(username, password, tokenFCM);
-  //       const checksChangePassword = await authService.checkToChangePasswordLogin(username, password, branchCode);
-  //       const resultChangePassword = checksChangePassword?.data;
-  //
-  //       if (resultChangePassword?.data?.IsRedirectToChangePassword) {
-  //         router.replace(`/landing-page/change-password?branch=${branchCode}`);
-  //       } else {
-  //         setToken(() => response.data.data.accessToken);
-  //
-  //         localStorage.setItem("access-token", response.data.data.accessToken);
-  //         localStorage.setItem("refresh-token", response.data.data.refreshToken);
-  //         localStorage.setItem("locale", "id");
-  //
-  //         router.push("/");
-  //       }
-  //     } catch (error) {
-  //       if (error instanceof Error) message.error(error.message);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   },
-  //   [authService, router]
-  // );
 
   const passwordLoginWithCheck = async (username: string, password: string, tokenFCM: string, branchCode: string): Promise<any> => {
     setIsLoading(true);
@@ -677,46 +547,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       return Promise.reject(err);
     }
   }
-
-  // const login = useCallback(
-  //   async (username: string, password: string, branchCode: string): Promise<void> => {
-  //     setIsLoading(true);
-  //     try {
-  //       const response = await authService.login(username, password, branchCode);
-  //       setToken(() => response.data.data.accessToken);
-  //
-  //       const data = response.data.data;
-  //       localStorage.setItem("access-token", response.data.data.accessToken);
-  //       localStorage.setItem("refresh-token", response.data.data.refreshToken);
-  //       localStorage.setItem("locale", "id");
-  //
-  //       if (data.isRedirectToChangePassword) {
-  //         const token = data.changePasswordToken;
-  //         router.push(`/landing-page/change-password?token=${token}`);
-  //         return
-  //       }
-  //
-  //       window.location.href = '/';
-  //     } catch (error: any) {
-  //
-  //       const config: ArgsProps = {
-  //         type: 'error',
-  //         content: error.response.data.message,
-  //         duration: 5,
-  //         style: {
-  //           marginLeft: '70%',
-  //           fontSize: 18,
-  //
-  //         }
-  //       };
-  //       message.open(config)
-  //       // message.error(error.response.data.message, 5)
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   },
-  //   [authService, router]
-  // );
 
   const login = async (username: string, password: string, branchCode: string): Promise<void> => {
     setIsLoading(true);
