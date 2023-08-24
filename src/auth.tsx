@@ -278,9 +278,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     const product = header?.productName as unknown as ProductTypeEnum;
     if (!product) return false;
 
-    const productKey = Object.keys(ProductTypeEnum).find(
-      (e) => ProductTypeEnum[e as productTypeKey] === product
-    ) as unknown as productTypeKey;
+    // const productKey = Object.keys(ProductTypeEnum).find(
+    //   (e) => ProductTypeEnum[e as productTypeKey] === product
+    // ) as unknown as productTypeKey;
+
+    const productKey = toUpper(snakeCase(product)) as unknown as productTypeKey
+
     if (!productKey) return false;
 
     const authority = productAuthorities[productKey];

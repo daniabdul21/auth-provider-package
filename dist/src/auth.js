@@ -267,7 +267,10 @@ var AuthProvider = function (_a) {
         var product = header === null || header === void 0 ? void 0 : header.productName;
         if (!product)
             return false;
-        var productKey = Object.keys(types_1.ProductTypeEnum).find(function (e) { return types_1.ProductTypeEnum[e] === product; });
+        // const productKey = Object.keys(ProductTypeEnum).find(
+        //   (e) => ProductTypeEnum[e as productTypeKey] === product
+        // ) as unknown as productTypeKey;
+        var productKey = (0, lodash_1.toUpper)((0, lodash_1.snakeCase)(product));
         if (!productKey)
             return false;
         var authority = productAuthorities[productKey];
