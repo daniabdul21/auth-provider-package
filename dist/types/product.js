@@ -67,6 +67,9 @@ var ProductTypeEnum;
     ProductTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
     ProductTypeEnum["USER_MANAGEMENT"] = "User";
     ProductTypeEnum["BPDP_SAWIT"] = "BPDP Sawit";
+    ProductTypeEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
+    ProductTypeEnum["INCOMING_DOCUMENT"] = "Incoming Document";
+    ProductTypeEnum["BPJS_KETENAGAKERJAAN"] = "BPJS Ketenagakerjaan";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -133,6 +136,9 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["MASS_TRANSFER_CREATE"] = "250";
     ProductIdByTypeEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "252";
     ProductIdByTypeEnum["MASS_TRANSFER_HISTORY"] = "251";
+    ProductIdByTypeEnum["INQUIRY_BILLING_DJBC"] = "255";
+    ProductIdByTypeEnum["INCOMING_DOCUMENT"] = "256";
+    ProductIdByTypeEnum["BPJS_KETENAGAKERJAAN"] = "254";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -208,5 +214,8 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["MASS_TRANSFER_HISTORY"] = "Mass Transfer History";
     ProductTypeNameEnum["MASS_TRANSFER_TRANSACTION_ACTION"] = "Mass Transfer Transaction Action";
     ProductTypeNameEnum["BPDP_SAWIT"] = "BPDP Sawit";
+    ProductTypeNameEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
+    ProductTypeNameEnum["INCOMING_DOCUMENT"] = "Incoming Document";
+    ProductTypeNameEnum["BPJS_KETENAGAKERJAAN"] = "BPJS Ketenagakerjaan";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

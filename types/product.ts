@@ -62,7 +62,10 @@ export enum ProductTypeEnum {
     MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
     USER_MANAGEMENT = "User",
-    BPDP_SAWIT = "BPDP Sawit"
+    BPDP_SAWIT = "BPDP Sawit",
+    INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
+    INCOMING_DOCUMENT = "Incoming Document",
+    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan"
   }
   
   // Product Id by Product Type
@@ -128,7 +131,10 @@ export enum ProductTypeEnum {
     ACCOUNT_SUMMARY = "238",
     MASS_TRANSFER_CREATE = "250",
     MASS_TRANSFER_TRANSACTION_ACTION = "252",
-    MASS_TRANSFER_HISTORY = "251"
+    MASS_TRANSFER_HISTORY = "251",
+    INQUIRY_BILLING_DJBC = "255",
+    INCOMING_DOCUMENT = "256",
+    BPJS_KETENAGAKERJAAN = "254"
   }
   
   //sementara
@@ -203,6 +209,9 @@ export enum ProductTypeEnum {
     MASS_TRANSFER_CREATE = "Mass Transfer Create",
     MASS_TRANSFER_HISTORY = "Mass Transfer History",
     MASS_TRANSFER_TRANSACTION_ACTION = "Mass Transfer Transaction Action",
-    BPDP_SAWIT = "BPDP Sawit"
+    BPDP_SAWIT = "BPDP Sawit",
+    INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
+    INCOMING_DOCUMENT = "Incoming Document",
+    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan"
   }
   
