@@ -185,7 +185,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setMenus(newMenus);
       setMenuData(newMenuData);
 
-      if (response.status !== 200) {
+      if (response.status !== 200 || response?.request?.data?.code !== 200 ||  response?.data?.code !== 200 || response?.data?.status !== 200) {
         localStorage.removeItem("access-token");
         localStorage.removeItem("refresh-token");
 
