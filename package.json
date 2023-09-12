@@ -1,6 +1,6 @@
 {
   "name": "@ordentco/addons-auth-provider",
-  "version": "0.9.22",
+  "version": "0.9.23",
   "description": "-",
   "main": "dist/src/index.js",
   "types": "",
