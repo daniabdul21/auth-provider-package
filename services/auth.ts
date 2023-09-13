@@ -16,8 +16,14 @@ const AuthService = () => {
     return hash.toString();
   };
 
-  const validateToken = async () => {
-    return await customAxios.get(`/auth/me`);
+  const validateToken = () => {
+    return customAxios.get(`/auth/me`)
+    .then((response) =>{
+      return response
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    })
   };
 
   const validateMenu = (token: string) => {

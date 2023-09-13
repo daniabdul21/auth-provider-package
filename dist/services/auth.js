@@ -75,14 +75,15 @@ var AuthService = function () {
         var hash = crypto.HmacSHA256(data, secret);
         return hash.toString();
     };
-    var validateToken = function () { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, custom_axios_1.default.get("/auth/me")];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
+    var validateToken = function () {
+        return custom_axios_1.default.get("/auth/me")
+            .then(function (response) {
+            return response;
+        })
+            .catch(function (error) {
+            return Promise.reject(error);
         });
-    }); };
+    };
     var validateMenu = function (token) {
         return custom_axios_1.default
             .post("/menu/me", { token: token })

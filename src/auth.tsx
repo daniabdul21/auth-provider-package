@@ -175,7 +175,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const guard = useCallback(async () => {
     if (token) {
       setIsAuthoritiesReady(false);
-      const response = await authService.validateToken();
+      let response:any;
+      try {
+        response = await authService.validateToken();
+      }
+      catch (error:any){
+        const agent = typeof window !== "undefined" && localStorage.getItem("agent");
+        if(agent === "qlola" && ![200].includes(error?.response?.data?.code || error?.response?.status)){
+          localStorage.removeItem("access-token");
+          localStorage.removeItem("refresh-token");
+
+          setToken(() => null);
+          return window.close();
+        }
+        console.log({ error });
+        response = error
+      }
       const menu = await authService.validateMenu(token);
 
       if (menu.data.code !== 200 || !menu) setAlertMenuError(true);
@@ -184,8 +199,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const newMenus = newMenuData.filter((item: any) => item.productName !== "").map((item: any) => item.productName)
       setMenus(newMenus);
       setMenuData(newMenuData);
-
-      const agent = typeof window !== "undefined" && localStorage.getItem("agent");
 
       if (response.status !== 200) {
         localStorage.removeItem("access-token");
@@ -197,15 +210,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         return;
       }
-
-      if(agent === "qlola" && ![200].includes(response.status || response.request.status)){
-        localStorage.removeItem("access-token");
-        localStorage.removeItem("refresh-token");
-
-        setToken(() => null);
-        return window.close();
-      }
-      console.log({ response });
 
       setRoleID(() => response.data.roleIDs[0]);
       setRoleIDs(() => response.data.roleIDs);

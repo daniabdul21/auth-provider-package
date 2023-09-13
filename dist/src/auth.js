@@ -178,26 +178,41 @@ var AuthProvider = function (_a) {
     var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response_1, menu, newMenuData, newMenus, agent, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
-        var _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var response_1, error_1, agent, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
+        var _a, _b, _c, _d;
+        return __generator(this, function (_e) {
+            switch (_e.label) {
                 case 0:
-                    if (!token) return [3 /*break*/, 3];
+                    if (!token) return [3 /*break*/, 6];
                     setIsAuthoritiesReady(false);
-                    return [4 /*yield*/, authService.validateToken()];
+                    _e.label = 1;
                 case 1:
-                    response_1 = _b.sent();
-                    return [4 /*yield*/, authService.validateMenu(token)];
+                    _e.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, authService.validateToken()];
                 case 2:
-                    menu = _b.sent();
+                    response_1 = _e.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _e.sent();
+                    agent = typeof window !== "undefined" && localStorage.getItem("agent");
+                    if (agent === "qlola" && ![200].includes(((_b = (_a = error_1 === null || error_1 === void 0 ? void 0 : error_1.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.code) || ((_c = error_1 === null || error_1 === void 0 ? void 0 : error_1.response) === null || _c === void 0 ? void 0 : _c.status))) {
+                        localStorage.removeItem("access-token");
+                        localStorage.removeItem("refresh-token");
+                        setToken(function () { return null; });
+                        return [2 /*return*/, window.close()];
+                    }
+                    console.log({ error: error_1 });
+                    response_1 = error_1;
+                    return [3 /*break*/, 4];
+                case 4: return [4 /*yield*/, authService.validateMenu(token)];
+                case 5:
+                    menu = _e.sent();
                     if (menu.data.code !== 200 || !menu)
                         setAlertMenuError(true);
                     newMenuData = (0, lodash_1.get)(menu, 'data.data', []);
                     newMenus = newMenuData.filter(function (item) { return item.productName !== ""; }).map(function (item) { return item.productName; });
                     setMenus(newMenus);
                     setMenuData(newMenuData);
-                    agent = typeof window !== "undefined" && localStorage.getItem("agent");
                     if (response_1.status !== 200) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
@@ -205,13 +220,6 @@ var AuthProvider = function (_a) {
                         router.push("/landing-page?logout=true");
                         return [2 /*return*/];
                     }
-                    if (agent === "qlola" && ![200].includes(response_1.status || response_1.request.status)) {
-                        localStorage.removeItem("access-token");
-                        localStorage.removeItem("refresh-token");
-                        setToken(function () { return null; });
-                        return [2 /*return*/, window.close()];
-                    }
-                    console.log({ response: response_1 });
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
                     setRoleIDs(function () { return response_1.data.roleIDs; });
                     setCompanyID(function () { var _a; return (_a = response_1.data) === null || _a === void 0 ? void 0 : _a.companyID; });
@@ -221,7 +229,7 @@ var AuthProvider = function (_a) {
                     setUsername(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.username) || "Guest"; });
                     setUserType(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.userType) || null; });
                     a_1 = new Map();
-                    productRoles = ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.productRoles) || [];
+                    productRoles = ((_d = response_1.data) === null || _d === void 0 ? void 0 : _d.productRoles) || [];
                     productRoles.forEach(function (r) {
                         a_1.set(r.productName, r.authorities);
                     });
@@ -261,7 +269,7 @@ var AuthProvider = function (_a) {
                     setProductAuthorities(privilegesRecords_1);
                     setIsAuthoritiesReady(true);
                     return [2 /*return*/];
-                case 3:
+                case 6:
                     router.push("/landing-page");
                     return [2 /*return*/];
             }
@@ -308,7 +316,7 @@ var AuthProvider = function (_a) {
             (authority.release && currentStep === "releaser" && roleAllowed && !alreadyApprove));
     };
     var passwordLogin = (0, react_1.useCallback)(function (username, password, tokenFCM) { return __awaiter(void 0, void 0, void 0, function () {
-        var response_2, error_1;
+        var response_2, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -325,9 +333,9 @@ var AuthProvider = function (_a) {
                     router.push("/");
                     return [3 /*break*/, 5];
                 case 3:
-                    error_1 = _a.sent();
-                    if (error_1 instanceof Error)
-                        antd_1.message.error(error_1.message);
+                    error_2 = _a.sent();
+                    if (error_2 instanceof Error)
+                        antd_1.message.error(error_2.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setIsLoading(false);
@@ -352,7 +360,7 @@ var AuthProvider = function (_a) {
         return setIsMinutes(FIFTEEN_MINUTES);
     };
     var ssoLogin = (0, react_1.useCallback)(function (userId, sessionId, dtTime, onError) { return __awaiter(void 0, void 0, void 0, function () {
-        var response_3, error_2;
+        var response_3, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -371,9 +379,9 @@ var AuthProvider = function (_a) {
                     router.push("/");
                     return [3 /*break*/, 3];
                 case 2:
-                    error_2 = _a.sent();
+                    error_3 = _a.sent();
                     if (onError) {
-                        onError(error_2.message || "Login failed");
+                        onError(error_3.message || "Login failed");
                     }
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
@@ -381,7 +389,7 @@ var AuthProvider = function (_a) {
         });
     }); }, [authService, router]);
     var logout = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var error_3, error_4;
+        var error_4, error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -391,7 +399,7 @@ var AuthProvider = function (_a) {
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
-                    error_3 = _a.sent();
+                    error_4 = _a.sent();
                     return [3 /*break*/, 3];
                 case 3:
                     _a.trys.push([3, 5, 6, 7]);
@@ -400,7 +408,7 @@ var AuthProvider = function (_a) {
                     _a.sent();
                     return [3 /*break*/, 7];
                 case 5:
-                    error_4 = _a.sent();
+                    error_5 = _a.sent();
                     return [3 /*break*/, 7];
                 case 6:
                     localStorage.removeItem("access-token");
@@ -415,7 +423,7 @@ var AuthProvider = function (_a) {
         });
     }); }, [authService, router]);
     var checkToChangePassword = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var checks, result, error_5;
+        var checks, result, error_6;
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -436,9 +444,9 @@ var AuthProvider = function (_a) {
                     }
                     return [3 /*break*/, 5];
                 case 3:
-                    error_5 = _b.sent();
-                    if (error_5 instanceof Error)
-                        antd_1.message.error(error_5.message);
+                    error_6 = _b.sent();
+                    if (error_6 instanceof Error)
+                        antd_1.message.error(error_6.message);
                     return [3 /*break*/, 5];
                 case 4:
                     setTimeout(function () {
@@ -450,7 +458,7 @@ var AuthProvider = function (_a) {
         });
     }); };
     var requestChangePassword = (0, react_1.useCallback)(function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, error_6;
+        var response, error_7;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -466,10 +474,10 @@ var AuthProvider = function (_a) {
                     router.replace("/landing-page");
                     return [2 /*return*/, response];
                 case 3:
-                    error_6 = _b.sent();
-                    if (error_6 instanceof Error)
-                        antd_1.message.error(error_6.message);
-                    return [2 /*return*/, Promise.reject(error_6)];
+                    error_7 = _b.sent();
+                    if (error_7 instanceof Error)
+                        antd_1.message.error(error_7.message);
+                    return [2 /*return*/, Promise.reject(error_7)];
                 case 4:
                     setIsLoading(false);
                     return [7 /*endfinally*/];
@@ -478,7 +486,7 @@ var AuthProvider = function (_a) {
         });
     }); }, [authService, router]);
     var forgotPassword = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, error_7;
+        var response, error_8;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -494,8 +502,8 @@ var AuthProvider = function (_a) {
                     router.replace("/landing-page");
                     return [3 /*break*/, 5];
                 case 3:
-                    error_7 = _b.sent();
-                    if (error_7 instanceof Error) {
+                    error_8 = _b.sent();
+                    if (error_8 instanceof Error) {
                         antd_1.message.error('The information you have provided is incorrect, please try again.');
                     }
                     ;
@@ -536,7 +544,7 @@ var AuthProvider = function (_a) {
         });
     }); };
     var verifyChangePasswordToken = (0, react_1.useCallback)(function (token) { return __awaiter(void 0, void 0, void 0, function () {
-        var payload, response, isValid, error_8;
+        var payload, response, isValid, error_9;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -555,8 +563,8 @@ var AuthProvider = function (_a) {
                     }
                     return [2 /*return*/, response];
                 case 3:
-                    error_8 = _a.sent();
-                    antd_1.message.error(error_8.response.data.message);
+                    error_9 = _a.sent();
+                    antd_1.message.error(error_9.response.data.message);
                     router.push('/landing-page');
                     return [3 /*break*/, 5];
                 case 4:
@@ -567,7 +575,7 @@ var AuthProvider = function (_a) {
         });
     }); }, [authService, router]);
     var passwordLoginWithCheck = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var response_4, checksChangePassword, resultChangePassword, error_9;
+        var response_4, checksChangePassword, resultChangePassword, error_10;
         var _a;
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -595,9 +603,9 @@ var AuthProvider = function (_a) {
                     }
                     return [3 /*break*/, 6];
                 case 4:
-                    error_9 = _b.sent();
-                    if (error_9 instanceof Error)
-                        antd_1.message.error(error_9.message);
+                    error_10 = _b.sent();
+                    if (error_10 instanceof Error)
+                        antd_1.message.error(error_10.message);
                     return [3 /*break*/, 6];
                 case 5:
                     setIsLoading(false);
@@ -629,7 +637,7 @@ var AuthProvider = function (_a) {
         });
     }); };
     var login = function (username, password, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var response_6, data, token_1, error_10, config;
+        var response_6, data, token_1, error_11, config;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -653,10 +661,10 @@ var AuthProvider = function (_a) {
                     window.location.href = '/';
                     return [3 /*break*/, 5];
                 case 3:
-                    error_10 = _a.sent();
+                    error_11 = _a.sent();
                     config = {
                         type: 'error',
-                        content: error_10.response.data.message,
+                        content: error_11.response.data.message,
                         duration: 5,
                         style: {
                             marginLeft: '70%',
