@@ -185,7 +185,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setMenus(newMenus);
       setMenuData(newMenuData);
 
-      if (response.status !== 200 || response?.request?.data?.code !== 200 ||  response?.data?.code !== 200 || response?.data?.status !== 200) {
+      const agent = typeof window !== "undefined" && localStorage.getItem("agent");
+
+      if (response.status !== 200) {
         localStorage.removeItem("access-token");
         localStorage.removeItem("refresh-token");
 
@@ -195,6 +197,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         return;
       }
+
+      if(agent === "qlola" && ![200].includes(response.status || response.request.status)){
+        localStorage.removeItem("access-token");
+        localStorage.removeItem("refresh-token");
+
+        setToken(() => null);
+        return window.close();
+      }
+      console.log({ response });
 
       setRoleID(() => response.data.roleIDs[0]);
       setRoleIDs(() => response.data.roleIDs);

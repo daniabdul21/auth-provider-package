@@ -178,32 +178,40 @@ var AuthProvider = function (_a) {
     var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response_1, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
-        var _a, _b, _c, _d, _e;
-        return __generator(this, function (_f) {
-            switch (_f.label) {
+        var response_1, menu, newMenuData, newMenus, agent, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     if (!token) return [3 /*break*/, 3];
                     setIsAuthoritiesReady(false);
                     return [4 /*yield*/, authService.validateToken()];
                 case 1:
-                    response_1 = _f.sent();
+                    response_1 = _b.sent();
                     return [4 /*yield*/, authService.validateMenu(token)];
                 case 2:
-                    menu = _f.sent();
+                    menu = _b.sent();
                     if (menu.data.code !== 200 || !menu)
                         setAlertMenuError(true);
                     newMenuData = (0, lodash_1.get)(menu, 'data.data', []);
                     newMenus = newMenuData.filter(function (item) { return item.productName !== ""; }).map(function (item) { return item.productName; });
                     setMenus(newMenus);
                     setMenuData(newMenuData);
-                    if (response_1.status !== 200 || ((_b = (_a = response_1 === null || response_1 === void 0 ? void 0 : response_1.request) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.code) !== 200 || ((_c = response_1 === null || response_1 === void 0 ? void 0 : response_1.data) === null || _c === void 0 ? void 0 : _c.code) !== 200 || ((_d = response_1 === null || response_1 === void 0 ? void 0 : response_1.data) === null || _d === void 0 ? void 0 : _d.status) !== 200) {
+                    agent = typeof window !== "undefined" && localStorage.getItem("agent");
+                    if (response_1.status !== 200) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
                         setToken(function () { return null; });
                         router.push("/landing-page?logout=true");
                         return [2 /*return*/];
                     }
+                    if (agent === "qlola" && ![200].includes(response_1.status || response_1.request.status)) {
+                        localStorage.removeItem("access-token");
+                        localStorage.removeItem("refresh-token");
+                        setToken(function () { return null; });
+                        return [2 /*return*/, window.close()];
+                    }
+                    console.log({ response: response_1 });
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
                     setRoleIDs(function () { return response_1.data.roleIDs; });
                     setCompanyID(function () { var _a; return (_a = response_1.data) === null || _a === void 0 ? void 0 : _a.companyID; });
@@ -213,7 +221,7 @@ var AuthProvider = function (_a) {
                     setUsername(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.username) || "Guest"; });
                     setUserType(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.userType) || null; });
                     a_1 = new Map();
-                    productRoles = ((_e = response_1.data) === null || _e === void 0 ? void 0 : _e.productRoles) || [];
+                    productRoles = ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.productRoles) || [];
                     productRoles.forEach(function (r) {
                         a_1.set(r.productName, r.authorities);
                     });
