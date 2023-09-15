@@ -65,7 +65,8 @@ export declare enum ProductTypeEnum {
     BPDP_SAWIT = "BPDP Sawit",
     INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
     INCOMING_DOCUMENT = "Incoming Document",
-    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan"
+    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan",
+    REPORT_STATEMENT = "Report Statement"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -130,7 +131,8 @@ export declare enum ProductIdByTypeEnum {
     MASS_TRANSFER_HISTORY = "251",
     INQUIRY_BILLING_DJBC = "255",
     INCOMING_DOCUMENT = "256",
-    BPJS_KETENAGAKERJAAN = "254"
+    BPJS_KETENAGAKERJAAN = "254",
+    REPORT_STATEMENT = "258"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -205,5 +207,6 @@ export declare enum ProductTypeNameEnum {
     BPDP_SAWIT = "BPDP Sawit",
     INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
     INCOMING_DOCUMENT = "Incoming Document",
-    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan"
+    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan",
+    REPORT_STATEMENT = "Report Statement"
 }

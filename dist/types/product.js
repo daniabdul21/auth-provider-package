@@ -70,6 +70,7 @@ var ProductTypeEnum;
     ProductTypeEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
     ProductTypeEnum["INCOMING_DOCUMENT"] = "Incoming Document";
     ProductTypeEnum["BPJS_KETENAGAKERJAAN"] = "BPJS Ketenagakerjaan";
+    ProductTypeEnum["REPORT_STATEMENT"] = "Report Statement";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -139,6 +140,7 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["INQUIRY_BILLING_DJBC"] = "255";
     ProductIdByTypeEnum["INCOMING_DOCUMENT"] = "256";
     ProductIdByTypeEnum["BPJS_KETENAGAKERJAAN"] = "254";
+    ProductIdByTypeEnum["REPORT_STATEMENT"] = "258";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -217,5 +219,6 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
     ProductTypeNameEnum["INCOMING_DOCUMENT"] = "Incoming Document";
     ProductTypeNameEnum["BPJS_KETENAGAKERJAAN"] = "BPJS Ketenagakerjaan";
+    ProductTypeNameEnum["REPORT_STATEMENT"] = "Report Statement";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
