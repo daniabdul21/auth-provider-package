@@ -29,7 +29,6 @@ export enum ProductTypeEnum {
     OPEN_NEW_TIME_DEPOSIT = "Open New Time Deposit",
     PAYROLL_TRANSFER = "Payroll Transfer",
     PAYROLL_TRANSFER_HISTORY = "Payroll Transfer History",
-    PLN = "PLN",
     PROXY_REGISTRATION = "Proxy Registration",
     ROLE = "Role",
     SSO_CLIENT = "SSO:Client",
@@ -65,7 +64,6 @@ export enum ProductTypeEnum {
     BPDP_SAWIT = "BPDP Sawit",
     INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
     INCOMING_DOCUMENT = "Incoming Document",
-    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan",
     REPORT_STATEMENT = "Report Statement"
   }
   
@@ -135,7 +133,6 @@ export enum ProductTypeEnum {
     MASS_TRANSFER_HISTORY = "251",
     INQUIRY_BILLING_DJBC = "255",
     INCOMING_DOCUMENT = "256",
-    BPJS_KETENAGAKERJAAN = "254",
     REPORT_STATEMENT = "258"
   }
   
@@ -214,7 +211,6 @@ export enum ProductTypeEnum {
     BPDP_SAWIT = "BPDP Sawit",
     INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
     INCOMING_DOCUMENT = "Incoming Document",
-    BPJS_KETENAGAKERJAAN = "BPJS Ketenagakerjaan",
     REPORT_STATEMENT = "Report Statement"
   }
   

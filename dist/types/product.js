@@ -33,7 +33,6 @@ var ProductTypeEnum;
     ProductTypeEnum["OPEN_NEW_TIME_DEPOSIT"] = "Open New Time Deposit";
     ProductTypeEnum["PAYROLL_TRANSFER"] = "Payroll Transfer";
     ProductTypeEnum["PAYROLL_TRANSFER_HISTORY"] = "Payroll Transfer History";
-    ProductTypeEnum["PLN"] = "PLN";
     ProductTypeEnum["PROXY_REGISTRATION"] = "Proxy Registration";
     ProductTypeEnum["ROLE"] = "Role";
     ProductTypeEnum["SSO_CLIENT"] = "SSO:Client";
@@ -69,7 +68,6 @@ var ProductTypeEnum;
     ProductTypeEnum["BPDP_SAWIT"] = "BPDP Sawit";
     ProductTypeEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
     ProductTypeEnum["INCOMING_DOCUMENT"] = "Incoming Document";
-    ProductTypeEnum["BPJS_KETENAGAKERJAAN"] = "BPJS Ketenagakerjaan";
     ProductTypeEnum["REPORT_STATEMENT"] = "Report Statement";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
@@ -139,7 +137,6 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["MASS_TRANSFER_HISTORY"] = "251";
     ProductIdByTypeEnum["INQUIRY_BILLING_DJBC"] = "255";
     ProductIdByTypeEnum["INCOMING_DOCUMENT"] = "256";
-    ProductIdByTypeEnum["BPJS_KETENAGAKERJAAN"] = "254";
     ProductIdByTypeEnum["REPORT_STATEMENT"] = "258";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
@@ -218,7 +215,6 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["BPDP_SAWIT"] = "BPDP Sawit";
     ProductTypeNameEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
     ProductTypeNameEnum["INCOMING_DOCUMENT"] = "Incoming Document";
-    ProductTypeNameEnum["BPJS_KETENAGAKERJAAN"] = "BPJS Ketenagakerjaan";
     ProductTypeNameEnum["REPORT_STATEMENT"] = "Report Statement";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
