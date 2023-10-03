@@ -173,7 +173,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const loggedIn = useMemo(() => !!token, [token]);
 
   useEffect(() => {
-    if(!!token) {
+    if(!token) {
       router.push("/landing-page")
     }
   },[token])

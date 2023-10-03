@@ -178,7 +178,7 @@ var AuthProvider = function (_a) {
     var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     (0, react_1.useEffect)(function () {
-        if (!!token) {
+        if (!token) {
             router.push("/landing-page");
         }
     }, [token]);
