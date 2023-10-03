@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, useEffect } from "react";
 
 import { useRouter } from "next/router";
 import {AuthService} from "../services";
@@ -171,6 +171,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const [menuData, setMenuData] = useState<any>([]);
 
   const loggedIn = useMemo(() => !!token, [token]);
+
+  useEffect(() => {
+    if(!!token) {
+      router.push("/landing-page")
+    }
+  },[token])
 
   const guard = useCallback(async () => {
     if (token) {

@@ -177,6 +177,11 @@ var AuthProvider = function (_a) {
     var _t = (0, react_1.useState)(false), isAuthoritiesReady = _t[0], setIsAuthoritiesReady = _t[1];
     var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
+    (0, react_1.useEffect)(function () {
+        if (!!token) {
+            router.push("/landing-page");
+        }
+    }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
         var response_1, error_1, agent, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
         var _a, _b, _c, _d;
