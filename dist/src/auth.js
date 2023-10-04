@@ -413,6 +413,7 @@ var AuthProvider = function (_a) {
                 case 6:
                     localStorage.removeItem("access-token");
                     localStorage.removeItem("refresh-token");
+                    document.cookie = "loggedIn=true; max-age=0";
                     // setToken(() => null);
                     setMenus(function () { return []; });
                     setMenuData(function () { return []; });

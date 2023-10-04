@@ -426,6 +426,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     } finally {
       localStorage.removeItem("access-token");
       localStorage.removeItem("refresh-token");
+      document.cookie = "loggedIn=true; max-age=0";
 
       // setToken(() => null);
       setMenus(() => []);
