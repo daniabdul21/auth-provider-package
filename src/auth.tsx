@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { createContext, useCallback, useContext, useMemo, useState, useEffect } from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
 import { useRouter } from "next/router";
 import {AuthService} from "../services";
@@ -171,12 +171,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const [menuData, setMenuData] = useState<any>([]);
 
   const loggedIn = useMemo(() => !!token, [token]);
-
-  useEffect(() => {
-    if(!token) {
-      router.push("/landing-page")
-    }
-  },[token])
 
   const guard = useCallback(async () => {
     if (token) {
@@ -577,6 +571,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     try {
       const response = await authService.login(username, password, branchCode);
       setToken(() => response.data.data.accessToken);
+      document.cookie = "loggedIn=true";
 
       const data = response.data.data;
       localStorage.setItem("access-token", response.data.data.accessToken);
@@ -589,7 +584,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         return
       }
 
-      window.location.href = '/';
+      router.push("/");
     } catch (error: any) {
 
       const config: ArgsProps = {
