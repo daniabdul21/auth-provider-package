@@ -115,7 +115,7 @@ var AUTH_INITIAL_VALUES = {
     logout: function () {
         throw new Error("Function not implemented.");
     },
-    canIApprove: function () {
+    canIApprove: function (_workflow) {
         throw new Error("Function not implemented.");
     },
     menuData: [],
@@ -141,6 +141,12 @@ var AUTH_INITIAL_VALUES = {
         throw new Error("Function not implemented.");
     },
     requestChangePassword: function (_payload) {
+        throw new Error("Function not implemented.");
+    },
+    canIDelete: function (_product, _status) {
+        throw new Error("Function not implemented.");
+    },
+    canIEdit: function (_workflow, _product, _status) {
         throw new Error("Function not implemented.");
     },
 };
@@ -314,6 +320,36 @@ var AuthProvider = function (_a) {
                 roleAllowed &&
                 !alreadyApprove) ||
             (authority.release && currentStep === "releaser" && roleAllowed && !alreadyApprove));
+    };
+    var canIDelete = function (product, status) {
+        var productKey = (0, lodash_1.toUpper)((0, lodash_1.snakeCase)(product));
+        if (!productKey)
+            return false;
+        // @ts-ignore
+        var authority = productAuthorities[productKey];
+        if (!authority)
+            return false;
+        return status === types_1.TaskStatus.Draft && (0, lodash_1.get)(authority, "delete");
+    };
+    var canIEdit = function (workflow, product, status) {
+        var newProduct = product;
+        if (status === types_1.TaskStatus.Returned) {
+            if (!(workflow === null || workflow === void 0 ? void 0 : workflow.workflow))
+                return false;
+            var header = workflow.workflow.header;
+            newProduct = header === null || header === void 0 ? void 0 : header.productName;
+        }
+        if (!newProduct)
+            return false;
+        var productKey = (0, lodash_1.toUpper)((0, lodash_1.snakeCase)(product));
+        if (!productKey)
+            return false;
+        // @ts-ignore
+        var authority = productAuthorities[productKey];
+        if (!authority)
+            return false;
+        var modify = (0, lodash_1.get)(authority, "modify");
+        return (status === types_1.TaskStatus.Draft || status === types_1.TaskStatus.Returned) && modify;
     };
     var passwordLogin = (0, react_1.useCallback)(function (username, password, tokenFCM) { return __awaiter(void 0, void 0, void 0, function () {
         var response_2, error_2;
@@ -712,7 +748,9 @@ var AuthProvider = function (_a) {
                 verifyChangePasswordToken: verifyChangePasswordToken,
                 checkToChangePassword: checkToChangePassword,
                 passwordLoginWithCheck: passwordLoginWithCheck,
-                requestChangePassword: requestChangePassword
+                requestChangePassword: requestChangePassword,
+                canIDelete: canIDelete,
+                canIEdit: canIEdit
             }, children: children }) }));
 };
 exports.AuthProvider = AuthProvider;

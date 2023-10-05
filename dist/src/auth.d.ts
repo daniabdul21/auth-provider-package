@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ChangePasswordType, ForgotPasswordType, ProductAuthoritiesType, VerifyUserQuestion, TransactionWorkflow } from "../types";
+import { ChangePasswordType, ForgotPasswordType, ProductAuthoritiesType, VerifyUserQuestion, TransactionWorkflow, TaskStatus } from "../types";
 export declare enum UserType {
     BankAdmin = "bank-admin",
     CustomerAdmin = "customer-admin",
@@ -27,6 +27,8 @@ interface AuthContextProps {
     ssoLogin: (userId: string, sessionId: string, dtTime: string, onError?: (errorMessage: string) => void) => Promise<void>;
     logout: () => Promise<void>;
     canIApprove: (workflow: TransactionWorkflow.Root) => boolean;
+    canIDelete: (product: string, status: TaskStatus) => boolean;
+    canIEdit: (workflow: TransactionWorkflow.Root, product: string, status: TaskStatus) => boolean;
     menuData: any[];
     ssoQlolaLogin: (request: string) => Promise<void>;
     verifyUserQuestion: (payload: VerifyUserQuestion) => Promise<void>;

@@ -16,7 +16,8 @@ import {
   VerifyUserQuestion,
   ProductTypeEnum,
   TransactionWorkflow,
-  MultipaymentAuthorityEnum
+  MultipaymentAuthorityEnum,
+  TaskStatus
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
 import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find, isEmpty } from "lodash";
@@ -58,6 +59,8 @@ interface AuthContextProps {
   ) => Promise<void>;
   logout: () => Promise<void>;
   canIApprove: (workflow: TransactionWorkflow.Root) => boolean;
+  canIDelete: (product: string, status: TaskStatus) => boolean;
+  canIEdit: (workflow: TransactionWorkflow.Root, product : string, status: TaskStatus) => boolean;
   menuData: any[];
   ssoQlolaLogin: (
     request: string
@@ -100,7 +103,7 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   logout: function (): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  canIApprove: function (): boolean {
+  canIApprove: function (_workflow : TransactionWorkflow.Root): boolean {
     throw new Error("Function not implemented.");
   },
   menuData: [],
@@ -126,6 +129,12 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
     throw new Error("Function not implemented.");
   },
   requestChangePassword: function (_payload: ChangePasswordType): Promise<void> {
+    throw new Error("Function not implemented.");
+  },
+  canIDelete: function (_product: string, _status: TaskStatus): boolean {
+    throw new Error("Function not implemented.");
+  },
+  canIEdit: function (_workflow: TransactionWorkflow.Root, _product:string, _status: TaskStatus): boolean {
     throw new Error("Function not implemented.");
   },
 };
@@ -339,6 +348,41 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         !alreadyApprove) ||
       (authority.release && currentStep === "releaser" && roleAllowed && !alreadyApprove)
     );
+  };
+
+  const canIDelete = (product: string, status: TaskStatus) => {
+    const productKey = toUpper(snakeCase(product));
+    if (!productKey) return false;
+
+    // @ts-ignore
+    const authority = productAuthorities[productKey];
+    if (!authority) return false;
+
+    return status === TaskStatus.Draft && get(authority, "delete");
+  };
+
+  const canIEdit = (workflow: TransactionWorkflow.Root, product: string, status: TaskStatus) => {
+    let newProduct = product;
+
+    if (status === TaskStatus.Returned) {
+      if (!workflow?.workflow) return false;
+
+      const { header } = workflow.workflow;
+
+      newProduct = header?.productName as unknown as ProductTypeEnum;
+    }
+    if (!newProduct) return false;
+
+    const productKey = toUpper(snakeCase(product));
+    if (!productKey) return false;
+
+    // @ts-ignore
+    const authority = productAuthorities[productKey];
+    if (!authority) return false;
+
+    const modify = get(authority, "modify");
+
+    return (status === TaskStatus.Draft || status === TaskStatus.Returned) && modify;
   };
 
   const passwordLogin = useCallback(
@@ -637,7 +681,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
           verifyChangePasswordToken,
           checkToChangePassword,
           passwordLoginWithCheck,
-          requestChangePassword
+          requestChangePassword,
+          canIDelete,
+          canIEdit
         }}
       >
         {children}
