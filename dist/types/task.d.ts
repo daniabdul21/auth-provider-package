@@ -15,6 +15,12 @@ export declare enum TaskStep {
     Signer = "Signer",
     Releaser = "Releaser"
 }
+export declare enum StepType {
+    Checker = "checker",
+    Releaser = "releaser",
+    Signer = "signer",
+    Verifier = "verifier"
+}
 export interface TaskData {
     taskID?: string;
     type?: string;

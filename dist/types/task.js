@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TaskAction = exports.TaskStep = exports.TaskStatus = void 0;
+exports.TaskAction = exports.StepType = exports.TaskStep = exports.TaskStatus = void 0;
 var TaskStatus;
 (function (TaskStatus) {
     TaskStatus["All"] = "All";
@@ -20,6 +20,13 @@ var TaskStep;
     TaskStep["Signer"] = "Signer";
     TaskStep["Releaser"] = "Releaser";
 })(TaskStep || (exports.TaskStep = TaskStep = {}));
+var StepType;
+(function (StepType) {
+    StepType["Checker"] = "checker";
+    StepType["Releaser"] = "releaser";
+    StepType["Signer"] = "signer";
+    StepType["Verifier"] = "verifier";
+})(StepType || (exports.StepType = StepType = {}));
 var TaskAction;
 (function (TaskAction) {
     TaskAction["Approve"] = "approve";

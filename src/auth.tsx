@@ -17,7 +17,8 @@ import {
   ProductTypeEnum,
   TransactionWorkflow,
   MultipaymentAuthorityEnum,
-  TaskStatus
+  TaskStatus,
+  StepType
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
 import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find, isEmpty } from "lodash";
@@ -58,7 +59,7 @@ interface AuthContextProps {
     onError?: (errorMessage: string) => void
   ) => Promise<void>;
   logout: () => Promise<void>;
-  canIApprove: (workflow: TransactionWorkflow.Root) => boolean;
+  canIApprove: (workflow: TransactionWorkflow.Root, status?:TaskStatus) => boolean;
   canIDelete: (product: string, status: TaskStatus) => boolean;
   canIEdit: (workflow: TransactionWorkflow.Root, product : string, status: TaskStatus) => boolean;
   menuData: any[];
@@ -103,7 +104,7 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   logout: function (): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  canIApprove: function (_workflow : TransactionWorkflow.Root): boolean {
+  canIApprove: function (_workflow : TransactionWorkflow.Root, _status?:TaskStatus): boolean {
     throw new Error("Function not implemented.");
   },
   menuData: [],
@@ -293,8 +294,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     router.push("/landing-page");
   }, [token, authService]);
 
-  const canIApprove = (workflow: TransactionWorkflow.Root) => {
-    type productTypeKey = keyof typeof ProductTypeEnum;
+  const canIApprove = (workflow: TransactionWorkflow.Root, status?: TaskStatus) => {
     if (!workflow?.workflow) return false;
 
     const { header, currentStep, records, currentRoleIDs = [], createdBy, participantUserIDs } = workflow.workflow;
@@ -302,16 +302,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     const product = header?.productName as unknown as ProductTypeEnum;
     if (!product) return false;
 
-    // const productKey = Object.keys(ProductTypeEnum).find(
-    //   (e) => ProductTypeEnum[e as productTypeKey] === product
-    // ) as unknown as productTypeKey;
-
-    const productKey = toUpper(snakeCase(product)) as unknown as productTypeKey
-
+    const productKey = toUpper(snakeCase(product));
     if (!productKey) return false;
 
+    // @ts-ignore
     const authority = productAuthorities[productKey];
     if (!authority) return false;
+
+    const approve = get(authority, "approve");
+    const release = get(authority, "release");
+    const verify = get(authority, "verify");
 
     const flows = records?.flows[0];
 
@@ -340,13 +340,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
     if (userID === createdBy.userID && currentStep !== "releaser") return false;
 
+    if (status) {
+      return (approve || verify || release) && status === TaskStatus.Pending;
+    }
+
     return (
-      (authority.approve && currentStep === "signer" && roleAllowed && !alreadyApprove) ||
-      (authority.verify &&
-        (currentStep === "verifier" || currentStep === "checker") &&
+      (approve && currentStep === StepType.Signer && roleAllowed && !alreadyApprove) ||
+      (verify &&
+        (currentStep === StepType.Verifier || currentStep === StepType.Checker) &&
         roleAllowed &&
         !alreadyApprove) ||
-      (authority.release && currentStep === "releaser" && roleAllowed && !alreadyApprove)
+      (release && currentStep === StepType.Releaser && roleAllowed && !alreadyApprove)
     );
   };
 
@@ -354,7 +358,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     const productKey = toUpper(snakeCase(product));
     if (!productKey) return false;
 
-    // @ts-ignore
+    // @ts-ignorex
     const authority = productAuthorities[productKey];
     if (!authority) return false;
 

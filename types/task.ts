@@ -17,6 +17,13 @@ export enum TaskStatus {
     Releaser = "Releaser",
   }
 
+  export enum StepType {
+    Checker = "checker",
+    Releaser = "releaser",
+    Signer = "signer",
+    Verifier = "verifier",
+  }
+
 export interface TaskData {
     taskID?: string;
     type?: string;

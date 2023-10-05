@@ -115,7 +115,7 @@ var AUTH_INITIAL_VALUES = {
     logout: function () {
         throw new Error("Function not implemented.");
     },
-    canIApprove: function (_workflow) {
+    canIApprove: function (_workflow, _status) {
         throw new Error("Function not implemented.");
     },
     menuData: [],
@@ -281,7 +281,7 @@ var AuthProvider = function (_a) {
             }
         });
     }); }, [token, authService]);
-    var canIApprove = function (workflow) {
+    var canIApprove = function (workflow, status) {
         var _a, _b, _c, _d, _e, _f;
         if (!(workflow === null || workflow === void 0 ? void 0 : workflow.workflow))
             return false;
@@ -289,15 +289,16 @@ var AuthProvider = function (_a) {
         var product = header === null || header === void 0 ? void 0 : header.productName;
         if (!product)
             return false;
-        // const productKey = Object.keys(ProductTypeEnum).find(
-        //   (e) => ProductTypeEnum[e as productTypeKey] === product
-        // ) as unknown as productTypeKey;
         var productKey = (0, lodash_1.toUpper)((0, lodash_1.snakeCase)(product));
         if (!productKey)
             return false;
+        // @ts-ignore
         var authority = productAuthorities[productKey];
         if (!authority)
             return false;
+        var approve = (0, lodash_1.get)(authority, "approve");
+        var release = (0, lodash_1.get)(authority, "release");
+        var verify = (0, lodash_1.get)(authority, "verify");
         var flows = records === null || records === void 0 ? void 0 : records.flows[0];
         var alreadyApprove = false;
         var roleAllowed = false;
@@ -314,18 +315,21 @@ var AuthProvider = function (_a) {
             return false;
         if (userID === createdBy.userID && currentStep !== "releaser")
             return false;
-        return ((authority.approve && currentStep === "signer" && roleAllowed && !alreadyApprove) ||
-            (authority.verify &&
-                (currentStep === "verifier" || currentStep === "checker") &&
+        if (status) {
+            return (approve || verify || release) && status === types_1.TaskStatus.Pending;
+        }
+        return ((approve && currentStep === types_1.StepType.Signer && roleAllowed && !alreadyApprove) ||
+            (verify &&
+                (currentStep === types_1.StepType.Verifier || currentStep === types_1.StepType.Checker) &&
                 roleAllowed &&
                 !alreadyApprove) ||
-            (authority.release && currentStep === "releaser" && roleAllowed && !alreadyApprove));
+            (release && currentStep === types_1.StepType.Releaser && roleAllowed && !alreadyApprove));
     };
     var canIDelete = function (product, status) {
         var productKey = (0, lodash_1.toUpper)((0, lodash_1.snakeCase)(product));
         if (!productKey)
             return false;
-        // @ts-ignore
+        // @ts-ignorex
         var authority = productAuthorities[productKey];
         if (!authority)
             return false;
