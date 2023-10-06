@@ -340,18 +340,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
     if (userID === createdBy.userID && currentStep !== "releaser") return false;
 
-    if (status) {
-      return (approve || verify || release) && status === TaskStatus.Pending;
-    }
-
-    return (
+    const isCanIApprove =
       (approve && currentStep === StepType.Signer && roleAllowed && !alreadyApprove) ||
       (verify &&
         (currentStep === StepType.Verifier || currentStep === StepType.Checker) &&
         roleAllowed &&
         !alreadyApprove) ||
-      (release && currentStep === StepType.Releaser && roleAllowed && !alreadyApprove)
-    );
+      (release && currentStep === StepType.Releaser && roleAllowed && !alreadyApprove);
+
+    if (status) {
+      return isCanIApprove && status === TaskStatus.Pending;
+    }
+
+    return isCanIApprove;
   };
 
   const canIDelete = (product: string, status: TaskStatus) => {

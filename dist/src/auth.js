@@ -315,15 +315,16 @@ var AuthProvider = function (_a) {
             return false;
         if (userID === createdBy.userID && currentStep !== "releaser")
             return false;
-        if (status) {
-            return (approve || verify || release) && status === types_1.TaskStatus.Pending;
-        }
-        return ((approve && currentStep === types_1.StepType.Signer && roleAllowed && !alreadyApprove) ||
+        var isCanIApprove = (approve && currentStep === types_1.StepType.Signer && roleAllowed && !alreadyApprove) ||
             (verify &&
                 (currentStep === types_1.StepType.Verifier || currentStep === types_1.StepType.Checker) &&
                 roleAllowed &&
                 !alreadyApprove) ||
-            (release && currentStep === types_1.StepType.Releaser && roleAllowed && !alreadyApprove));
+            (release && currentStep === types_1.StepType.Releaser && roleAllowed && !alreadyApprove);
+        if (status) {
+            return isCanIApprove && status === types_1.TaskStatus.Pending;
+        }
+        return isCanIApprove;
     };
     var canIDelete = function (product, status) {
         var productKey = (0, lodash_1.toUpper)((0, lodash_1.snakeCase)(product));
