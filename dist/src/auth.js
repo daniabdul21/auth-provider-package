@@ -78,6 +78,7 @@ var react_idle_timer_1 = require("react-idle-timer");
 var auth_1 = require("../utils/auth");
 var types_1 = require("../types");
 var lodash_1 = require("lodash");
+var nookies_1 = require("nookies");
 var FIFTEEN_MINUTES = 15 * 60 * 1000;
 var UserType;
 (function (UserType) {
@@ -692,6 +693,7 @@ var AuthProvider = function (_a) {
                     response_6 = _a.sent();
                     setToken(function () { return response_6.data.data.accessToken; });
                     document.cookie = "loggedIn=true";
+                    (0, nookies_1.setCookie)(null, "access-token", response_6.data.data.accessToken);
                     data = response_6.data.data;
                     localStorage.setItem("access-token", response_6.data.data.accessToken);
                     localStorage.setItem("refresh-token", response_6.data.data.refreshToken);

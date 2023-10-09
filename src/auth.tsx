@@ -22,6 +22,7 @@ import {
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
 import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find, isEmpty } from "lodash";
+import {setCookie} from "nookies";
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
@@ -622,6 +623,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const response = await authService.login(username, password, branchCode);
       setToken(() => response.data.data.accessToken);
       document.cookie = "loggedIn=true";
+      setCookie(null, "access-token", response.data.data.accessToken);
 
       const data = response.data.data;
       localStorage.setItem("access-token", response.data.data.accessToken);
