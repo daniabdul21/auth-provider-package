@@ -22,7 +22,6 @@ import {
 } from "../types";
 import { ArgsProps } from "antd/lib/message";
 import { map, snakeCase, mergeWith, toUpper, get, concat, difference, filter, find, isEmpty } from "lodash";
-import {setCookie} from "nookies";
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
@@ -477,6 +476,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       localStorage.removeItem("access-token");
       localStorage.removeItem("refresh-token");
       document.cookie = "loggedIn=true; max-age=0";
+      document.cookie = "accessToken=; max-age=0";
 
       // setToken(() => null);
       setMenus(() => []);
@@ -623,12 +623,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const response = await authService.login(username, password, branchCode);
       setToken(() => response.data.data.accessToken);
       document.cookie = "loggedIn=true";
-      setCookie(null, "access-token", response.data.data.accessToken);
+      // setCookie(null, "access-token", response.data.data.accessToken);
 
       const data = response.data.data;
       localStorage.setItem("access-token", response.data.data.accessToken);
       localStorage.setItem("refresh-token", response.data.data.refreshToken);
       localStorage.setItem("locale", "id");
+      document.cookie = `accessToken=${response.data.data.accessToken};secure`
 
       if (data.isRedirectToChangePassword) {
         const token = data.changePasswordToken;

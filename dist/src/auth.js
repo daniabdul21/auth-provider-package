@@ -78,7 +78,6 @@ var react_idle_timer_1 = require("react-idle-timer");
 var auth_1 = require("../utils/auth");
 var types_1 = require("../types");
 var lodash_1 = require("lodash");
-var nookies_1 = require("nookies");
 var FIFTEEN_MINUTES = 15 * 60 * 1000;
 var UserType;
 (function (UserType) {
@@ -456,6 +455,7 @@ var AuthProvider = function (_a) {
                     localStorage.removeItem("access-token");
                     localStorage.removeItem("refresh-token");
                     document.cookie = "loggedIn=true; max-age=0";
+                    document.cookie = "accessToken=; max-age=0";
                     // setToken(() => null);
                     setMenus(function () { return []; });
                     setMenuData(function () { return []; });
@@ -693,11 +693,11 @@ var AuthProvider = function (_a) {
                     response_6 = _a.sent();
                     setToken(function () { return response_6.data.data.accessToken; });
                     document.cookie = "loggedIn=true";
-                    (0, nookies_1.setCookie)(null, "access-token", response_6.data.data.accessToken);
                     data = response_6.data.data;
                     localStorage.setItem("access-token", response_6.data.data.accessToken);
                     localStorage.setItem("refresh-token", response_6.data.data.refreshToken);
                     localStorage.setItem("locale", "id");
+                    document.cookie = "accessToken=".concat(response_6.data.data.accessToken, ";secure");
                     if (data.isRedirectToChangePassword) {
                         token_1 = data.changePasswordToken;
                         router.push("/landing-page/change-password?token=".concat(token_1));
