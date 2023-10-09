@@ -692,12 +692,11 @@ var AuthProvider = function (_a) {
                 case 2:
                     response_6 = _a.sent();
                     setToken(function () { return response_6.data.data.accessToken; });
-                    document.cookie = "loggedIn=true";
                     data = response_6.data.data;
+                    document.cookie = "accessToken=".concat(response_6.data.data.accessToken, ";secure");
                     localStorage.setItem("access-token", response_6.data.data.accessToken);
                     localStorage.setItem("refresh-token", response_6.data.data.refreshToken);
                     localStorage.setItem("locale", "id");
-                    document.cookie = "accessToken=".concat(response_6.data.data.accessToken, ";secure");
                     if (data.isRedirectToChangePassword) {
                         token_1 = data.changePasswordToken;
                         router.push("/landing-page/change-password?token=".concat(token_1));
