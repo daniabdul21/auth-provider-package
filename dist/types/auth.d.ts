@@ -15,11 +15,13 @@ export type ForgotPasswordType = {
     emailAddress: string;
     answerQuestion1: string;
     answerQuestion2: string;
+    type?: string;
 };
 export type VerifyUserQuestion = {
     branchCode: string;
     username: string;
     emailAddress: string;
+    type?: string;
 };
 export declare enum AuthorityLevelEnum {
     batch = "batch",

@@ -529,8 +529,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const response = await authService.forgotPassword(payload);
       message.success(response.data.message)
 
-      router.replace(`/landing-page`);
+      return router.replace(`/landing-page`);
     } catch (error) {
+      if(payload.type === "new-login"){
+        return Promise.reject(error);
+      }
       if (error instanceof Error) {
         message.error('The information you have provided is incorrect, please try again.')
       };
@@ -545,6 +548,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const response = await authService.verifyUserQuestion(payload);
       return response;
     } catch (err: any) {
+      if(payload.type === "new-login"){
+        return Promise.reject(err);
+      }
       if (err.response.data.code === 404) {
         return message.error("Data not found")
       }
@@ -617,7 +623,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     }
   }
 
-  const login = async (username: string, password: string, branchCode: string): Promise<void> => {
+  const login = async (username: string, password: string, branchCode: string, type?:string): Promise<void> => {
     setIsLoading(true);
     try {
       const response = await authService.login(username, password, branchCode);
@@ -637,7 +643,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       }
 
       router.push("/");
+      return
     } catch (error: any) {
+      if(type === "new-login"){
+        return Promise.reject(error);
+      }
 
       const config: ArgsProps = {
         type: 'error',

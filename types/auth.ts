@@ -18,12 +18,14 @@ export type ChangePasswordType = {
     emailAddress: string;
     answerQuestion1: string;
     answerQuestion2: string;
+    type?:string;
 };
   
 export type VerifyUserQuestion = {
     branchCode: string;
     username: string;
     emailAddress: string;
+    type?:string;
 };
 
 export enum AuthorityLevelEnum {

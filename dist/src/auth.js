@@ -542,10 +542,12 @@ var AuthProvider = function (_a) {
                 case 2:
                     response = _b.sent();
                     antd_1.message.success(response.data.message);
-                    router.replace("/landing-page");
-                    return [3 /*break*/, 5];
+                    return [2 /*return*/, router.replace("/landing-page")];
                 case 3:
                     error_8 = _b.sent();
+                    if (payload.type === "new-login") {
+                        return [2 /*return*/, Promise.reject(error_8)];
+                    }
                     if (error_8 instanceof Error) {
                         antd_1.message.error('The information you have provided is incorrect, please try again.');
                     }
@@ -574,6 +576,9 @@ var AuthProvider = function (_a) {
                     return [2 /*return*/, response];
                 case 3:
                     err_1 = _b.sent();
+                    if (payload.type === "new-login") {
+                        return [2 /*return*/, Promise.reject(err_1)];
+                    }
                     if (err_1.response.data.code === 404) {
                         return [2 /*return*/, antd_1.message.error("Data not found")];
                     }
@@ -679,7 +684,7 @@ var AuthProvider = function (_a) {
             }
         });
     }); };
-    var login = function (username, password, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
+    var login = function (username, password, branchCode, type) { return __awaiter(void 0, void 0, void 0, function () {
         var response_6, data, token_1, error_11, config;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -703,9 +708,12 @@ var AuthProvider = function (_a) {
                         return [2 /*return*/];
                     }
                     router.push("/");
-                    return [3 /*break*/, 5];
+                    return [2 /*return*/];
                 case 3:
                     error_11 = _a.sent();
+                    if (type === "new-login") {
+                        return [2 /*return*/, Promise.reject(error_11)];
+                    }
                     config = {
                         type: 'error',
                         content: error_11.response.data.message,
