@@ -697,8 +697,10 @@ var AuthProvider = function (_a) {
                 case 2:
                     response_6 = _a.sent();
                     setToken(function () { return response_6.data.data.accessToken; });
+                    // setCookie(null, "access-token", response.data.data.accessToken);
+                    document.cookie = "loggedIn=true";
                     data = response_6.data.data;
-                    document.cookie = "accessToken=".concat(response_6.data.data.accessToken, ";secure");
+                    document.cookie = "accessToken=;";
                     localStorage.setItem("access-token", response_6.data.data.accessToken);
                     localStorage.setItem("refresh-token", response_6.data.data.refreshToken);
                     localStorage.setItem("locale", "id");

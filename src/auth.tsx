@@ -629,9 +629,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const response = await authService.login(username, password, branchCode);
       setToken(() => response.data.data.accessToken);
       // setCookie(null, "access-token", response.data.data.accessToken);
-      
+      document.cookie = "loggedIn=true";
+
       const data = response.data.data;
-      document.cookie = `accessToken=${response.data.data.accessToken};secure`;
+      document.cookie = `accessToken=;`;
       localStorage.setItem("access-token", response.data.data.accessToken);
       localStorage.setItem("refresh-token", response.data.data.refreshToken);
       localStorage.setItem("locale", "id");
