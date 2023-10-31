@@ -541,6 +541,9 @@ var AuthProvider = function (_a) {
                     return [4 /*yield*/, authService.forgotPassword(payload)];
                 case 2:
                     response = _b.sent();
+                    if (payload.type === "new-login") {
+                        return [2 /*return*/, response];
+                    }
                     antd_1.message.success(response.data.message);
                     return [2 /*return*/, router.replace("/landing-page")];
                 case 3:

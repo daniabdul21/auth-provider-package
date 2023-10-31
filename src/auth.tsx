@@ -527,8 +527,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     setIsLoading(true);
     try {
       const response = await authService.forgotPassword(payload);
+      if(payload.type === "new-login"){
+        return response;
+      }
       message.success(response.data.message)
-
       return router.replace(`/landing-page`);
     } catch (error) {
       if(payload.type === "new-login"){
