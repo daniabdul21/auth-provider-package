@@ -712,6 +712,9 @@ var AuthProvider = function (_a) {
                         router.push("/landing-page/change-password?token=".concat(token_1));
                         return [2 /*return*/];
                     }
+                    if (type === "new-login") {
+                        return [2 /*return*/, response_6];
+                    }
                     router.push("/");
                     return [2 /*return*/];
                 case 3:

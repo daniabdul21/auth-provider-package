@@ -69,7 +69,7 @@ interface AuthContextProps {
   verifyUserQuestion: (payload: VerifyUserQuestion) => Promise<void>;
   verifyChangePasswordToken: (token: string) => Promise<void>;
   forgotPassword: (payload: ForgotPasswordType) => Promise<void>;
-  login: (username: string, password: string, branchCode: string) => Promise<void>;
+  login: (username: string, password: string, branchCode: string, type?:string) => Promise<void>;
   checkToChangePassword: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
   passwordLoginWithCheck: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
   requestChangePassword: (payload: ChangePasswordType) => Promise<void>;
@@ -625,7 +625,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     }
   }
 
-  const login = async (username: string, password: string, branchCode: string, type?:string): Promise<void> => {
+  const login = async (username: string, password: string, branchCode: string, type?:string): Promise<any> => {
     setIsLoading(true);
     try {
       const response = await authService.login(username, password, branchCode);
@@ -643,6 +643,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         const token = data.changePasswordToken;
         router.push(`/landing-page/change-password?token=${token}`);
         return
+      }
+
+      if(type === "new-login"){
+        return response;
       }
 
       router.push("/");

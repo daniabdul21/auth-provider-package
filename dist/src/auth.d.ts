@@ -34,7 +34,7 @@ interface AuthContextProps {
     verifyUserQuestion: (payload: VerifyUserQuestion) => Promise<void>;
     verifyChangePasswordToken: (token: string) => Promise<void>;
     forgotPassword: (payload: ForgotPasswordType) => Promise<void>;
-    login: (username: string, password: string, branchCode: string) => Promise<void>;
+    login: (username: string, password: string, branchCode: string, type?: string) => Promise<void>;
     checkToChangePassword: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
     passwordLoginWithCheck: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
     requestChangePassword: (payload: ChangePasswordType) => Promise<void>;
