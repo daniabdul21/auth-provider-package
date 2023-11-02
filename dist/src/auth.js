@@ -513,12 +513,14 @@ var AuthProvider = function (_a) {
                     return [4 /*yield*/, authService.requestChangePassword(payload)];
                 case 2:
                     response = _b.sent();
-                    antd_1.message.success(response.data.message);
-                    router.replace("/landing-page");
+                    if (payload.type !== "new-login") {
+                        antd_1.message.success(response.data.message);
+                        router.replace("/landing-page");
+                    }
                     return [2 /*return*/, response];
                 case 3:
                     error_7 = _b.sent();
-                    if (error_7 instanceof Error)
+                    if (error_7 instanceof Error && payload.type !== "new-login")
                         antd_1.message.error(error_7.message);
                     return [2 /*return*/, Promise.reject(error_7)];
                 case 4:

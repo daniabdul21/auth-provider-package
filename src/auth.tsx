@@ -510,11 +510,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setIsLoading(true);
       try {
         const response = await authService.requestChangePassword(payload);
-        message.success(response.data.message)
-        router.replace(`/landing-page`)
+        if(payload.type !== "new-login"){
+          message.success(response.data.message)
+          router.replace(`/landing-page`)
+        }
         return response;
       } catch (error) {
-        if (error instanceof Error) message.error(error.message);
+        if (error instanceof Error && payload.type !== "new-login") message.error(error.message);
         return Promise.reject(error)
       } finally {
         setIsLoading(false);

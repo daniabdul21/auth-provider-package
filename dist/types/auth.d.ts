@@ -8,6 +8,7 @@ export type ChangePasswordType = {
     answerQuestion1?: string;
     answerQuestion2?: string;
     tokenFCM?: string;
+    type?: string;
 };
 export type ForgotPasswordType = {
     branchCode: string;
