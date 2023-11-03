@@ -429,42 +429,45 @@ var AuthProvider = function (_a) {
             }
         });
     }); }, [authService, router]);
-    var logout = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var error_4, error_5;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, authService.logoutSSO("CBM")];
-                case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_4 = _a.sent();
-                    return [3 /*break*/, 3];
-                case 3:
-                    _a.trys.push([3, 5, 6, 7]);
-                    return [4 /*yield*/, authService.logout()];
-                case 4:
-                    _a.sent();
-                    return [3 /*break*/, 7];
-                case 5:
-                    error_5 = _a.sent();
-                    return [3 /*break*/, 7];
-                case 6:
-                    localStorage.removeItem("access-token");
-                    localStorage.removeItem("refresh-token");
-                    document.cookie = "loggedIn=true; max-age=0";
-                    document.cookie = "accessToken=; max-age=0";
-                    // setToken(() => null);
-                    setMenus(function () { return []; });
-                    setMenuData(function () { return []; });
-                    router.push("/landing-page?logout=true");
-                    return [7 /*endfinally*/];
-                case 7: return [2 /*return*/];
-            }
+    var logout = (0, react_1.useCallback)(function (path) {
+        if (path === void 0) { path = "/landing-page?logout=true"; }
+        return __awaiter(void 0, void 0, void 0, function () {
+            var error_4, error_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, authService.logoutSSO("CBM")];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_4 = _a.sent();
+                        return [3 /*break*/, 3];
+                    case 3:
+                        _a.trys.push([3, 5, 6, 7]);
+                        return [4 /*yield*/, authService.logout()];
+                    case 4:
+                        _a.sent();
+                        return [3 /*break*/, 7];
+                    case 5:
+                        error_5 = _a.sent();
+                        return [3 /*break*/, 7];
+                    case 6:
+                        localStorage.removeItem("access-token");
+                        localStorage.removeItem("refresh-token");
+                        document.cookie = "loggedIn=true; max-age=0";
+                        document.cookie = "accessToken=; max-age=0";
+                        // setToken(() => null);
+                        setMenus(function () { return []; });
+                        setMenuData(function () { return []; });
+                        router.push(path);
+                        return [7 /*endfinally*/];
+                    case 7: return [2 /*return*/];
+                }
+            });
         });
-    }); }, [authService, router]);
+    }, [authService, router]);
     var checkToChangePassword = function (username, password, tokenFCM, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
         var checks, result, error_6;
         var _a;

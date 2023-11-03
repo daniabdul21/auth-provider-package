@@ -461,7 +461,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     [authService, router]
   );
 
-  const logout = useCallback(async () => {
+  const logout = useCallback(async (path = "/landing-page?logout=true") => {
     try {
       await authService.logoutSSO("CBM");
     } catch (error) {
@@ -482,7 +482,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setMenus(() => []);
       setMenuData(() => []);
 
-      router.push("/landing-page?logout=true");
+      router.push(path);
     }
   }, [authService, router]);
 
