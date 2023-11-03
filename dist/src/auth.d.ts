@@ -25,7 +25,7 @@ interface AuthContextProps {
     guard: () => void;
     passwordLogin: (username: string, password: string, tokenFCM: string) => Promise<void>;
     ssoLogin: (userId: string, sessionId: string, dtTime: string, onError?: (errorMessage: string) => void) => Promise<void>;
-    logout: () => Promise<void>;
+    logout: (type?: string) => Promise<void>;
     canIApprove: (workflow: TransactionWorkflow.Root, status?: TaskStatus) => boolean;
     canIDelete: (product: string, status: TaskStatus) => boolean;
     canIEdit: (workflow: TransactionWorkflow.Root, product: string, status: TaskStatus) => boolean;

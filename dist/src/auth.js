@@ -112,7 +112,7 @@ var AUTH_INITIAL_VALUES = {
     ssoLogin: function (_, __, ___) {
         throw new Error("Function not implemented.");
     },
-    logout: function () {
+    logout: function (_) {
         throw new Error("Function not implemented.");
     },
     canIApprove: function (_workflow, _status) {
@@ -128,7 +128,7 @@ var AUTH_INITIAL_VALUES = {
     ssoQlolaLogin: function (_) {
         throw new Error("Function not implemented.");
     },
-    login: function (_, __, ___) {
+    login: function (_, __, ___, ____) {
         throw new Error("Function not implemented.");
     },
     forgotPassword: function (_payload) {

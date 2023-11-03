@@ -58,7 +58,7 @@ interface AuthContextProps {
     dtTime: string,
     onError?: (errorMessage: string) => void
   ) => Promise<void>;
-  logout: () => Promise<void>;
+  logout: (type?:string) => Promise<void>;
   canIApprove: (workflow: TransactionWorkflow.Root, status?:TaskStatus) => boolean;
   canIDelete: (product: string, status: TaskStatus) => boolean;
   canIEdit: (workflow: TransactionWorkflow.Root, product : string, status: TaskStatus) => boolean;
@@ -101,7 +101,7 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   ssoLogin: function (_: string, __: string, ___: string): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  logout: function (): Promise<void> {
+  logout: function (_:string): Promise<void> {
     throw new Error("Function not implemented.");
   },
   canIApprove: function (_workflow : TransactionWorkflow.Root, _status?:TaskStatus): boolean {
@@ -117,7 +117,7 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   ssoQlolaLogin: function (_: string): Promise<void> {
     throw new Error("Function not implemented.");
   },
-  login: function (_: string, __: string, ___: string): Promise<void> {
+  login: function (_: string, __: string, ___: string, ____:string): Promise<void> {
     throw new Error("Function not implemented.");
   },
   forgotPassword: function (_payload: ForgotPasswordType): Promise<void> {
