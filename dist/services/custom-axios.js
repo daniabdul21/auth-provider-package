@@ -92,15 +92,15 @@ exports.customAxios.interceptors.response.use(function (response) {
     var _a, _b, _c;
     var originalRequest = error.config;
     var pathname = window.location.pathname;
-    var isLanding = pathname === '/landing-page';
-    // handling error login from landing-page
-    if (error && isLanding) {
+    var isMain = pathname === '/main-page';
+    // handling error login from main-page
+    if (error && isMain) {
         return Promise.reject(__assign({}, error));
     }
     if (((_b = (_a = error === null || error === void 0 ? void 0 : error.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.message) === "Another Login Detected" || (error === null || error === void 0 ? void 0 : error.message) === "Another Login Detected") {
         localStorage.removeItem("access-token");
         localStorage.removeItem("refresh-token");
-        window.location.href = "/landing-page?logout=true";
+        window.location.href = "/main-page?logout=true";
         return;
     }
     if (((_c = error === null || error === void 0 ? void 0 : error.response) === null || _c === void 0 ? void 0 : _c.status) === 401 && !originalRequest._retry) {
@@ -120,7 +120,7 @@ exports.customAxios.interceptors.response.use(function (response) {
         isRefreshing = true;
         var refreshToken_1 = localStorage.getItem("refresh-token");
         if (!refreshToken_1) {
-            window.location.href = "/landing-page?logout=true";
+            window.location.href = "/main-page?logout=true";
         }
         return new Promise(function (resolve, reject) {
             exports.customAxios
@@ -132,7 +132,7 @@ exports.customAxios.interceptors.response.use(function (response) {
                     console.log("Refresh token nya gak dapet, malah string kosong");
                     localStorage.removeItem("access-token");
                     localStorage.removeItem("refresh-token");
-                    window.location.href = "/landing-page?logout=true";
+                    window.location.href = "/main-page?logout=true";
                     return;
                 }
                 var token = (_b = data === null || data === void 0 ? void 0 : data.data) === null || _b === void 0 ? void 0 : _b.accessToken;
@@ -165,7 +165,7 @@ exports.customAxios.interceptors.response.use(function (response) {
                 if (((_b = (_a = err === null || err === void 0 ? void 0 : err.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.code) === 404 && ((_d = (_c = err === null || err === void 0 ? void 0 : err.response) === null || _c === void 0 ? void 0 : _c.data) === null || _d === void 0 ? void 0 : _d.message) === "Not Found") {
                     localStorage.removeItem("access-token");
                     localStorage.removeItem("refresh-token");
-                    window.location.href = "/landing-page?logout=true";
+                    window.location.href = "/main-page?logout=true";
                     return;
                 }
                 processQueue(err, null);

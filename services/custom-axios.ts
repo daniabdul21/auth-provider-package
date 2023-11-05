@@ -50,10 +50,10 @@ customAxios.interceptors.response.use(
   function (error) {
     const originalRequest = error.config;
     const pathname = window.location.pathname;
-    const isLanding = pathname === '/landing-page';
+    const isMain = pathname === '/main-page';
 
-    // handling error login from landing-page
-    if (error && isLanding) {
+    // handling error login from main-page
+    if (error && isMain) {
       return Promise.reject({
         ...error,
       });
@@ -61,7 +61,7 @@ customAxios.interceptors.response.use(
     if (error?.response?.data?.message === "Another Login Detected" || error?.message === "Another Login Detected") {
       localStorage.removeItem("access-token");
       localStorage.removeItem("refresh-token");
-      window.location.href = "/landing-page?logout=true";
+      window.location.href = "/main-page?logout=true";
       return;
     }
 
@@ -85,7 +85,7 @@ customAxios.interceptors.response.use(
 
       const refreshToken = localStorage.getItem("refresh-token");
       if (!refreshToken) {
-        window.location.href = "/landing-page?logout=true";
+        window.location.href = "/main-page?logout=true";
       }
 
       return new Promise(function (resolve, reject) {
@@ -98,7 +98,7 @@ customAxios.interceptors.response.use(
               localStorage.removeItem("access-token");
               localStorage.removeItem("refresh-token");
 
-              window.location.href = "/landing-page?logout=true";
+              window.location.href = "/main-page?logout=true";
 
               return;
             }
@@ -139,7 +139,7 @@ customAxios.interceptors.response.use(
               localStorage.removeItem("access-token");
               localStorage.removeItem("refresh-token");
 
-              window.location.href = "/landing-page?logout=true";
+              window.location.href = "/main-page?logout=true";
 
               return;
             }
