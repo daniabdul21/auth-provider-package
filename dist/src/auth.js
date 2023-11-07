@@ -223,7 +223,7 @@ var AuthProvider = function (_a) {
                         localStorage.removeItem("access-token");
                         localStorage.removeItem("refresh-token");
                         setToken(function () { return null; });
-                        router.push("/landing-page?logout=true");
+                        router.push("/main-page?logout=true");
                         return [2 /*return*/];
                     }
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
@@ -276,7 +276,7 @@ var AuthProvider = function (_a) {
                     setIsAuthoritiesReady(true);
                     return [2 /*return*/];
                 case 6:
-                    router.push("/landing-page");
+                    router.push("/main-page");
                     return [2 /*return*/];
             }
         });
@@ -430,7 +430,7 @@ var AuthProvider = function (_a) {
         });
     }); }, [authService, router]);
     var logout = (0, react_1.useCallback)(function (path) {
-        if (path === void 0) { path = "/landing-page?logout=true"; }
+        if (path === void 0) { path = "/main-page?logout=true"; }
         return __awaiter(void 0, void 0, void 0, function () {
             var error_4, error_5;
             return __generator(this, function (_a) {
@@ -483,7 +483,7 @@ var AuthProvider = function (_a) {
                     checks = _b.sent();
                     result = checks === null || checks === void 0 ? void 0 : checks.data;
                     if ((_a = result === null || result === void 0 ? void 0 : result.data) === null || _a === void 0 ? void 0 : _a.IsRedirectToChangePassword) {
-                        router.replace("/landing-page/change-password?branch=".concat(branchCode));
+                        router.replace("/main-page/change-password?branch=".concat(branchCode));
                     }
                     else {
                         passwordLogin(username, password, tokenFCM);
@@ -518,7 +518,7 @@ var AuthProvider = function (_a) {
                     response = _b.sent();
                     if (payload.type !== "new-login") {
                         antd_1.message.success(response.data.message);
-                        router.replace("/landing-page");
+                        router.replace("/main-page");
                     }
                     return [2 /*return*/, response];
                 case 3:
@@ -550,7 +550,7 @@ var AuthProvider = function (_a) {
                         return [2 /*return*/, response];
                     }
                     antd_1.message.success(response.data.message);
-                    return [2 /*return*/, router.replace("/landing-page")];
+                    return [2 /*return*/, router.replace("/main-page")];
                 case 3:
                     error_8 = _b.sent();
                     if (payload.type === "new-login") {
@@ -614,14 +614,14 @@ var AuthProvider = function (_a) {
                     response = _a.sent();
                     isValid = response.data.isValid;
                     if (!isValid) {
-                        router.push('/landing-page');
+                        router.push('/main-page');
                         return [2 /*return*/];
                     }
                     return [2 /*return*/, response];
                 case 3:
                     error_9 = _a.sent();
                     antd_1.message.error(error_9.response.data.message);
-                    router.push('/landing-page');
+                    router.push('/main-page');
                     return [3 /*break*/, 5];
                 case 4:
                     setIsLoading(false);
@@ -648,7 +648,7 @@ var AuthProvider = function (_a) {
                     checksChangePassword = _b.sent();
                     resultChangePassword = checksChangePassword === null || checksChangePassword === void 0 ? void 0 : checksChangePassword.data;
                     if ((_a = resultChangePassword === null || resultChangePassword === void 0 ? void 0 : resultChangePassword.data) === null || _a === void 0 ? void 0 : _a.IsRedirectToChangePassword) {
-                        router.replace("/landing-page/change-password?branch=".concat(branchCode));
+                        router.replace("/main-page/change-password?branch=".concat(branchCode));
                     }
                     else {
                         setToken(function () { return response_4.data.data.accessToken; });
@@ -714,7 +714,7 @@ var AuthProvider = function (_a) {
                     localStorage.setItem("locale", "id");
                     if (data.isRedirectToChangePassword) {
                         token_1 = data.changePasswordToken;
-                        router.push("/landing-page/change-password?token=".concat(token_1));
+                        router.push("/main-page/change-password?token=".concat(token_1));
                         return [2 /*return*/];
                     }
                     if (type === "new-login") {

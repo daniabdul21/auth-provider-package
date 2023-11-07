@@ -216,7 +216,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
         setToken(() => null);
 
-        router.push("/landing-page?logout=true");
+        router.push("/main-page?logout=true");
 
         return;
       }
@@ -291,7 +291,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       return;
     }
 
-    router.push("/landing-page");
+    router.push("/main-page");
   }, [token, authService]);
 
   const canIApprove = (workflow: TransactionWorkflow.Root, status?: TaskStatus) => {
@@ -461,7 +461,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     [authService, router]
   );
 
-  const logout = useCallback(async (path = "/landing-page?logout=true") => {
+  const logout = useCallback(async (path = "/main-page?logout=true") => {
     try {
       await authService.logoutSSO("CBM");
     } catch (error) {
@@ -492,7 +492,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const checks = await authService.checkToChangePasswordLogin(username, password, branchCode);
       const result = checks?.data;
       if (result?.data?.IsRedirectToChangePassword) {
-        router.replace(`/landing-page/change-password?branch=${branchCode}`);
+        router.replace(`/main-page/change-password?branch=${branchCode}`);
       } else {
         passwordLogin(username, password, tokenFCM);
       }
@@ -512,7 +512,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         const response = await authService.requestChangePassword(payload);
         if(payload.type !== "new-login"){
           message.success(response.data.message)
-          router.replace(`/landing-page`)
+          router.replace(`/main-page`)
         }
         return response;
       } catch (error) {
@@ -533,7 +533,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         return response;
       }
       message.success(response.data.message)
-      return router.replace(`/landing-page`);
+      return router.replace(`/main-page`);
     } catch (error) {
       if(payload.type === "new-login"){
         return Promise.reject(error);
@@ -572,13 +572,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         const response = await authService.verifyChangePasswordToken(payload);
         const { isValid } = response.data;
         if (!isValid) {
-          router.push('/landing-page');
+          router.push('/main-page');
           return
         }
         return response;
       } catch (error: any) {
         message.error(error.response.data.message);
-        router.push('/landing-page');
+        router.push('/main-page');
       } finally {
         setIsLoading(false);
       }
@@ -594,7 +594,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       const resultChangePassword = checksChangePassword?.data;
 
       if (resultChangePassword?.data?.IsRedirectToChangePassword) {
-        router.replace(`/landing-page/change-password?branch=${branchCode}`);
+        router.replace(`/main-page/change-password?branch=${branchCode}`);
       } else {
         setToken(() => response.data.data.accessToken);
 
@@ -643,7 +643,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
 
       if (data.isRedirectToChangePassword) {
         const token = data.changePasswordToken;
-        router.push(`/landing-page/change-password?token=${token}`);
+        router.push(`/main-page/change-password?token=${token}`);
         return
       }
 
