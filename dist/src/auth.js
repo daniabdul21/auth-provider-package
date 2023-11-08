@@ -711,7 +711,6 @@ var AuthProvider = function (_a) {
                     document.cookie = "accessToken=;";
                     localStorage.setItem("access-token", response_6.data.data.accessToken);
                     localStorage.setItem("refresh-token", response_6.data.data.refreshToken);
-                    localStorage.setItem("locale", "id");
                     if (data.isRedirectToChangePassword) {
                         token_1 = data.changePasswordToken;
                         router.push("/main-page/change-password?token=".concat(token_1));

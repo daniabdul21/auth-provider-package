@@ -639,7 +639,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       document.cookie = `accessToken=;`;
       localStorage.setItem("access-token", response.data.data.accessToken);
       localStorage.setItem("refresh-token", response.data.data.refreshToken);
-      localStorage.setItem("locale", "id");
 
       if (data.isRedirectToChangePassword) {
         const token = data.changePasswordToken;
