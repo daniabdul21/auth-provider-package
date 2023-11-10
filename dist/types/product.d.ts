@@ -64,7 +64,12 @@ export declare enum ProductTypeEnum {
     BPDP_SAWIT = "BPDP Sawit",
     INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
     INCOMING_DOCUMENT = "Incoming Document",
-    REPORT_STATEMENT = "Report Statement"
+    REPORT_STATEMENT = "Report Statement",
+    BILLING_MANAGEMENT = "Billing Management",
+    SMART_BILLING_MANAGEMENT = "Smart Billing Management",
+    SMART_BILLING_HISTORY = "Smart Billing History",
+    LIST_DETAIL_BILLING_MANAGEMENT = "List Detail Billing Management",
+    REPORT_BILLING_MANAGEMENT = "Report Billing Management"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -129,7 +134,12 @@ export declare enum ProductIdByTypeEnum {
     MASS_TRANSFER_HISTORY = "251",
     INQUIRY_BILLING_DJBC = "255",
     INCOMING_DOCUMENT = "256",
-    REPORT_STATEMENT = "258"
+    REPORT_STATEMENT = "258",
+    BILLING_MANAGEMENT = "321",
+    SMART_BILLING_MANAGEMENT = "322",
+    SMART_BILLING_HISTORY = "323",
+    LIST_DETAIL_BILLING_MANAGEMENT = "324",
+    REPORT_BILLING_MANAGEMENT = "325"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -204,5 +214,10 @@ export declare enum ProductTypeNameEnum {
     BPDP_SAWIT = "BPDP Sawit",
     INQUIRY_BILLING_DJBC = "Inquiry Billing DJBC",
     INCOMING_DOCUMENT = "Incoming Document",
-    REPORT_STATEMENT = "Report Statement"
+    REPORT_STATEMENT = "Report Statement",
+    BILLING_MANAGEMENT = "Billing Management",
+    SMART_BILLING_MANAGEMENT = "Smart Billing Management",
+    SMART_BILLING_HISTORY = "Smart Billing History",
+    LIST_DETAIL_BILLING_MANAGEMENT = "List Detail Billing Management",
+    REPORT_BILLING_MANAGEMENT = "Report Billing Management"
 }

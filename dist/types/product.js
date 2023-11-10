@@ -69,6 +69,11 @@ var ProductTypeEnum;
     ProductTypeEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
     ProductTypeEnum["INCOMING_DOCUMENT"] = "Incoming Document";
     ProductTypeEnum["REPORT_STATEMENT"] = "Report Statement";
+    ProductTypeEnum["BILLING_MANAGEMENT"] = "Billing Management";
+    ProductTypeEnum["SMART_BILLING_MANAGEMENT"] = "Smart Billing Management";
+    ProductTypeEnum["SMART_BILLING_HISTORY"] = "Smart Billing History";
+    ProductTypeEnum["LIST_DETAIL_BILLING_MANAGEMENT"] = "List Detail Billing Management";
+    ProductTypeEnum["REPORT_BILLING_MANAGEMENT"] = "Report Billing Management";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -138,6 +143,11 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["INQUIRY_BILLING_DJBC"] = "255";
     ProductIdByTypeEnum["INCOMING_DOCUMENT"] = "256";
     ProductIdByTypeEnum["REPORT_STATEMENT"] = "258";
+    ProductIdByTypeEnum["BILLING_MANAGEMENT"] = "321";
+    ProductIdByTypeEnum["SMART_BILLING_MANAGEMENT"] = "322";
+    ProductIdByTypeEnum["SMART_BILLING_HISTORY"] = "323";
+    ProductIdByTypeEnum["LIST_DETAIL_BILLING_MANAGEMENT"] = "324";
+    ProductIdByTypeEnum["REPORT_BILLING_MANAGEMENT"] = "325";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -216,5 +226,10 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["INQUIRY_BILLING_DJBC"] = "Inquiry Billing DJBC";
     ProductTypeNameEnum["INCOMING_DOCUMENT"] = "Incoming Document";
     ProductTypeNameEnum["REPORT_STATEMENT"] = "Report Statement";
+    ProductTypeNameEnum["BILLING_MANAGEMENT"] = "Billing Management";
+    ProductTypeNameEnum["SMART_BILLING_MANAGEMENT"] = "Smart Billing Management";
+    ProductTypeNameEnum["SMART_BILLING_HISTORY"] = "Smart Billing History";
+    ProductTypeNameEnum["LIST_DETAIL_BILLING_MANAGEMENT"] = "List Detail Billing Management";
+    ProductTypeNameEnum["REPORT_BILLING_MANAGEMENT"] = "Report Billing Management";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
