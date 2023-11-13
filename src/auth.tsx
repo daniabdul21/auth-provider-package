@@ -73,6 +73,9 @@ interface AuthContextProps {
   checkToChangePassword: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
   passwordLoginWithCheck: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
   requestChangePassword: (payload: ChangePasswordType) => Promise<void>;
+  action : any;
+  onLeaveAction : any;
+  setOnLeaveAction : any;
 }
 
 const AUTH_INITIAL_VALUES: AuthContextProps = {
@@ -138,6 +141,9 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   canIEdit: function (_workflow: TransactionWorkflow.Root, _product:string, _status: TaskStatus): boolean {
     throw new Error("Function not implemented.");
   },
+  action : null,
+  onLeaveAction : null,
+  setOnLeaveAction : null
 };
 
 // export const getStaticProps:GetStaticProps<{}> = async () => {
@@ -179,6 +185,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const [productAuthorities, setProductAuthorities] = useState<ProductAuthoritiesType>(initialProductAuthorities);
   const [isAuthoritiesReady, setIsAuthoritiesReady] = useState(false);
   const [menuData, setMenuData] = useState<any>([]);
+  const [action, setAction] = useState<any>({});
+  const [onLeaveAction, setOnLeaveAction] = useState<any>({})
 
   const loggedIn = useMemo(() => !!token, [token]);
 
@@ -427,7 +435,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
     return setIsMinutes(FIFTEEN_MINUTES);
   };
 
-  const onAction = () => {
+  const onAction = (action:any) => {
+    setAction(action);
     return setIsMinutes(FIFTEEN_MINUTES);
   };
 
@@ -477,6 +486,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       localStorage.removeItem("refresh-token");
       document.cookie = "loggedIn=true; max-age=0";
       document.cookie = "accessToken=; max-age=0";
+      sessionStorage.clear();
 
       // setToken(() => null);
       setMenus(() => []);
@@ -708,7 +718,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
           passwordLoginWithCheck,
           requestChangePassword,
           canIDelete,
-          canIEdit
+          canIEdit,
+          action,
+          onLeaveAction,
+          setOnLeaveAction
         }}
       >
         {children}

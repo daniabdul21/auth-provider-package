@@ -149,6 +149,9 @@ var AUTH_INITIAL_VALUES = {
     canIEdit: function (_workflow, _product, _status) {
         throw new Error("Function not implemented.");
     },
+    action: null,
+    onLeaveAction: null,
+    setOnLeaveAction: null
 };
 // export const getStaticProps:GetStaticProps<{}> = async () => {
 //
@@ -182,6 +185,8 @@ var AuthProvider = function (_a) {
     var _s = (0, react_1.useState)(initialProductAuthorities), productAuthorities = _s[0], setProductAuthorities = _s[1];
     var _t = (0, react_1.useState)(false), isAuthoritiesReady = _t[0], setIsAuthoritiesReady = _t[1];
     var _u = (0, react_1.useState)([]), menuData = _u[0], setMenuData = _u[1];
+    var _v = (0, react_1.useState)({}), action = _v[0], setAction = _v[1];
+    var _w = (0, react_1.useState)({}), onLeaveAction = _w[0], setOnLeaveAction = _w[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
         var response_1, error_1, agent, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
@@ -397,7 +402,8 @@ var AuthProvider = function (_a) {
     var onActive = function () {
         return setIsMinutes(FIFTEEN_MINUTES);
     };
-    var onAction = function () {
+    var onAction = function (action) {
+        setAction(action);
         return setIsMinutes(FIFTEEN_MINUTES);
     };
     var ssoLogin = (0, react_1.useCallback)(function (userId, sessionId, dtTime, onError) { return __awaiter(void 0, void 0, void 0, function () {
@@ -458,6 +464,7 @@ var AuthProvider = function (_a) {
                         localStorage.removeItem("refresh-token");
                         document.cookie = "loggedIn=true; max-age=0";
                         document.cookie = "accessToken=; max-age=0";
+                        sessionStorage.clear();
                         // setToken(() => null);
                         setMenus(function () { return []; });
                         setMenuData(function () { return []; });
@@ -776,7 +783,10 @@ var AuthProvider = function (_a) {
                 passwordLoginWithCheck: passwordLoginWithCheck,
                 requestChangePassword: requestChangePassword,
                 canIDelete: canIDelete,
-                canIEdit: canIEdit
+                canIEdit: canIEdit,
+                action: action,
+                onLeaveAction: onLeaveAction,
+                setOnLeaveAction: setOnLeaveAction
             }, children: children }) }));
 };
 exports.AuthProvider = AuthProvider;

@@ -38,6 +38,9 @@ interface AuthContextProps {
     checkToChangePassword: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
     passwordLoginWithCheck: (username: string, password: string, tokenFCM: string, branchCode: string) => Promise<void>;
     requestChangePassword: (payload: ChangePasswordType) => Promise<void>;
+    action: any;
+    onLeaveAction: any;
+    setOnLeaveAction: any;
 }
 export interface AuthProviderProps {
     children?: React.ReactNode;
