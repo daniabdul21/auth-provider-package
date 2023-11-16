@@ -76,6 +76,7 @@ interface AuthContextProps {
   action : any;
   onLeaveAction : any;
   setOnLeaveAction : any;
+  countryCode:string;
 }
 
 const AUTH_INITIAL_VALUES: AuthContextProps = {
@@ -143,7 +144,8 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   },
   action : null,
   onLeaveAction : null,
-  setOnLeaveAction : null
+  setOnLeaveAction : null,
+  countryCode : ""
 };
 
 // export const getStaticProps:GetStaticProps<{}> = async () => {
@@ -186,7 +188,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const [isAuthoritiesReady, setIsAuthoritiesReady] = useState(false);
   const [menuData, setMenuData] = useState<any>([]);
   const [action, _setAction] = useState<any>({});
-  const [onLeaveAction, setOnLeaveAction] = useState<any>({})
+  const [onLeaveAction, setOnLeaveAction] = useState<any>({});
+  const [countryCode, setCountryCode] = useState<string>("");
 
   const loggedIn = useMemo(() => !!token, [token]);
 
@@ -237,6 +240,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setHoldingID(() => response.data?.holdingID);
       setUsername(() => response.data?.username || "Guest");
       setUserType(() => response.data?.userType || null);
+      setCountryCode(() => response.data.countryCode);
 
       const a = new Map<string, Array<string>>();
       const productRoles = response.data?.productRoles || [];
@@ -721,7 +725,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
           canIEdit,
           action,
           onLeaveAction,
-          setOnLeaveAction
+          setOnLeaveAction,
+          countryCode
         }}
       >
         {children}

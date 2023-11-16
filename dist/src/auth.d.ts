@@ -41,6 +41,7 @@ interface AuthContextProps {
     action: any;
     onLeaveAction: any;
     setOnLeaveAction: any;
+    countryCode: string;
 }
 export interface AuthProviderProps {
     children?: React.ReactNode;
