@@ -74,6 +74,9 @@ var ProductTypeEnum;
     ProductTypeEnum["SMART_BILLING_HISTORY"] = "Smart Billing History";
     ProductTypeEnum["LIST_DETAIL_BILLING_MANAGEMENT"] = "List Detail Billing Management";
     ProductTypeEnum["REPORT_BILLING_MANAGEMENT"] = "Report Billing Management";
+    ProductTypeEnum["GLOBAL_ACCOUNT_STATEMENT"] = "Global Account Statement";
+    ProductTypeEnum["GLOBAL_INTERNAL_FUND_TRANSFER"] = "Global Internal Fund Transfer";
+    ProductTypeEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund Transfer";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -148,6 +151,9 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["SMART_BILLING_HISTORY"] = "323";
     ProductIdByTypeEnum["LIST_DETAIL_BILLING_MANAGEMENT"] = "324";
     ProductIdByTypeEnum["REPORT_BILLING_MANAGEMENT"] = "325";
+    ProductIdByTypeEnum["GLOBAL_ACCOUNT_STATEMENT"] = "425";
+    ProductIdByTypeEnum["GLOBAL_INTERNAL_FUND_TRANSFER"] = "419";
+    ProductIdByTypeEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "420";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -231,5 +237,8 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["SMART_BILLING_HISTORY"] = "Smart Billing History";
     ProductTypeNameEnum["LIST_DETAIL_BILLING_MANAGEMENT"] = "List Detail Billing Management";
     ProductTypeNameEnum["REPORT_BILLING_MANAGEMENT"] = "Report Billing Management";
+    ProductTypeNameEnum["GLOBAL_ACCOUNT_STATEMENT"] = "Global Account Statement";
+    ProductTypeNameEnum["GLOBAL_INTERNAL_FUND_TRANSFER"] = "Global Internal Fund Transfer";
+    ProductTypeNameEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund\u00A0Transfer";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

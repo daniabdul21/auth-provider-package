@@ -69,7 +69,10 @@ export enum ProductTypeEnum {
     SMART_BILLING_MANAGEMENT = "Smart Billing Management",
     SMART_BILLING_HISTORY = "Smart Billing History",
     LIST_DETAIL_BILLING_MANAGEMENT= "List Detail Billing Management",
-    REPORT_BILLING_MANAGEMENT = "Report Billing Management"
+    REPORT_BILLING_MANAGEMENT = "Report Billing Management",
+    GLOBAL_ACCOUNT_STATEMENT = "Global Account Statement",
+    GLOBAL_INTERNAL_FUND_TRANSFER = "Global Internal Fund Transfer",
+    GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer"
 }
   
   // Product Id by Product Type
@@ -143,7 +146,10 @@ export enum ProductTypeEnum {
     SMART_BILLING_MANAGEMENT = "322",
     SMART_BILLING_HISTORY = "323",
     LIST_DETAIL_BILLING_MANAGEMENT= "324",
-    REPORT_BILLING_MANAGEMENT="325"
+    REPORT_BILLING_MANAGEMENT="325",
+    GLOBAL_ACCOUNT_STATEMENT = "425",
+    GLOBAL_INTERNAL_FUND_TRANSFER = "419",
+    GLOBAL_EXTERNAL_FUND_TRANSFER = "420"
   }
   
   //sementara
@@ -226,6 +232,9 @@ export enum ProductTypeEnum {
     SMART_BILLING_MANAGEMENT = "Smart Billing Management",
     SMART_BILLING_HISTORY = "Smart Billing History",
     LIST_DETAIL_BILLING_MANAGEMENT= "List Detail Billing Management",
-    REPORT_BILLING_MANAGEMENT = "Report Billing Management"
+    REPORT_BILLING_MANAGEMENT = "Report Billing Management",
+    GLOBAL_ACCOUNT_STATEMENT = "Global Account Statement",
+    GLOBAL_INTERNAL_FUND_TRANSFER = "Global Internal Fund Transfer",
+    GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer"
   }
   
