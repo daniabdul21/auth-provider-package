@@ -77,6 +77,8 @@ var ProductTypeEnum;
     ProductTypeEnum["GLOBAL_ACCOUNT_STATEMENT"] = "Global Account Statement";
     ProductTypeEnum["GLOBAL_INTERNAL_FUND_TRANSFER"] = "Global Internal Fund Transfer";
     ProductTypeEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund Transfer";
+    ProductTypeEnum["GLOBAL_TRANSACTION_ACTION"] = "Global Transaction Action";
+    ProductTypeEnum["GLOBAL_TRANSACTION_INQUIRY"] = "Global Transaction Inquiry";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -154,6 +156,8 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["GLOBAL_ACCOUNT_STATEMENT"] = "425";
     ProductIdByTypeEnum["GLOBAL_INTERNAL_FUND_TRANSFER"] = "419";
     ProductIdByTypeEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "420";
+    ProductIdByTypeEnum["GLOBAL_TRANSACTION_ACTION"] = "421";
+    ProductIdByTypeEnum["GLOBAL_TRANSACTION_INQUIRY"] = "422";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -239,6 +243,8 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["REPORT_BILLING_MANAGEMENT"] = "Report Billing Management";
     ProductTypeNameEnum["GLOBAL_ACCOUNT_STATEMENT"] = "Global Account Statement";
     ProductTypeNameEnum["GLOBAL_INTERNAL_FUND_TRANSFER"] = "Global Internal Fund Transfer";
-    ProductTypeNameEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund\u00A0Transfer";
+    ProductTypeNameEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund Transfer";
+    ProductTypeNameEnum["GLOBAL_TRANSACTION_ACTION"] = "Global Transaction Action";
+    ProductTypeNameEnum["GLOBAL_TRANSACTION_INQUIRY"] = "Global Transaction Inquiry";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

@@ -72,7 +72,9 @@ export declare enum ProductTypeEnum {
     REPORT_BILLING_MANAGEMENT = "Report Billing Management",
     GLOBAL_ACCOUNT_STATEMENT = "Global Account Statement",
     GLOBAL_INTERNAL_FUND_TRANSFER = "Global Internal Fund Transfer",
-    GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer"
+    GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
+    GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
+    GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -145,7 +147,9 @@ export declare enum ProductIdByTypeEnum {
     REPORT_BILLING_MANAGEMENT = "325",
     GLOBAL_ACCOUNT_STATEMENT = "425",
     GLOBAL_INTERNAL_FUND_TRANSFER = "419",
-    GLOBAL_EXTERNAL_FUND_TRANSFER = "420"
+    GLOBAL_EXTERNAL_FUND_TRANSFER = "420",
+    GLOBAL_TRANSACTION_ACTION = "421",
+    GLOBAL_TRANSACTION_INQUIRY = "422"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -228,5 +232,7 @@ export declare enum ProductTypeNameEnum {
     REPORT_BILLING_MANAGEMENT = "Report Billing Management",
     GLOBAL_ACCOUNT_STATEMENT = "Global Account Statement",
     GLOBAL_INTERNAL_FUND_TRANSFER = "Global Internal Fund Transfer",
-    GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund\u00A0Transfer"
+    GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
+    GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
+    GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry"
 }
