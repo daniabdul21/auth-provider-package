@@ -74,7 +74,8 @@ export declare enum ProductTypeEnum {
     GLOBAL_INTERNAL_FUND_TRANSFER = "Global Internal Fund Transfer",
     GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
     GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
-    GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry"
+    GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry",
+    CREDIT_CARD_UPLOAD = "Upload CC Payment"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -149,7 +150,8 @@ export declare enum ProductIdByTypeEnum {
     GLOBAL_INTERNAL_FUND_TRANSFER = "419",
     GLOBAL_EXTERNAL_FUND_TRANSFER = "420",
     GLOBAL_TRANSACTION_ACTION = "421",
-    GLOBAL_TRANSACTION_INQUIRY = "422"
+    GLOBAL_TRANSACTION_INQUIRY = "422",
+    CREDIT_CARD_UPLOAD = "424"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -234,5 +236,6 @@ export declare enum ProductTypeNameEnum {
     GLOBAL_INTERNAL_FUND_TRANSFER = "Global Internal Fund Transfer",
     GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
     GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
-    GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry"
+    GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry",
+    CREDIT_CARD_UPLOAD = "Upload CC Payment"
 }

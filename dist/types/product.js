@@ -79,6 +79,7 @@ var ProductTypeEnum;
     ProductTypeEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund Transfer";
     ProductTypeEnum["GLOBAL_TRANSACTION_ACTION"] = "Global Transaction Action";
     ProductTypeEnum["GLOBAL_TRANSACTION_INQUIRY"] = "Global Transaction Inquiry";
+    ProductTypeEnum["CREDIT_CARD_UPLOAD"] = "Upload CC Payment";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -158,6 +159,7 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "420";
     ProductIdByTypeEnum["GLOBAL_TRANSACTION_ACTION"] = "421";
     ProductIdByTypeEnum["GLOBAL_TRANSACTION_INQUIRY"] = "422";
+    ProductIdByTypeEnum["CREDIT_CARD_UPLOAD"] = "424";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -246,5 +248,6 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["GLOBAL_EXTERNAL_FUND_TRANSFER"] = "Global External Fund Transfer";
     ProductTypeNameEnum["GLOBAL_TRANSACTION_ACTION"] = "Global Transaction Action";
     ProductTypeNameEnum["GLOBAL_TRANSACTION_INQUIRY"] = "Global Transaction Inquiry";
+    ProductTypeNameEnum["CREDIT_CARD_UPLOAD"] = "Upload CC Payment";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
