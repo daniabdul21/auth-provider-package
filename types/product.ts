@@ -75,7 +75,7 @@ export enum ProductTypeEnum {
     GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
     GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
     GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry",
-    CREDIT_CARD_UPLOAD = "Upload CC Payment"
+    UPLOAD_CC_PAYMENT = "Upload CC Payment"
 }
   
   // Product Id by Product Type
@@ -155,7 +155,7 @@ export enum ProductTypeEnum {
     GLOBAL_EXTERNAL_FUND_TRANSFER = "420",
     GLOBAL_TRANSACTION_ACTION = "421",
     GLOBAL_TRANSACTION_INQUIRY = "422",
-    CREDIT_CARD_UPLOAD = "424"
+    UPLOAD_CC_PAYMENT = "424"
   }
   
   //sementara
@@ -244,6 +244,6 @@ export enum ProductTypeEnum {
     GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
     GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
     GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry",
-    CREDIT_CARD_UPLOAD = "Upload CC Payment"
+    UPLOAD_CC_PAYMENT = "Upload CC Payment"
   }
   
