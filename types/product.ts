@@ -75,7 +75,16 @@ export enum ProductTypeEnum {
     GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
     GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
     GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry",
-    UPLOAD_CC_PAYMENT = "Upload CC Payment"
+    UPLOAD_CC_PAYMENT = "Upload CC Payment",
+    UPLOAD_MANDATE = "Upload Mandate",
+    MAKER_CONFIRMATION = "Maker Confirmation",
+    DIRECT_DEBIT = "Direct Debit",
+    RECEIVABLE_ACTION = "Receivable Action",
+    UPLOAD_DIRECT_DEBIT = "Upload Direct Debit",
+    COUNTER_PARTY_VALIDATION = "Counter Party Validation",
+    MANDATE_MANAGEMENT = "Mandate Management",
+    RECEIVABLE_OVERVIEW = "Receivable Overview",
+    RECEIVABLE_REPORTS = "Receivable Reports"
 }
   
   // Product Id by Product Type
@@ -155,7 +164,16 @@ export enum ProductTypeEnum {
     GLOBAL_EXTERNAL_FUND_TRANSFER = "420",
     GLOBAL_TRANSACTION_ACTION = "421",
     GLOBAL_TRANSACTION_INQUIRY = "422",
-    UPLOAD_CC_PAYMENT = "424"
+    UPLOAD_CC_PAYMENT = "424",
+    UPLOAD_MANDATE = "257",
+    MAKER_CONFIRMATION = "280",
+    DIRECT_DEBIT = "315",
+    RECEIVABLE_ACTION = "318",
+    UPLOAD_DIRECT_DEBIT = "316",
+    COUNTER_PARTY_VALIDATION = "317",
+    MANDATE_MANAGEMENT = "314",
+    RECEIVABLE_OVERVIEW = "313",
+    RECEIVABLE_REPORTS = "428"
   }
   
   //sementara
@@ -244,6 +262,15 @@ export enum ProductTypeEnum {
     GLOBAL_EXTERNAL_FUND_TRANSFER = "Global External Fund Transfer",
     GLOBAL_TRANSACTION_ACTION = "Global Transaction Action",
     GLOBAL_TRANSACTION_INQUIRY = "Global Transaction Inquiry",
-    UPLOAD_CC_PAYMENT = "Upload CC Payment"
+    UPLOAD_CC_PAYMENT = "Upload CC Payment",
+    UPLOAD_MANDATE = "Upload Mandate",
+    MAKER_CONFIRMATION = "Maker Confirmation",
+    DIRECT_DEBIT = "Direct Debit",
+    RECEIVABLE_ACTION = "Receivable Action",
+    UPLOAD_DIRECT_DEBIT = "Upload Direct Debit",
+    COUNTER_PARTY_VALIDATION = "Counter Party Validation",
+    MANDATE_MANAGEMENT = "Mandate Management",
+    RECEIVABLE_OVERVIEW = "Receivable Overview",
+    RECEIVABLE_REPORTS = "Receivable Reports"
   }
   
