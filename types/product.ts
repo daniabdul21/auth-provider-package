@@ -84,7 +84,8 @@ export enum ProductTypeEnum {
     COUNTER_PARTY_VALIDATION = "Counter Party Validation",
     MANDATE_MANAGEMENT = "Mandate Management",
     RECEIVABLE_OVERVIEW = "Receivable Overview",
-    RECEIVABLE_REPORTS = "Receivable Reports"
+    RECEIVABLE_REPORTS = "Receivable Reports",
+    DO_PERTAMINA = "Do Pertamina"
 }
   
   // Product Id by Product Type
@@ -173,7 +174,8 @@ export enum ProductTypeEnum {
     COUNTER_PARTY_VALIDATION = "317",
     MANDATE_MANAGEMENT = "314",
     RECEIVABLE_OVERVIEW = "313",
-    RECEIVABLE_REPORTS = "428"
+    RECEIVABLE_REPORTS = "428",
+    DO_PERTAMINA = "430"
   }
   
   //sementara
@@ -271,6 +273,7 @@ export enum ProductTypeEnum {
     COUNTER_PARTY_VALIDATION = "Counter Party Validation",
     MANDATE_MANAGEMENT = "Mandate Management",
     RECEIVABLE_OVERVIEW = "Receivable Overview",
-    RECEIVABLE_REPORTS = "Receivable Reports"
+    RECEIVABLE_REPORTS = "Receivable Reports",
+    DO_PERTAMINA = "Do Pertamina"
   }
   
