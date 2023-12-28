@@ -84,7 +84,8 @@ export declare enum ProductTypeEnum {
     COUNTER_PARTY_VALIDATION = "Counter Party Validation",
     MANDATE_MANAGEMENT = "Mandate Management",
     RECEIVABLE_OVERVIEW = "Receivable Overview",
-    RECEIVABLE_REPORTS = "Receivable Reports"
+    RECEIVABLE_REPORTS = "Receivable Reports",
+    DO_PERTAMINA = "Do Pertamina"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -169,7 +170,8 @@ export declare enum ProductIdByTypeEnum {
     COUNTER_PARTY_VALIDATION = "317",
     MANDATE_MANAGEMENT = "314",
     RECEIVABLE_OVERVIEW = "313",
-    RECEIVABLE_REPORTS = "428"
+    RECEIVABLE_REPORTS = "428",
+    DO_PERTAMINA = "430"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -264,5 +266,6 @@ export declare enum ProductTypeNameEnum {
     COUNTER_PARTY_VALIDATION = "Counter Party Validation",
     MANDATE_MANAGEMENT = "Mandate Management",
     RECEIVABLE_OVERVIEW = "Receivable Overview",
-    RECEIVABLE_REPORTS = "Receivable Reports"
+    RECEIVABLE_REPORTS = "Receivable Reports",
+    DO_PERTAMINA = "Do Pertamina"
 }
