@@ -277,7 +277,7 @@ var AuthProvider = function (_a) {
                         menuDataMultipayment = (0, lodash_1.filter)(newMenuData, function (item) { return item.parentID === menuDataMultipaymentCreate_1.menuID; });
                         multipaymentProducts = (0, lodash_1.map)(menuDataMultipayment, 'name');
                         (0, lodash_1.map)(multipaymentProducts, function (item) {
-                            privilegesRecords_1['MULTIPAYMENT'] = (0, lodash_1.mergeWith)(privilegesRecords_1['MULTIPAYMENT'], privilegesRecords_1[(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item))]);
+                            privilegesRecords_1['MULTIPAYMENT'] = (0, lodash_1.mergeWith)(privilegesRecords_1['MULTIPAYMENT'], privilegesRecords_1[(0, lodash_1.toUpper)((0, lodash_1.snakeCase)(item))], function (objValue, srcValue) { return objValue || srcValue; });
                         });
                     }
                     setProductAuthorities(privilegesRecords_1);

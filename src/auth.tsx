@@ -292,7 +292,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         map(multipaymentProducts, item => {
           privilegesRecords['MULTIPAYMENT'] = mergeWith(
             privilegesRecords['MULTIPAYMENT'],
-            privilegesRecords[toUpper(snakeCase(item))]
+            privilegesRecords[toUpper(snakeCase(item))],
+  (objValue, srcValue) => objValue || srcValue
           )
         })
       }
