@@ -90,6 +90,7 @@ var ProductTypeEnum;
     ProductTypeEnum["RECEIVABLE_OVERVIEW"] = "Receivable Overview";
     ProductTypeEnum["RECEIVABLE_REPORTS"] = "Receivable Reports";
     ProductTypeEnum["DO_PERTAMINA"] = "Do Pertamina";
+    ProductTypeEnum["NOTIONAL_POOLING"] = "National Pooling";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -180,6 +181,7 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["RECEIVABLE_OVERVIEW"] = "313";
     ProductIdByTypeEnum["RECEIVABLE_REPORTS"] = "428";
     ProductIdByTypeEnum["DO_PERTAMINA"] = "430";
+    ProductIdByTypeEnum["NOTIONAL_POOLING"] = "526";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -279,5 +281,6 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["RECEIVABLE_OVERVIEW"] = "Receivable Overview";
     ProductTypeNameEnum["RECEIVABLE_REPORTS"] = "Receivable Reports";
     ProductTypeNameEnum["DO_PERTAMINA"] = "Do Pertamina";
+    ProductTypeNameEnum["NOTIONAL_POOLING"] = "National Pooling";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map
