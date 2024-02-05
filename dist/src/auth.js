@@ -149,6 +149,12 @@ var AUTH_INITIAL_VALUES = {
     canIEdit: function (_workflow, _product, _status) {
         throw new Error("Function not implemented.");
     },
+    setIsLoading: function (_payload) {
+        throw new Error("Function not implemented.");
+    },
+    setToken: function (_payload) {
+        throw new Error("Function not implemented.");
+    },
     action: null,
     onLeaveAction: null,
     setOnLeaveAction: null,
@@ -468,7 +474,7 @@ var AuthProvider = function (_a) {
                         document.cookie = "loggedIn=true; max-age=0";
                         document.cookie = "accessToken=; max-age=0";
                         sessionStorage.clear();
-                        // setToken(() => null);
+                        setToken(function () { return null; });
                         setMenus(function () { return []; });
                         setMenuData(function () { return []; });
                         router.push(path);
@@ -790,7 +796,9 @@ var AuthProvider = function (_a) {
                 action: action,
                 onLeaveAction: onLeaveAction,
                 setOnLeaveAction: setOnLeaveAction,
-                countryCode: countryCode
+                countryCode: countryCode,
+                setIsLoading: setIsLoading,
+                setToken: setToken
             }, children: children }) }));
 };
 exports.AuthProvider = AuthProvider;

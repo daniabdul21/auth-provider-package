@@ -42,6 +42,8 @@ interface AuthContextProps {
     onLeaveAction: any;
     setOnLeaveAction: any;
     countryCode: string;
+    setToken: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void;
+    setIsLoading: (value: (((prevState: boolean) => boolean) | boolean)) => void;
 }
 export interface AuthProviderProps {
     children?: React.ReactNode;

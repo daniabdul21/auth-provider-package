@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, SetStateAction } from "react";
 
 import { useRouter } from "next/router";
 import {AuthService} from "../services";
@@ -77,6 +77,8 @@ interface AuthContextProps {
   onLeaveAction : any;
   setOnLeaveAction : any;
   countryCode:string;
+  setToken: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void;
+  setIsLoading:  (value: (((prevState: boolean) => boolean) | boolean)) => void
 }
 
 const AUTH_INITIAL_VALUES: AuthContextProps = {
@@ -140,6 +142,12 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
     throw new Error("Function not implemented.");
   },
   canIEdit: function (_workflow: TransactionWorkflow.Root, _product:string, _status: TaskStatus): boolean {
+    throw new Error("Function not implemented.");
+  },
+  setIsLoading: function (_payload: SetStateAction<boolean>): Promise<void> {
+    throw new Error("Function not implemented.");
+  },
+  setToken: function (_payload: SetStateAction<string | null>): Promise<void> {
     throw new Error("Function not implemented.");
   },
   action : null,
@@ -493,7 +501,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       document.cookie = "accessToken=; max-age=0";
       sessionStorage.clear();
 
-      // setToken(() => null);
+      setToken(() => null);
       setMenus(() => []);
       setMenuData(() => []);
 
@@ -727,7 +735,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
           action,
           onLeaveAction,
           setOnLeaveAction,
-          countryCode
+          countryCode,
+          setIsLoading,
+          setToken
         }}
       >
         {children}
