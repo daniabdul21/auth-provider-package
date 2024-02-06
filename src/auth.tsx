@@ -78,7 +78,8 @@ interface AuthContextProps {
   setOnLeaveAction : any;
   countryCode:string;
   setToken: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void;
-  setIsLoading:  (value: (((prevState: boolean) => boolean) | boolean)) => void
+  setIsLoading:  (value: (((prevState: boolean) => boolean) | boolean)) => void;
+  companyCode : string;
 }
 
 const AUTH_INITIAL_VALUES: AuthContextProps = {
@@ -153,7 +154,8 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   action : null,
   onLeaveAction : null,
   setOnLeaveAction : null,
-  countryCode : ""
+  countryCode : "",
+  companyCode : ""
 };
 
 // export const getStaticProps:GetStaticProps<{}> = async () => {
@@ -198,6 +200,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const [action, _setAction] = useState<any>({});
   const [onLeaveAction, setOnLeaveAction] = useState<any>({});
   const [countryCode, setCountryCode] = useState<string>("");
+  const [companyCode, setCompanyCode] = useState<string>("");
 
   const loggedIn = useMemo(() => !!token, [token]);
 
@@ -249,6 +252,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setUsername(() => response.data?.username || "Guest");
       setUserType(() => response.data?.userType || null);
       setCountryCode(() => response.data.countryCode);
+      setCompanyCode(() => response?.data?.companyCode || "")
 
       const a = new Map<string, Array<string>>();
       const productRoles = response.data?.productRoles || [];
@@ -737,7 +741,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
           setOnLeaveAction,
           countryCode,
           setIsLoading,
-          setToken
+          setToken,
+          companyCode
         }}
       >
         {children}
