@@ -89,7 +89,7 @@ var ProductTypeEnum;
     ProductTypeEnum["MANDATE_MANAGEMENT"] = "Mandate Management";
     ProductTypeEnum["RECEIVABLE_OVERVIEW"] = "Receivable Overview";
     ProductTypeEnum["RECEIVABLE_REPORTS"] = "Receivable Reports";
-    ProductTypeEnum["DO_PERTAMINA"] = "Do Pertamina";
+    ProductTypeEnum["DO_PERTAMINA"] = "DO Pertamina";
     ProductTypeEnum["NOTIONAL_POOLING"] = "National Pooling";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
@@ -280,7 +280,7 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["MANDATE_MANAGEMENT"] = "Mandate Management";
     ProductTypeNameEnum["RECEIVABLE_OVERVIEW"] = "Receivable Overview";
     ProductTypeNameEnum["RECEIVABLE_REPORTS"] = "Receivable Reports";
-    ProductTypeNameEnum["DO_PERTAMINA"] = "Do Pertamina";
+    ProductTypeNameEnum["DO_PERTAMINA"] = "DO Pertamina";
     ProductTypeNameEnum["NOTIONAL_POOLING"] = "National Pooling";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

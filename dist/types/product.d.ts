@@ -85,7 +85,7 @@ export declare enum ProductTypeEnum {
     MANDATE_MANAGEMENT = "Mandate Management",
     RECEIVABLE_OVERVIEW = "Receivable Overview",
     RECEIVABLE_REPORTS = "Receivable Reports",
-    DO_PERTAMINA = "Do Pertamina",
+    DO_PERTAMINA = "DO Pertamina",
     NOTIONAL_POOLING = "National Pooling"
 }
 export declare enum ProductIdByTypeEnum {
@@ -269,6 +269,6 @@ export declare enum ProductTypeNameEnum {
     MANDATE_MANAGEMENT = "Mandate Management",
     RECEIVABLE_OVERVIEW = "Receivable Overview",
     RECEIVABLE_REPORTS = "Receivable Reports",
-    DO_PERTAMINA = "Do Pertamina",
+    DO_PERTAMINA = "DO Pertamina",
     NOTIONAL_POOLING = "National Pooling"
 }
