@@ -80,6 +80,7 @@ interface AuthContextProps {
   setToken: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void;
   setIsLoading:  (value: (((prevState: boolean) => boolean) | boolean)) => void;
   companyCode : string;
+  region : string;
 }
 
 const AUTH_INITIAL_VALUES: AuthContextProps = {
@@ -155,7 +156,8 @@ const AUTH_INITIAL_VALUES: AuthContextProps = {
   onLeaveAction : null,
   setOnLeaveAction : null,
   countryCode : "",
-  companyCode : ""
+  companyCode : "",
+  region : ""
 };
 
 // export const getStaticProps:GetStaticProps<{}> = async () => {
@@ -201,6 +203,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
   const [onLeaveAction, setOnLeaveAction] = useState<any>({});
   const [countryCode, setCountryCode] = useState<string>("");
   const [companyCode, setCompanyCode] = useState<string>("");
+  const [region, setRegion] = useState<string>("");
 
   const loggedIn = useMemo(() => !!token, [token]);
 
@@ -252,7 +255,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
       setUsername(() => response.data?.username || "Guest");
       setUserType(() => response.data?.userType || null);
       setCountryCode(() => response.data.countryCode);
-      setCompanyCode(() => response?.data?.companyCode || "")
+      setCompanyCode(() => response?.data?.companyCode || "");
+      setRegion(() => response.data.region || "");
 
       const a = new Map<string, Array<string>>();
       const productRoles = response.data?.productRoles || [];
@@ -742,7 +746,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
           countryCode,
           setIsLoading,
           setToken,
-          companyCode
+          companyCode,
+          region
         }}
       >
         {children}

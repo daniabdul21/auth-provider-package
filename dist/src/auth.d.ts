@@ -45,6 +45,7 @@ interface AuthContextProps {
     setToken: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void;
     setIsLoading: (value: (((prevState: boolean) => boolean) | boolean)) => void;
     companyCode: string;
+    region: string;
 }
 export interface AuthProviderProps {
     children?: React.ReactNode;

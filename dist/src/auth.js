@@ -159,7 +159,8 @@ var AUTH_INITIAL_VALUES = {
     onLeaveAction: null,
     setOnLeaveAction: null,
     countryCode: "",
-    companyCode: ""
+    companyCode: "",
+    region: ""
 };
 // export const getStaticProps:GetStaticProps<{}> = async () => {
 //
@@ -197,6 +198,7 @@ var AuthProvider = function (_a) {
     var _w = (0, react_1.useState)({}), onLeaveAction = _w[0], setOnLeaveAction = _w[1];
     var _x = (0, react_1.useState)(""), countryCode = _x[0], setCountryCode = _x[1];
     var _y = (0, react_1.useState)(""), companyCode = _y[0], setCompanyCode = _y[1];
+    var _z = (0, react_1.useState)(""), region = _z[0], setRegion = _z[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
         var response_1, error_1, agent, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
@@ -251,6 +253,7 @@ var AuthProvider = function (_a) {
                     setUserType(function () { var _a; return ((_a = response_1.data) === null || _a === void 0 ? void 0 : _a.userType) || null; });
                     setCountryCode(function () { return response_1.data.countryCode; });
                     setCompanyCode(function () { var _a; return ((_a = response_1 === null || response_1 === void 0 ? void 0 : response_1.data) === null || _a === void 0 ? void 0 : _a.companyCode) || ""; });
+                    setRegion(function () { return response_1.data.region || ""; });
                     a_1 = new Map();
                     productRoles = ((_d = response_1.data) === null || _d === void 0 ? void 0 : _d.productRoles) || [];
                     productRoles.forEach(function (r) {
@@ -802,7 +805,8 @@ var AuthProvider = function (_a) {
                 countryCode: countryCode,
                 setIsLoading: setIsLoading,
                 setToken: setToken,
-                companyCode: companyCode
+                companyCode: companyCode,
+                region: region
             }, children: children }) }));
 };
 exports.AuthProvider = AuthProvider;
