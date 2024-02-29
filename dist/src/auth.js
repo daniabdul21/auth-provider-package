@@ -201,22 +201,22 @@ var AuthProvider = function (_a) {
     var _z = (0, react_1.useState)(""), region = _z[0], setRegion = _z[1];
     var loggedIn = (0, react_1.useMemo)(function () { return !!token; }, [token]);
     var guard = (0, react_1.useCallback)(function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response_1, error_1, agent, menu, newMenuData, newMenus, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
-        var _a, _b, _c, _d;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var response_1, error_1, agent, menu, newMenuData, newMenus, refreshToken, refresh, newToken, newRefreshToken, a_1, productRoles, privilegesRecords_1, productTypeEnumValuesFromProductRoles, productTypeEnumValuesFromHardcode, remainingProductTypeEnum, productTypeEnumKeyFromHardcode, productTypeEnumKeyFromProductRoles, allProductTypeEnum, menuDataMultipaymentCreate_1, menuDataMultipayment, multipaymentProducts;
+        var _a, _b, _c, _d, _e, _f, _g, _h;
+        return __generator(this, function (_j) {
+            switch (_j.label) {
                 case 0:
-                    if (!token) return [3 /*break*/, 6];
+                    if (!token) return [3 /*break*/, 9];
                     setIsAuthoritiesReady(false);
-                    _e.label = 1;
+                    _j.label = 1;
                 case 1:
-                    _e.trys.push([1, 3, , 4]);
+                    _j.trys.push([1, 3, , 4]);
                     return [4 /*yield*/, authService.validateToken()];
                 case 2:
-                    response_1 = _e.sent();
+                    response_1 = _j.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    error_1 = _e.sent();
+                    error_1 = _j.sent();
                     agent = typeof window !== "undefined" && localStorage.getItem("agent");
                     if (agent === "qlola" && ![200].includes(((_b = (_a = error_1 === null || error_1 === void 0 ? void 0 : error_1.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.code) || ((_c = error_1 === null || error_1 === void 0 ? void 0 : error_1.response) === null || _c === void 0 ? void 0 : _c.status))) {
                         localStorage.removeItem("access-token");
@@ -229,20 +229,32 @@ var AuthProvider = function (_a) {
                     return [3 /*break*/, 4];
                 case 4: return [4 /*yield*/, authService.validateMenu(token)];
                 case 5:
-                    menu = _e.sent();
+                    menu = _j.sent();
                     if (menu.data.code !== 200 || !menu)
                         setAlertMenuError(true);
                     newMenuData = (0, lodash_1.get)(menu, 'data.data', []);
                     newMenus = newMenuData.filter(function (item) { return item.productName !== ""; }).map(function (item) { return item.productName; });
                     setMenus(newMenus);
                     setMenuData(newMenuData);
-                    if (response_1.status !== 200) {
-                        localStorage.removeItem("access-token");
-                        localStorage.removeItem("refresh-token");
-                        setToken(function () { return null; });
-                        router.push("/main-page?logout=true");
-                        return [2 /*return*/];
-                    }
+                    if (!(response_1.status !== 200)) return [3 /*break*/, 6];
+                    localStorage.removeItem("access-token");
+                    localStorage.removeItem("refresh-token");
+                    setToken(function () { return null; });
+                    router.push("/main-page?logout=true");
+                    return [2 /*return*/];
+                case 6:
+                    if (!(typeof window !== "undefined")) return [3 /*break*/, 8];
+                    refreshToken = localStorage.getItem("refresh-token");
+                    if (!refreshToken) return [3 /*break*/, 8];
+                    return [4 /*yield*/, authService.refreshToken(refreshToken)];
+                case 7:
+                    refresh = _j.sent();
+                    newToken = (_e = (_d = refresh === null || refresh === void 0 ? void 0 : refresh.data) === null || _d === void 0 ? void 0 : _d.data) === null || _e === void 0 ? void 0 : _e.accessToken;
+                    newRefreshToken = (_g = (_f = refresh === null || refresh === void 0 ? void 0 : refresh.data) === null || _f === void 0 ? void 0 : _f.data) === null || _g === void 0 ? void 0 : _g.refreshToken;
+                    localStorage.setItem("access-token", newToken);
+                    localStorage.setItem("refresh-token", newRefreshToken);
+                    _j.label = 8;
+                case 8:
                     setRoleID(function () { return response_1.data.roleIDs[0]; });
                     setRoleIDs(function () { return response_1.data.roleIDs; });
                     setCompanyID(function () { var _a; return (_a = response_1.data) === null || _a === void 0 ? void 0 : _a.companyID; });
@@ -255,7 +267,7 @@ var AuthProvider = function (_a) {
                     setCompanyCode(function () { var _a; return ((_a = response_1 === null || response_1 === void 0 ? void 0 : response_1.data) === null || _a === void 0 ? void 0 : _a.companyCode) || ""; });
                     setRegion(function () { return response_1.data.region || ""; });
                     a_1 = new Map();
-                    productRoles = ((_d = response_1.data) === null || _d === void 0 ? void 0 : _d.productRoles) || [];
+                    productRoles = ((_h = response_1.data) === null || _h === void 0 ? void 0 : _h.productRoles) || [];
                     productRoles.forEach(function (r) {
                         a_1.set(r.productName, r.authorities);
                     });
@@ -295,7 +307,7 @@ var AuthProvider = function (_a) {
                     setProductAuthorities(privilegesRecords_1);
                     setIsAuthoritiesReady(true);
                     return [2 /*return*/];
-                case 6:
+                case 9:
                     router.push("/main-page");
                     return [2 /*return*/];
             }

@@ -18,5 +18,6 @@ declare const AuthService: () => {
     verifyChangePasswordToken: ({ ...payload }: {
         [x: string]: any;
     }) => Promise<import("axios").AxiosResponse<any, any>>;
+    refreshToken: (refreshToken: string) => Promise<import("axios").AxiosResponse<any, any>>;
 };
 export default AuthService;

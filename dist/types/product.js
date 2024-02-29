@@ -91,6 +91,7 @@ var ProductTypeEnum;
     ProductTypeEnum["RECEIVABLE_REPORTS"] = "Receivable Reports";
     ProductTypeEnum["DO_PERTAMINA"] = "DO Pertamina";
     ProductTypeEnum["NOTIONAL_POOLING"] = "National Pooling";
+    ProductTypeEnum["DO_PUPUK_INDONESIA"] = "DO Pupuk Indonesia";
 })(ProductTypeEnum || (exports.ProductTypeEnum = ProductTypeEnum = {}));
 // Product Id by Product Type
 var ProductIdByTypeEnum;
@@ -182,6 +183,7 @@ var ProductIdByTypeEnum;
     ProductIdByTypeEnum["RECEIVABLE_REPORTS"] = "428";
     ProductIdByTypeEnum["DO_PERTAMINA"] = "430";
     ProductIdByTypeEnum["NOTIONAL_POOLING"] = "526";
+    ProductIdByTypeEnum["DO_PUPUK_INDONESIA"] = "452";
 })(ProductIdByTypeEnum || (exports.ProductIdByTypeEnum = ProductIdByTypeEnum = {}));
 //sementara
 var ProductTypeEnumUpperCase;
@@ -282,5 +284,6 @@ var ProductTypeNameEnum;
     ProductTypeNameEnum["RECEIVABLE_REPORTS"] = "Receivable Reports";
     ProductTypeNameEnum["DO_PERTAMINA"] = "DO Pertamina";
     ProductTypeNameEnum["NOTIONAL_POOLING"] = "National Pooling";
+    ProductTypeNameEnum["DO_PUPUK_INDONESIA"] = "DO Pupuk Indonesia";
 })(ProductTypeNameEnum || (exports.ProductTypeNameEnum = ProductTypeNameEnum = {}));
 //# sourceMappingURL=product.js.map

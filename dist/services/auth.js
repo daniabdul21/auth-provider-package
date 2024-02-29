@@ -84,6 +84,24 @@ var AuthService = function () {
             return Promise.reject(error);
         });
     };
+    var refreshToken = function (refreshToken) { return __awaiter(void 0, void 0, void 0, function () {
+        var response, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 4]);
+                    return [4 /*yield*/, custom_axios_1.default.post("/auth/refresh", { refreshToken: refreshToken })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response];
+                case 2:
+                    error_1 = _a.sent();
+                    return [4 /*yield*/, Promise.reject(error_1)];
+                case 3: return [2 /*return*/, _a.sent()];
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
     var validateMenu = function (token) {
         return custom_axios_1.default
             .post("/menu/me", { token: token })
@@ -98,7 +116,7 @@ var AuthService = function () {
         });
     };
     var checkToChangePasswordLogin = function (username, password, branchCode) { return __awaiter(void 0, void 0, void 0, function () {
-        var response, error_1;
+        var response, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -115,8 +133,8 @@ var AuthService = function () {
                     }
                     return [2 /*return*/, response];
                 case 2:
-                    error_1 = _a.sent();
-                    return [2 /*return*/, Promise.reject(error_1)];
+                    error_2 = _a.sent();
+                    return [2 /*return*/, Promise.reject(error_2)];
                 case 3: return [2 /*return*/];
             }
         });
@@ -125,7 +143,7 @@ var AuthService = function () {
         console.log("Hallo ajah");
     };
     var requestChangePassword = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var prepareData, response, error_2;
+        var prepareData, response, error_3;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -149,14 +167,14 @@ var AuthService = function () {
                     }
                     return [2 /*return*/, response];
                 case 2:
-                    error_2 = _b.sent();
-                    return [2 /*return*/, Promise.reject(error_2)];
+                    error_3 = _b.sent();
+                    return [2 /*return*/, Promise.reject(error_3)];
                 case 3: return [2 /*return*/];
             }
         });
     }); };
     var forgotPassword = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var prepareData, response, error_3;
+        var prepareData, response, error_4;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -171,14 +189,14 @@ var AuthService = function () {
                     }
                     return [2 /*return*/, response];
                 case 2:
-                    error_3 = _b.sent();
-                    return [2 /*return*/, Promise.reject(error_3)];
+                    error_4 = _b.sent();
+                    return [2 /*return*/, Promise.reject(error_4)];
                 case 3: return [2 /*return*/];
             }
         });
     }); };
     var verifyUserQuestion = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var prepareData, response, error_4;
+        var prepareData, response, error_5;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -190,14 +208,14 @@ var AuthService = function () {
                     response = _b.sent();
                     return [2 /*return*/, response];
                 case 2:
-                    error_4 = _b.sent();
-                    return [2 /*return*/, Promise.reject(error_4)];
+                    error_5 = _b.sent();
+                    return [2 /*return*/, Promise.reject(error_5)];
                 case 3: return [2 /*return*/];
             }
         });
     }); };
     var verifyChangePasswordToken = function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var prepareData, response, error_5;
+        var prepareData, response, error_6;
         var payload = __rest(_a, []);
         return __generator(this, function (_b) {
             switch (_b.label) {
@@ -209,8 +227,8 @@ var AuthService = function () {
                     response = _b.sent();
                     return [2 /*return*/, response];
                 case 2:
-                    error_5 = _b.sent();
-                    return [2 /*return*/, Promise.reject(error_5)];
+                    error_6 = _b.sent();
+                    return [2 /*return*/, Promise.reject(error_6)];
                 case 3: return [2 /*return*/];
             }
         });
@@ -336,6 +354,7 @@ var AuthService = function () {
         forgotPassword: forgotPassword,
         verifyUserQuestion: verifyUserQuestion,
         verifyChangePasswordToken: verifyChangePasswordToken,
+        refreshToken: refreshToken
     };
 };
 exports.default = AuthService;

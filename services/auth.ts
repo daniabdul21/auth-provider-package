@@ -26,6 +26,15 @@ const AuthService = () => {
     })
   };
 
+  const refreshToken = async (refreshToken: string) => {
+    try {
+      const response = await customAxios.post("/auth/refresh", {refreshToken})
+      return response;
+    } catch (error) {
+      return await Promise.reject(error);
+    }
+  }
+
   const validateMenu = (token: string) => {
     return customAxios
       .post(`/menu/me`, { token })
@@ -213,6 +222,7 @@ const AuthService = () => {
     forgotPassword,
     verifyUserQuestion,
     verifyChangePasswordToken,
+    refreshToken
   };
 };
 

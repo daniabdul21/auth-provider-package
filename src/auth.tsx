@@ -244,7 +244,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children, apiUrl }) 
         router.push("/main-page?logout=true");
 
         return;
+      }else if (typeof window !== "undefined") {
+        const refreshToken = localStorage.getItem("refresh-token");
+        if (refreshToken) {
+          const refresh = await authService.refreshToken(refreshToken);
+
+          const newToken = refresh?.data?.data?.accessToken;
+          const newRefreshToken = refresh?.data?.data?.refreshToken;
+
+          localStorage.setItem("access-token", newToken);
+          localStorage.setItem("refresh-token", newRefreshToken);
+        }
       }
+
 
       setRoleID(() => response.data.roleIDs[0]);
       setRoleIDs(() => response.data.roleIDs);
