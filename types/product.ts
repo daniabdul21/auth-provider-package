@@ -87,7 +87,8 @@ export enum ProductTypeEnum {
     RECEIVABLE_REPORTS = "Receivable Reports",
     DO_PERTAMINA = "DO Pertamina",
     NOTIONAL_POOLING = "National Pooling",
-    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia"
+    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia",
+    NOTIONAL_POOLING_CLIENT = "National Pooling:Client",
 }
   
   // Product Id by Product Type
@@ -179,7 +180,8 @@ export enum ProductTypeEnum {
     RECEIVABLE_REPORTS = "428",
     DO_PERTAMINA = "430",
     NOTIONAL_POOLING = "526",
-    DO_PUPUK_INDONESIA = "452"
+    DO_PUPUK_INDONESIA = "452",
+    NOTIONAL_POOLING_CLIENT = "531"
   }
 
   //sementara
@@ -280,6 +282,7 @@ export enum ProductTypeEnum {
     RECEIVABLE_REPORTS = "Receivable Reports",
     DO_PERTAMINA = "DO Pertamina",
     NOTIONAL_POOLING = "National Pooling",
-    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia"
+    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia",
+    NOTIONAL_POOLING_CLIENT = "National Pooling:Client",
   }
   

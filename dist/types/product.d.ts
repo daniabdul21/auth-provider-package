@@ -87,7 +87,8 @@ export declare enum ProductTypeEnum {
     RECEIVABLE_REPORTS = "Receivable Reports",
     DO_PERTAMINA = "DO Pertamina",
     NOTIONAL_POOLING = "National Pooling",
-    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia"
+    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia",
+    NOTIONAL_POOLING_CLIENT = "National Pooling:Client"
 }
 export declare enum ProductIdByTypeEnum {
     ACCOUNT = "4",
@@ -175,7 +176,8 @@ export declare enum ProductIdByTypeEnum {
     RECEIVABLE_REPORTS = "428",
     DO_PERTAMINA = "430",
     NOTIONAL_POOLING = "526",
-    DO_PUPUK_INDONESIA = "452"
+    DO_PUPUK_INDONESIA = "452",
+    NOTIONAL_POOLING_CLIENT = "531"
 }
 export declare enum ProductTypeEnumUpperCase {
     ALL = "ALL",
@@ -273,5 +275,6 @@ export declare enum ProductTypeNameEnum {
     RECEIVABLE_REPORTS = "Receivable Reports",
     DO_PERTAMINA = "DO Pertamina",
     NOTIONAL_POOLING = "National Pooling",
-    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia"
+    DO_PUPUK_INDONESIA = "DO Pupuk Indonesia",
+    NOTIONAL_POOLING_CLIENT = "National Pooling:Client"
 }
